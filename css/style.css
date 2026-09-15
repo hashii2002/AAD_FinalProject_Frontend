@@ -1,0 +1,756 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+
+/* ================================
+   LOGIN PAGE
+================================ */
+
+.login-body {
+    background: #f5f7fb;
+}
+
+
+/* ================================
+   LEFT SIDE
+================================ */
+
+.login-left {
+    position: relative;
+
+    background:
+            linear-gradient(
+                    rgba(8, 20, 40, 0.88),
+                    rgba(8, 20, 40, 0.88)
+            ),
+            url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+    background-position: center;
+
+    color: white;
+
+    overflow: hidden;
+}
+
+
+/* Brand */
+
+.login-brand {
+    position: absolute;
+    top: 45px;
+    left: 55px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    z-index: 2;
+}
+
+.brand-icon {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 25px;
+
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.35);
+}
+
+.login-brand h1 {
+    margin: 0;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.login-brand p {
+    margin: 3px 0 0;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+}
+
+
+/* Main content */
+
+.login-content {
+    position: absolute;
+
+    left: 55px;
+    bottom: 100px;
+
+    max-width: 560px;
+
+    z-index: 2;
+}
+
+.login-content h2 {
+    font-size: 55px;
+    line-height: 1.1;
+
+    font-weight: 700;
+
+    margin-bottom: 25px;
+}
+
+.login-content h2 span {
+    color: #60a5fa;
+}
+
+.login-content p {
+    color: #cbd5e1;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    max-width: 500px;
+}
+
+
+/* Features */
+
+.login-features {
+    margin-top: 30px;
+}
+
+.login-features div {
+    margin-bottom: 14px;
+
+    color: #e2e8f0;
+
+    font-size: 15px;
+}
+
+.login-features i {
+    color: #60a5fa;
+
+    margin-right: 10px;
+}
+
+
+/* ================================
+   RIGHT SIDE
+================================ */
+
+.login-right {
+    background: #f8fafc;
+
+    padding: 30px;
+}
+
+
+/* Card */
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+
+    background: white;
+
+    padding: 45px;
+
+    border-radius: 22px;
+
+    box-shadow:
+            0 20px 60px rgba(15, 23, 42, 0.08);
+}
+
+
+/* Header */
+
+.login-header h3 {
+    font-size: 28px;
+
+    font-weight: 700;
+
+    color: #0f172a;
+
+    margin-bottom: 8px;
+}
+
+.login-header p {
+    color: #64748b;
+
+    margin-bottom: 30px;
+
+    font-size: 14px;
+}
+
+
+/* Labels */
+
+.form-label {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #334155;
+}
+
+
+/* Inputs */
+
+.input-group-text {
+    background: white;
+
+    border-right: none;
+
+    color: #64748b;
+
+    border-color: #e2e8f0;
+}
+
+.form-control {
+    height: 48px;
+
+    border-color: #e2e8f0;
+
+    font-size: 14px;
+}
+
+.input-group .form-control {
+    border-left: none;
+}
+
+.form-control:focus {
+    border-color: #2563eb;
+
+    box-shadow: none;
+}
+
+.input-group:focus-within .input-group-text {
+    border-color: #2563eb;
+
+    color: #2563eb;
+}
+
+
+/* Password button */
+
+.password-toggle {
+    background: white;
+
+    border: 1px solid #e2e8f0;
+
+    border-left: none;
+
+    color: #64748b;
+}
+
+.password-toggle:hover {
+    color: #2563eb;
+}
+
+
+/* Remember */
+
+.form-check-label {
+    font-size: 13px;
+
+    color: #64748b;
+}
+
+
+/* Login Button */
+
+.login-btn {
+    height: 50px;
+
+    background: #2563eb;
+
+    border: none;
+
+    border-radius: 10px;
+
+    color: white;
+
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+.login-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+            0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+
+/* Footer */
+
+.login-footer {
+    text-align: center;
+
+    margin-top: 30px;
+}
+
+.login-footer p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* Mobile Logo */
+
+.mobile-logo {
+    margin-bottom: 35px;
+}
+
+.mobile-logo h2 {
+    margin-top: 12px;
+
+    font-weight: 700;
+
+    color: #0f172a;
+}
+
+.mobile-logo p {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 991px) {
+
+    .login-right {
+        min-height: 100vh;
+
+        padding: 20px;
+    }
+
+    .login-card {
+        padding: 35px 30px;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .login-card {
+        padding: 30px 22px;
+
+        border-radius: 18px;
+
+        box-shadow: none;
+    }
+
+    .login-right {
+        background: white;
+
+        padding: 15px;
+    }
+
+    .login-header h3 {
+        font-size: 24px;
+    }
+
+}
+/* ========================================
+   REGISTER PAGE
+======================================== */
+
+.register-body {
+    background: #f5f7fb;
+    font-family: Arial, sans-serif;
+}
+
+
+/* LEFT SIDE */
+
+.register-left {
+    position: relative;
+    background:
+        linear-gradient(
+            rgba(10, 20, 40, 0.88),
+            rgba(10, 20, 40, 0.92)
+        ),
+        url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=80");
+
+    background-size: cover;
+    background-position: center;
+
+    color: white;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 55px;
+}
+
+
+.register-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(8, 18, 35, 0.25);
+}
+
+
+.register-brand,
+.register-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.register-brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.register-brand .brand-icon {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #0d6efd;
+
+    font-size: 24px;
+}
+
+
+.register-brand h1 {
+    margin: 0;
+
+    font-size: 28px;
+
+    font-weight: 700;
+}
+
+
+.register-brand p {
+    margin: 0;
+
+    font-size: 13px;
+
+    opacity: 0.75;
+}
+
+
+.register-content {
+    max-width: 520px;
+
+    margin-bottom: 60px;
+}
+
+
+.register-content h2 {
+    font-size: 52px;
+
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    margin-bottom: 20px;
+}
+
+
+.register-content h2 span {
+    color: #4da3ff;
+}
+
+
+.register-content p {
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    color: rgba(255,255,255,0.75);
+
+    margin-bottom: 30px;
+}
+
+
+.register-features div {
+    margin-bottom: 15px;
+
+    font-size: 15px;
+}
+
+
+.register-features i {
+    color: #4da3ff;
+
+    margin-right: 10px;
+}
+
+
+/* RIGHT SIDE */
+
+.register-right {
+    padding: 30px;
+
+    overflow-y: auto;
+}
+
+
+.register-card {
+    width: 100%;
+
+    max-width: 650px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,0.08);
+}
+
+
+.register-header {
+    margin-bottom: 25px;
+}
+
+
+.register-header h3 {
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+.register-header p {
+    color: #6c757d;
+
+    margin-bottom: 0;
+}
+
+
+/* FORM */
+
+.register-card .form-label {
+    font-weight: 600;
+
+    font-size: 14px;
+
+    color: #343a40;
+}
+
+
+.register-card .form-control,
+.register-card .input-group-text {
+    border-color: #dee2e6;
+}
+
+
+.register-card .form-control {
+    padding: 11px 13px;
+}
+
+
+.register-card .input-group-text {
+    background: #f8f9fa;
+
+    color: #6c757d;
+}
+
+
+.register-card .form-control:focus {
+    border-color: #0d6efd;
+
+    box-shadow:
+        0 0 0 0.2rem rgba(13,110,253,0.1);
+}
+
+
+/* REGISTER BUTTON */
+
+.register-card .login-btn {
+    background: #0d6efd;
+
+    color: white;
+
+    border: none;
+
+    padding: 13px;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+
+.register-card .login-btn:hover {
+    background: #0b5ed7;
+
+    transform: translateY(-1px);
+}
+
+
+.register-card .login-btn:disabled {
+    opacity: 0.7;
+
+    cursor: not-allowed;
+}
+
+
+/* PASSWORD BUTTON */
+
+.password-toggle {
+    border: 1px solid #dee2e6;
+
+    border-left: none;
+
+    background: white;
+
+    color: #6c757d;
+}
+
+
+.password-toggle:hover {
+    background: #f8f9fa;
+}
+
+
+/* LOGIN LINK */
+
+.register-login-link {
+    text-align: center;
+
+    margin-top: 22px;
+
+    font-size: 14px;
+
+    color: #6c757d;
+}
+
+
+.register-login-link a {
+    color: #0d6efd;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+
+.register-login-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* MOBILE LOGO */
+
+.mobile-logo {
+    margin-bottom: 25px;
+}
+
+
+.mobile-logo .brand-icon {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 14px;
+
+    background: #0d6efd;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+
+    margin-bottom: 10px;
+}
+
+
+.mobile-logo h2 {
+    font-weight: 700;
+
+    margin-bottom: 3px;
+}
+
+
+.mobile-logo p {
+    color: #6c757d;
+
+    font-size: 13px;
+}
+
+
+/* FOOTER */
+
+.register-card .login-footer {
+    text-align: center;
+
+    margin-top: 25px;
+
+    color: #adb5bd;
+
+    font-size: 12px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 767px) {
+
+    .register-right {
+        padding: 15px;
+    }
+
+    .register-card {
+        padding: 25px 20px;
+
+        border-radius: 15px;
+    }
+
+    .register-header h3 {
+        font-size: 24px;
+    }
+
+}
