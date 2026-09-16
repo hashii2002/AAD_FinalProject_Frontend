@@ -1,0 +1,1011 @@
+/* =========================================================
+   VEHICLE MANAGEMENT PAGE
+========================================================= */
+
+/* ---------------------------------------------------------
+   MAIN CONTENT LAYOUT
+--------------------------------------------------------- */
+
+.main-content {
+    margin-left: 255px;
+    min-height: 100vh;
+    width: calc(100% - 255px);
+    min-width: 0;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+    padding-left: 15px;
+}
+
+.page-container {
+    width: 100%;
+    min-width: 0;
+    padding: 0 28px 40px;
+}
+
+
+/* =========================================================
+   VEHICLE SUMMARY CARDS
+========================================================= */
+
+.vehicle-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.summary-card {
+    min-width: 0;
+    background: #ffffff;
+    border: 1px solid #ececf2;
+    border-radius: 16px;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    transition: all 0.25s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.summary-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+
+    border-radius: 13px;
+
+    background: #f1eaff;
+    color: #7d2ae8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
+}
+
+.summary-card span {
+    display: block;
+    color: #7b7b88;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.summary-card h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #252331;
+}
+
+
+/* =========================================================
+   MANAGEMENT CARD
+========================================================= */
+
+.management-card {
+    width: 100%;
+    min-width: 0;
+
+    background: #ffffff;
+    border: 1px solid #ececf2;
+    border-radius: 18px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   MANAGEMENT HEADER
+========================================================= */
+
+.management-header {
+    padding: 24px 25px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.management-header > div:first-child {
+    min-width: 0;
+}
+
+.management-header h4 {
+    margin: 0 0 5px;
+
+    font-weight: 700;
+    color: #252331;
+
+    font-size: 20px;
+}
+
+.management-header p {
+    margin: 0;
+
+    color: #888793;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   ADD BUTTON
+========================================================= */
+
+.btn-add {
+    flex-shrink: 0;
+
+    border: none;
+    background: #7d2ae8;
+    color: #ffffff;
+
+    padding: 10px 17px;
+
+    border-radius: 9px;
+
+    font-weight: 600;
+    font-size: 14px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    white-space: nowrap;
+
+    transition: 0.2s;
+}
+
+.btn-add:hover {
+    background: #6920c8;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.management-tabs {
+    padding: 0 25px;
+
+    border-bottom: 1px solid #eeeeF2;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: thin;
+}
+
+.management-tabs .nav {
+    flex-wrap: nowrap;
+    min-width: max-content;
+}
+
+.management-tabs .nav-link {
+    border: none;
+
+    color: #777580;
+
+    padding: 14px 18px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    background: transparent;
+
+    position: relative;
+
+    white-space: nowrap;
+}
+
+.management-tabs .nav-link i {
+    margin-right: 6px;
+}
+
+.management-tabs .nav-link:hover {
+    color: #7d2ae8;
+}
+
+.management-tabs .nav-link.active {
+    color: #7d2ae8;
+}
+
+.management-tabs .nav-link.active::after {
+    content: "";
+
+    position: absolute;
+
+    height: 2px;
+
+    left: 12px;
+    right: 12px;
+    bottom: -1px;
+
+    background: #7d2ae8;
+}
+
+
+/* =========================================================
+   TAB CONTENT
+========================================================= */
+
+.tab-content {
+    display: none;
+    width: 100%;
+    min-width: 0;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.toolbar {
+    padding: 20px 25px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    border-bottom: 1px solid #f0f0f3;
+
+    min-width: 0;
+}
+
+.search-box {
+    position: relative;
+
+    flex: 1 1 300px;
+
+    width: 100%;
+    max-width: 420px;
+    min-width: 0;
+}
+
+.search-box i {
+    position: absolute;
+
+    left: 14px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #9997a3;
+
+    pointer-events: none;
+}
+
+.search-box input {
+    width: 100%;
+    height: 42px;
+
+    border: 1px solid #e3e2e8;
+    border-radius: 9px;
+
+    padding: 0 15px 0 40px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    background: #ffffff;
+}
+
+.search-box input:focus {
+    border-color: #9d68e9;
+
+    box-shadow: 0 0 0 3px rgba(125, 42, 232, 0.08);
+}
+
+.filter-select {
+    height: 42px;
+
+    min-width: 160px;
+
+    border: 1px solid #e3e2e8;
+    border-radius: 9px;
+
+    padding: 0 12px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    background: #ffffff;
+}
+
+.filter-select:focus {
+    border-color: #9d68e9;
+}
+
+
+/* =========================================================
+   REFRESH BUTTON
+========================================================= */
+
+.btn-refresh {
+    flex-shrink: 0;
+
+    border: 1px solid #e2e2e8;
+
+    background: #ffffff;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 9px;
+
+    color: #66636f;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s;
+}
+
+.btn-refresh:hover {
+    background: #f6f3ff;
+    color: #7d2ae8;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-responsive {
+    width: 100%;
+
+    min-height: 250px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.management-table {
+    width: 100%;
+
+    min-width: 850px;
+
+    border-collapse: collapse;
+
+    margin-bottom: 0;
+}
+
+.management-table th {
+    background: #fafafd;
+
+    color: #777580;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+
+    padding: 15px 20px;
+
+    border-bottom: 1px solid #eeeeF2;
+
+    white-space: nowrap;
+}
+
+.management-table td {
+    padding: 16px 20px;
+
+    border-bottom: 1px solid #f1f1f4;
+
+    color: #3c3a46;
+
+    font-size: 14px;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+.management-table tbody tr {
+    transition: 0.15s;
+}
+
+.management-table tbody tr:hover {
+    background: #fcfbff;
+}
+
+
+/* =========================================================
+   VEHICLE TEXT
+========================================================= */
+
+.vehicle-name {
+    font-weight: 700;
+    color: #282532;
+}
+
+.vehicle-number {
+    color: #7d2ae8;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    margin-top: 3px;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.status-available {
+    background: #eaf8ef;
+    color: #208848;
+}
+
+.status-rented {
+    background: #fff2df;
+    color: #c67800;
+}
+
+.status-maintenance {
+    background: #ffe8e8;
+    color: #d23939;
+}
+
+.status-reserved {
+    background: #eee9ff;
+    color: #7042c6;
+}
+
+.status-unavailable {
+    background: #eeeeef;
+    color: #6c6b73;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.action-btn {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 8px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 5px;
+
+    transition: 0.2s;
+}
+
+.edit-btn {
+    background: #f0ebff;
+    color: #7042c6;
+}
+
+.edit-btn:hover {
+    background: #e4d9ff;
+}
+
+.delete-btn {
+    background: #fff0f0;
+    color: #d83b3b;
+}
+
+.delete-btn:hover {
+    background: #ffe0e0;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-state {
+    display: none;
+
+    text-align: center;
+
+    padding: 60px 20px;
+}
+
+.empty-state.show {
+    display: block;
+}
+
+.empty-state i {
+    font-size: 48px;
+    color: #c8c5d0;
+}
+
+.empty-state h5 {
+    margin-top: 15px;
+
+    color: #44414e;
+}
+
+.empty-state p {
+    color: #9996a2;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+.modern-modal {
+    border: none;
+
+    border-radius: 17px;
+
+    overflow: hidden;
+}
+
+.modern-modal .modal-header {
+    padding: 20px 24px;
+
+    border-bottom: 1px solid #eeeeF2;
+}
+
+.modern-modal .modal-header h5 {
+    margin: 0;
+
+    font-weight: 700;
+}
+
+.modern-modal .modal-header small {
+    color: #92909a;
+}
+
+.modern-modal .modal-body {
+    padding: 25px;
+}
+
+.modern-modal label {
+    display: block;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 7px;
+
+    color: #4d4a57;
+}
+
+.modern-modal .form-control,
+.modern-modal .form-select {
+    border: 1px solid #dedde5;
+
+    min-height: 44px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+}
+
+.modern-modal .form-control:focus,
+.modern-modal .form-select:focus {
+    border-color: #9b63e6;
+
+    box-shadow: 0 0 0 3px rgba(125, 42, 232, 0.08);
+}
+
+.modern-modal textarea.form-control {
+    min-height: auto;
+}
+
+.modern-modal .modal-footer {
+    border-top: 1px solid #eeeeF2;
+
+    padding: 15px 24px;
+}
+
+.btn-cancel {
+    border: 1px solid #dedde5;
+
+    background: #ffffff;
+    color: #5f5c68;
+
+    padding: 9px 17px;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+}
+
+.btn-save {
+    border: none;
+
+    background: #7d2ae8;
+    color: #ffffff;
+
+    padding: 9px 19px;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+}
+
+.btn-save:hover {
+    background: #6920c8;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.modern-toast {
+    border: none;
+
+    border-radius: 10px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   SIDEBAR OVERLAY
+========================================================= */
+
+.sidebar-overlay {
+    display: none;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .vehicle-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    /*
+       style.css already hides the sidebar below 992px.
+       Main content must therefore use the full screen.
+    */
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .page-container {
+        padding: 0 20px 30px;
+    }
+
+    .vehicle-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .management-header {
+        padding: 22px;
+    }
+
+    .management-tabs {
+        padding: 0 20px;
+    }
+
+    .toolbar {
+        padding: 18px 20px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE / TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .page-container {
+        padding: 0 16px 25px;
+    }
+
+    .vehicle-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+
+        margin-bottom: 18px;
+    }
+
+    .summary-card {
+        padding: 15px;
+
+        gap: 10px;
+
+        border-radius: 13px;
+    }
+
+    .summary-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+
+        font-size: 18px;
+    }
+
+    .summary-card span {
+        font-size: 11px;
+    }
+
+    .summary-card h3 {
+        font-size: 20px;
+    }
+
+
+    /* Header */
+
+    .management-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+        padding: 20px;
+    }
+
+    .management-header h4 {
+        font-size: 18px;
+    }
+
+    .management-header p {
+        font-size: 13px;
+    }
+
+    .btn-add {
+        width: 100%;
+    }
+
+
+    /* Tabs */
+
+    .management-tabs {
+        padding: 0 12px;
+
+        overflow-x: auto;
+    }
+
+    .management-tabs .nav-link {
+        padding: 13px 14px;
+
+        font-size: 13px;
+    }
+
+
+    /* Toolbar */
+
+    .toolbar {
+        flex-wrap: wrap;
+
+        padding: 16px;
+    }
+
+    .search-box {
+        flex: 1 1 100%;
+
+        max-width: none;
+
+        width: 100%;
+    }
+
+    .filter-select {
+        flex: 1 1 0;
+
+        min-width: 0;
+
+        width: 100%;
+    }
+
+    .btn-refresh {
+        width: 42px;
+        min-width: 42px;
+    }
+
+
+    /* Table */
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .management-table {
+        min-width: 850px;
+    }
+
+
+    /* Modal */
+
+    .modern-modal .modal-header {
+        padding: 17px 18px;
+    }
+
+    .modern-modal .modal-body {
+        padding: 20px 18px;
+    }
+
+    .modern-modal .modal-footer {
+        padding: 13px 18px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .page-container {
+        padding: 0 12px 22px;
+    }
+
+
+    /* Summary cards become single column */
+
+    .vehicle-summary {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    .summary-card {
+        padding: 15px;
+    }
+
+
+    /* Management card */
+
+    .management-card {
+        border-radius: 14px;
+    }
+
+
+    /* Header */
+
+    .management-header {
+        padding: 18px;
+    }
+
+    .management-header h4 {
+        font-size: 17px;
+    }
+
+    .management-header p {
+        font-size: 12px;
+    }
+
+
+    /* Tabs */
+
+    .management-tabs {
+        padding: 0 8px;
+    }
+
+    .management-tabs .nav-link {
+        padding: 12px 12px;
+
+        font-size: 12px;
+    }
+
+    .management-tabs .nav-link i {
+        margin-right: 4px;
+    }
+
+
+    /* Toolbar */
+
+    .toolbar {
+        padding: 14px;
+        gap: 10px;
+    }
+
+    .filter-select {
+        flex: 1 1 calc(100% - 52px);
+    }
+
+
+    /* Modal */
+
+    .modern-modal {
+        border-radius: 14px;
+    }
+
+    .modern-modal .modal-header {
+        padding: 16px;
+    }
+
+    .modern-modal .modal-body {
+        padding: 18px 16px;
+    }
+
+    .modern-modal .modal-footer {
+        padding: 12px 16px;
+    }
+
+    .modern-modal .modal-footer .btn {
+        flex: 1;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .page-container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .management-header {
+        padding: 16px;
+    }
+
+    .toolbar {
+        padding: 12px;
+    }
+
+    .summary-card h3 {
+        font-size: 18px;
+    }
+
+}
