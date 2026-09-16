@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Vehicle Management | Vehicle Rental System</title>
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap 5.3.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet">
 
@@ -25,10 +26,14 @@
 
 <div class="dashboard-wrapper">
 
-    <!-- ================= SIDEBAR ================= -->
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
     <aside class="sidebar">
 
+        <!-- Brand -->
         <div class="sidebar-brand">
+
             <div class="brand-icon">
                 <i class="bi bi-car-front-fill"></i>
             </div>
@@ -37,8 +42,11 @@
                 <h4>DriveRent</h4>
                 <small>Fleet Management</small>
             </div>
+
         </div>
 
+
+        <!-- Navigation -->
         <div class="sidebar-menu">
 
             <p class="menu-title">MAIN</p>
@@ -95,19 +103,27 @@
 
         </div>
 
+
+        <!-- Sidebar Footer -->
         <div class="sidebar-footer">
 
             <div class="user-mini">
 
-                <div class="user-avatar" id="sidebarAvatar">A</div>
+                <div class="user-avatar" id="sidebarAvatar">
+                    A
+                </div>
 
                 <div class="user-info">
                     <strong id="sidebarUsername">Admin</strong>
                     <small id="sidebarRole">Administrator</small>
                 </div>
 
-                <button class="logout-btn" onclick="logout()">
+                <button class="logout-btn"
+                        onclick="logout()"
+                        title="Logout">
+
                     <i class="bi bi-box-arrow-right"></i>
+
                 </button>
 
             </div>
@@ -117,38 +133,61 @@
     </aside>
 
 
-    <!-- ================= MAIN CONTENT ================= -->
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
     <main class="main-content">
 
         <!-- TOP BAR -->
         <header class="topbar">
 
             <button class="mobile-menu-btn"
-                    onclick="toggleSidebar()">
+                    onclick="toggleSidebar()"
+                    aria-label="Open menu">
+
                 <i class="bi bi-list"></i>
+
             </button>
+
 
             <div class="topbar-title">
 
-                <h2>Vehicle Management</h2>
+                <div class="title-icon">
+                    <i class="bi bi-car-front-fill"></i>
+                </div>
 
-                <p>
-                    Manage your fleet, brands, models and categories
-                </p>
+                <div>
+
+                    <h2>Vehicle Management</h2>
+
+                    <p>
+                        Manage your fleet, brands, models and categories
+                    </p>
+
+                </div>
 
             </div>
+
 
             <div class="topbar-actions">
 
                 <div class="admin-profile">
 
-                    <div class="profile-avatar" id="profileAvatar">
+                    <div class="profile-avatar"
+                         id="profileAvatar">
                         A
                     </div>
 
-                    <div>
-                        <strong id="profileUsername">Admin</strong>
-                        <small id="profileRole">Administrator</small>
+                    <div class="profile-details">
+
+                        <strong id="profileUsername">
+                            Admin
+                        </strong>
+
+                        <small id="profileRole">
+                            Administrator
+                        </small>
+
                     </div>
 
                 </div>
@@ -158,12 +197,40 @@
         </header>
 
 
-        <!-- ================= PAGE ================= -->
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
         <section class="page-container">
 
-            <!-- ================= SUMMARY CARDS ================= -->
+
+            <!-- =================================================
+                 PAGE INTRO
+            ================================================== -->
+            <div class="page-intro">
+
+                <div>
+
+                    <span class="page-label">
+                        <i class="bi bi-speedometer2"></i>
+                        FLEET OVERVIEW
+                    </span>
+
+                    <p>
+                        Monitor and manage your rental vehicles from one place.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SUMMARY CARDS
+            ================================================== -->
             <div class="vehicle-summary">
 
+
+                <!-- Total -->
                 <div class="summary-card">
 
                     <div class="summary-icon">
@@ -171,13 +238,17 @@
                     </div>
 
                     <div class="summary-content">
+
                         <span>Total Vehicles</span>
+
                         <h3 id="totalVehicles">0</h3>
+
                     </div>
 
                 </div>
 
 
+                <!-- Available -->
                 <div class="summary-card">
 
                     <div class="summary-icon">
@@ -185,13 +256,17 @@
                     </div>
 
                     <div class="summary-content">
+
                         <span>Available</span>
+
                         <h3 id="availableVehicles">0</h3>
+
                     </div>
 
                 </div>
 
 
+                <!-- Rented -->
                 <div class="summary-card">
 
                     <div class="summary-icon">
@@ -199,13 +274,17 @@
                     </div>
 
                     <div class="summary-content">
+
                         <span>Rented</span>
+
                         <h3 id="rentedVehicles">0</h3>
+
                     </div>
 
                 </div>
 
 
+                <!-- Maintenance -->
                 <div class="summary-card">
 
                     <div class="summary-icon">
@@ -213,8 +292,11 @@
                     </div>
 
                     <div class="summary-content">
+
                         <span>Maintenance</span>
+
                         <h3 id="maintenanceVehicles">0</h3>
+
                     </div>
 
                 </div>
@@ -222,27 +304,40 @@
             </div>
 
 
-            <!-- ================= MANAGEMENT CARD ================= -->
+            <!-- =================================================
+                 MANAGEMENT CARD
+            ================================================== -->
             <div class="management-card">
 
-                <!-- HEADER -->
+
+                <!-- MANAGEMENT HEADER -->
                 <div class="management-header">
 
                     <div class="management-heading">
 
-                        <h4>Fleet Management</h4>
+                        <div class="section-icon">
+                            <i class="bi bi-layers-fill"></i>
+                        </div>
 
-                        <p>
-                            Manage vehicle information and fleet configuration
-                        </p>
+                        <div>
+
+                            <h4>Fleet Management</h4>
+
+                            <p>
+                                Manage vehicles and fleet configuration
+                            </p>
+
+                        </div>
 
                     </div>
 
                     <button class="btn-add"
                             id="mainAddButton"
-                            onclick="openVehicleModal">
+                            type="button"
+                            onclick="openVehicleModal()">
 
                         <i class="bi bi-plus-lg"></i>
+
                         <span>Add Vehicle</span>
 
                     </button>
@@ -250,54 +345,75 @@
                 </div>
 
 
-                <!-- ================= TABS ================= -->
+                <!-- =================================================
+                     TABS
+                ================================================== -->
                 <div class="tabs-wrapper">
 
                     <ul class="nav nav-tabs management-tabs"
                         id="vehicleTabs">
 
+                        <!-- Vehicles -->
                         <li class="nav-item">
+
                             <button class="nav-link active"
                                     data-tab="vehicles"
                                     onclick="switchTab('vehicles')">
 
                                 <i class="bi bi-car-front-fill"></i>
+
                                 <span>Vehicles</span>
 
                             </button>
+
                         </li>
 
+
+                        <!-- Brands -->
                         <li class="nav-item">
+
                             <button class="nav-link"
                                     data-tab="brands"
                                     onclick="switchTab('brands')">
 
                                 <i class="bi bi-tags-fill"></i>
+
                                 <span>Brands</span>
 
                             </button>
+
                         </li>
 
+
+                        <!-- Categories -->
                         <li class="nav-item">
+
                             <button class="nav-link"
                                     data-tab="categories"
                                     onclick="switchTab('categories')">
 
                                 <i class="bi bi-grid-fill"></i>
+
                                 <span>Categories</span>
 
                             </button>
+
                         </li>
 
+
+                        <!-- Models -->
                         <li class="nav-item">
+
                             <button class="nav-link"
                                     data-tab="models"
                                     onclick="switchTab('models')">
 
                                 <i class="bi bi-diagram-3-fill"></i>
+
                                 <span>Models</span>
 
                             </button>
+
                         </li>
 
                     </ul>
@@ -305,9 +421,14 @@
                 </div>
 
 
-                <!-- ================= VEHICLES TAB ================= -->
-                <div class="tab-content active" id="vehiclesTab">
+                <!-- =================================================
+                     VEHICLES TAB
+                ================================================== -->
+                <div class="tab-content active"
+                     id="vehiclesTab">
 
+
+                    <!-- Toolbar -->
                     <div class="toolbar">
 
                         <div class="search-box">
@@ -316,7 +437,7 @@
 
                             <input type="text"
                                    id="vehicleSearch"
-                                   placeholder="Search vehicle number, color..."
+                                   placeholder="Search vehicle number or color..."
                                    oninput="filterVehicles()">
 
                         </div>
@@ -327,11 +448,26 @@
                                 onchange="filterVehicles()">
 
                             <option value="">All Status</option>
-                            <option value="AVAILABLE">Available</option>
-                            <option value="RENTED">Rented</option>
-                            <option value="RESERVED">Reserved</option>
-                            <option value="MAINTENANCE">Maintenance</option>
-                            <option value="UNAVAILABLE">Unavailable</option>
+
+                            <option value="AVAILABLE">
+                                Available
+                            </option>
+
+                            <option value="RENTED">
+                                Rented
+                            </option>
+
+                            <option value="RESERVED">
+                                Reserved
+                            </option>
+
+                            <option value="MAINTENANCE">
+                                Maintenance
+                            </option>
+
+                            <option value="UNAVAILABLE">
+                                Unavailable
+                            </option>
 
                         </select>
 
@@ -340,14 +476,17 @@
                                 class="filter-select"
                                 onchange="filterVehicles()">
 
-                            <option value="">All Categories</option>
+                            <option value="">
+                                All Categories
+                            </option>
 
                         </select>
 
 
                         <button class="btn-refresh"
+                                type="button"
                                 onclick="loadVehicles()"
-                                title="Refresh">
+                                title="Refresh vehicles">
 
                             <i class="bi bi-arrow-clockwise"></i>
 
@@ -356,6 +495,7 @@
                     </div>
 
 
+                    <!-- Table -->
                     <div class="table-wrapper">
 
                         <div class="table-responsive">
@@ -365,14 +505,25 @@
                                 <thead>
 
                                 <tr>
+
                                     <th>#</th>
+
                                     <th>Vehicle</th>
+
                                     <th>Model</th>
+
                                     <th>Category</th>
+
                                     <th>Year</th>
+
                                     <th>Color</th>
+
                                     <th>Status</th>
-                                    <th class="text-end">Actions</th>
+
+                                    <th class="text-end">
+                                        Actions
+                                    </th>
+
                                 </tr>
 
                                 </thead>
@@ -386,10 +537,15 @@
                     </div>
 
 
+                    <!-- Empty State -->
                     <div class="empty-state"
                          id="vehicleEmptyState">
 
-                        <i class="bi bi-car-front"></i>
+                        <div class="empty-icon">
+
+                            <i class="bi bi-car-front"></i>
+
+                        </div>
 
                         <h5>No Vehicles Found</h5>
 
@@ -402,9 +558,14 @@
                 </div>
 
 
-                <!-- ================= BRANDS TAB ================= -->
-                <div class="tab-content" id="brandsTab">
+                <!-- =================================================
+                     BRANDS TAB
+                ================================================== -->
+                <div class="tab-content"
+                     id="brandsTab">
 
+
+                    <!-- Search only -->
                     <div class="toolbar">
 
                         <div class="search-box">
@@ -418,17 +579,10 @@
 
                         </div>
 
-                        <button class="btn-add"
-                                onclick="openBrandModal()">
-
-                            <i class="bi bi-plus-lg"></i>
-                            <span>Add Brand</span>
-
-                        </button>
-
                     </div>
 
 
+                    <!-- Brand Table -->
                     <div class="table-wrapper">
 
                         <div class="table-responsive">
@@ -438,10 +592,17 @@
                                 <thead>
 
                                 <tr>
+
                                     <th>#</th>
+
                                     <th>Brand</th>
+
                                     <th>Country</th>
-                                    <th class="text-end">Actions</th>
+
+                                    <th class="text-end">
+                                        Actions
+                                    </th>
+
                                 </tr>
 
                                 </thead>
@@ -457,9 +618,14 @@
                 </div>
 
 
-                <!-- ================= CATEGORIES TAB ================= -->
-                <div class="tab-content" id="categoriesTab">
+                <!-- =================================================
+                     CATEGORIES TAB
+                ================================================== -->
+                <div class="tab-content"
+                     id="categoriesTab">
 
+
+                    <!-- Search only -->
                     <div class="toolbar">
 
                         <div class="search-box">
@@ -473,17 +639,10 @@
 
                         </div>
 
-                        <button class="btn-add"
-                                onclick="openCategoryModal()">
-
-                            <i class="bi bi-plus-lg"></i>
-                            <span>Add Category</span>
-
-                        </button>
-
                     </div>
 
 
+                    <!-- Category Table -->
                     <div class="table-wrapper">
 
                         <div class="table-responsive">
@@ -493,10 +652,17 @@
                                 <thead>
 
                                 <tr>
+
                                     <th>#</th>
+
                                     <th>Category</th>
+
                                     <th>Description</th>
-                                    <th class="text-end">Actions</th>
+
+                                    <th class="text-end">
+                                        Actions
+                                    </th>
+
                                 </tr>
 
                                 </thead>
@@ -512,9 +678,14 @@
                 </div>
 
 
-                <!-- ================= MODELS TAB ================= -->
-                <div class="tab-content" id="modelsTab">
+                <!-- =================================================
+                     MODELS TAB
+                ================================================== -->
+                <div class="tab-content"
+                     id="modelsTab">
 
+
+                    <!-- Search only -->
                     <div class="toolbar">
 
                         <div class="search-box">
@@ -528,17 +699,10 @@
 
                         </div>
 
-                        <button class="btn-add"
-                                onclick="openModelModal()">
-
-                            <i class="bi bi-plus-lg"></i>
-                            <span>Add Model</span>
-
-                        </button>
-
                     </div>
 
 
+                    <!-- Model Table -->
                     <div class="table-wrapper">
 
                         <div class="table-responsive">
@@ -548,13 +712,23 @@
                                 <thead>
 
                                 <tr>
+
                                     <th>#</th>
+
                                     <th>Model</th>
+
                                     <th>Brand</th>
+
                                     <th>Fuel Type</th>
+
                                     <th>Transmission</th>
+
                                     <th>Seats</th>
-                                    <th class="text-end">Actions</th>
+
+                                    <th class="text-end">
+                                        Actions
+                                    </th>
+
                                 </tr>
 
                                 </thead>
@@ -592,14 +766,24 @@
 
             <div class="modal-header">
 
-                <div>
-                    <h5 id="vehicleModalTitle">
-                        Add New Vehicle
-                    </h5>
+                <div class="modal-title-area">
 
-                    <small>
-                        Enter vehicle details
-                    </small>
+                    <div class="modal-icon">
+                        <i class="bi bi-car-front-fill"></i>
+                    </div>
+
+                    <div>
+
+                        <h5 id="vehicleModalTitle">
+                            Add New Vehicle
+                        </h5>
+
+                        <small>
+                            Enter vehicle details
+                        </small>
+
+                    </div>
+
                 </div>
 
                 <button type="button"
@@ -781,6 +965,7 @@
                             class="btn-save">
 
                         <i class="bi bi-check-lg"></i>
+
                         Save Vehicle
 
                     </button>
@@ -810,15 +995,23 @@
 
             <div class="modal-header">
 
-                <div>
+                <div class="modal-title-area">
 
-                    <h5 id="brandModalTitle">
-                        Add Brand
-                    </h5>
+                    <div class="modal-icon">
+                        <i class="bi bi-tags-fill"></i>
+                    </div>
 
-                    <small>
-                        Vehicle manufacturer information
-                    </small>
+                    <div>
+
+                        <h5 id="brandModalTitle">
+                            Add Brand
+                        </h5>
+
+                        <small>
+                            Vehicle manufacturer information
+                        </small>
+
+                    </div>
 
                 </div>
 
@@ -837,6 +1030,7 @@
                     <input type="hidden"
                            id="brandId">
 
+
                     <div class="mb-3">
 
                         <label for="brandName">
@@ -854,9 +1048,13 @@
 
                     <div>
 
-                        <label for="brandCountry"> Country</label>
+                        <label for="brandCountry">
+                            Country
+                        </label>
 
-                        <select id="brandCountry" class="form-select" required>
+                        <select id="brandCountry"
+                                class="form-select"
+                                required>
 
                             <option value="">
                                 Select Country
@@ -910,12 +1108,18 @@
                     <button type="button"
                             class="btn-cancel"
                             data-bs-dismiss="modal">
+
                         Cancel
+
                     </button>
 
                     <button type="submit"
                             class="btn-save">
+
+                        <i class="bi bi-check-lg"></i>
+
                         Save Brand
+
                     </button>
 
                 </div>
@@ -943,15 +1147,23 @@
 
             <div class="modal-header">
 
-                <div>
+                <div class="modal-title-area">
 
-                    <h5 id="categoryModalTitle">
-                        Add Category
-                    </h5>
+                    <div class="modal-icon">
+                        <i class="bi bi-grid-fill"></i>
+                    </div>
 
-                    <small>
-                        Vehicle category information
-                    </small>
+                    <div>
+
+                        <h5 id="categoryModalTitle">
+                            Add Category
+                        </h5>
+
+                        <small>
+                            Vehicle category information
+                        </small>
+
+                    </div>
 
                 </div>
 
@@ -981,12 +1193,29 @@
                                 class="form-select"
                                 required>
 
-                            <option value="">  Select Category</option>
-                            <option value="CAR"> Car</option>
-                            <option value="VAN"> Van </option>
-                            <option value="BUS"> Bus </option>
-                            <option value="LUXURY"> Luxury</option>
-                            <option value="MOTORCYCLE"> Motorcycle </option>
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <option value="CAR">
+                                Car
+                            </option>
+
+                            <option value="VAN">
+                                Van
+                            </option>
+
+                            <option value="BUS">
+                                Bus
+                            </option>
+
+                            <option value="LUXURY">
+                                Luxury
+                            </option>
+
+                            <option value="MOTORCYCLE">
+                                Motorcycle
+                            </option>
 
                         </select>
 
@@ -1022,6 +1251,8 @@
                     <button type="submit"
                             class="btn-save">
 
+                        <i class="bi bi-check-lg"></i>
+
                         Save Category
 
                     </button>
@@ -1051,15 +1282,23 @@
 
             <div class="modal-header">
 
-                <div>
+                <div class="modal-title-area">
 
-                    <h5 id="modelModalTitle">
-                        Add Vehicle Model
-                    </h5>
+                    <div class="modal-icon">
+                        <i class="bi bi-diagram-3-fill"></i>
+                    </div>
 
-                    <small>
-                        Model specifications
-                    </small>
+                    <div>
+
+                        <h5 id="modelModalTitle">
+                            Add Vehicle Model
+                        </h5>
+
+                        <small>
+                            Model specifications
+                        </small>
+
+                    </div>
 
                 </div>
 
@@ -1210,6 +1449,8 @@
                     <button type="submit"
                             class="btn-save">
 
+                        <i class="bi bi-check-lg"></i>
+
                         Save Model
 
                     </button>
@@ -1225,7 +1466,9 @@
 </div>
 
 
-<!-- ================= TOAST ================= -->
+<!-- =========================================================
+     TOAST
+========================================================= -->
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
 
     <div id="appToast"
@@ -1241,11 +1484,15 @@
 </div>
 
 
-<!-- ================= BOOTSTRAP JS ================= -->
+<!-- =========================================================
+     BOOTSTRAP JS
+========================================================= -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="../js/config.js"></script>
+
 <script src="../js/auth.js"></script>
+
 <script src="../js/vehicle.js"></script>
 
 </body>
