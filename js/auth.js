@@ -4,165 +4,121 @@ const errorMessage = document.getElementById("loginError");
 const togglePassword = document.getElementById("togglePassword");
 const passwordInput = document.getElementById("password");
 
-
 // Show / Hide Password
-if (togglePassword) {
-
+if (togglePassword && passwordInput) {
     togglePassword.addEventListener("click", function () {
-
         if (passwordInput.type === "password") {
-
             passwordInput.type = "text";
-
-            togglePassword.innerHTML =
-                '<i class="bi bi-eye-slash"></i>';
-
+            togglePassword.innerHTML = '<i class="bi bi-eye-slash"></i>';
         } else {
-
             passwordInput.type = "password";
-
-            togglePassword.innerHTML =
-                '<i class="bi bi-eye"></i>';
+            togglePassword.innerHTML = '<i class="bi bi-eye"></i>';
         }
-
     });
-
 }
 
+// Login (Check if loginForm exists before adding Event Listener)
+if (loginForm) {
+    loginForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-// Login
-loginForm.addEventListener("submit", async function (event) {
+        const username = document.getElementById("username").value.trim();
+        const password = passwordInput.value;
 
-    event.preventDefault();
+        // Clear previous error
+        if (errorMessage) {
+            errorMessage.classList.add("d-none");
+            errorMessage.textContent = "";
+        }
 
-    const username =
-        document.getElementById("username").value.trim();
+        // Validation
+        if (!username || !password) {
+            showError("Please enter your username and password.");
+            return;
+        }
 
-    const password =
-        passwordInput.value;
+        // Loading state
+        if (loginButton) {
+            loginButton.disabled = true;
+            loginButton.innerHTML = `
+                <span class="spinner-border spinner-border-sm me-2"></span>
+                Signing in...
+            `;
+        }
 
+        try {
+            const response = await fetch(
+                `${API_BASE_URL}/v1/user/login`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                }
+            );
 
-    // Clear previous error
-    errorMessage.classList.add("d-none");
-    errorMessage.textContent = "";
+            const data = await response.json();
 
-
-    // Validation
-    if (!username || !password) {
-
-        showError("Please enter your username and password.");
-
-        return;
-    }
-
-
-    // Loading state
-    loginButton.disabled = true;
-
-    loginButton.innerHTML = `
-        <span class="spinner-border spinner-border-sm me-2"></span>
-        Signing in...
-    `;
-
-
-    try {
-
-        // Connect Frontend → Backend
-        const response = await fetch(
-            `${API_BASE_URL}/v1/user/login`,
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    username: username,
-                    password: password
-                })
+            if (!response.ok) {
+                throw new Error(
+                    data.message || "Invalid username or password."
+                );
             }
-        );
 
+            const token = data.body?.token;
+            const userId = data.body?.userId;
+            const loggedUsername = data.body?.username;
+            const role = data.body?.role;
 
-        const data = await response.json();
+            if (!token) {
+                throw new Error(
+                    "JWT token was not received from the server."
+                );
+            }
 
+            // Save authentication information
+            localStorage.setItem("accessToken", token);
+            localStorage.setItem("userId", userId);
+            localStorage.setItem("username", loggedUsername);
+            localStorage.setItem("role", role);
 
-        // Backend error
-        if (!response.ok) {
+            // Redirect to Dashboard
+            window.location.href = "pages/dashboard.html";
 
-            throw new Error(
-                data.message ||
-                "Invalid username or password."
-            );
+        } catch (error) {
+            console.error("Login Error:", error);
+            showError(error.message);
+
+            if (loginButton) {
+                loginButton.disabled = false;
+                loginButton.innerHTML = `
+                    Sign In
+                    <i class="bi bi-arrow-right ms-2"></i>
+                `;
+            }
         }
-
-
-        // Get data from backend response
-        const token = data.body?.token;
-        const userId = data.body?.userId;
-        const loggedUsername = data.body?.username;
-        const role = data.body?.role;
-
-
-        // Check JWT
-        if (!token) {
-
-            throw new Error(
-                "JWT token was not received from the server."
-            );
-        }
-
-
-        // Save authentication information
-        localStorage.setItem(
-            "accessToken",
-            token
-        );
-
-        localStorage.setItem(
-            "userId",
-            userId
-        );
-
-        localStorage.setItem(
-            "username",
-            loggedUsername
-        );
-
-        localStorage.setItem(
-            "role",
-            role
-        );
-
-
-        // Login successful
-        window.location.href = "pages/dashboard.html";
-
-
-    } catch (error) {
-
-        console.error("Login Error:", error);
-
-        showError(error.message);
-
-
-        // Reset button
-        loginButton.disabled = false;
-
-        loginButton.innerHTML = `
-            Sign In
-            <i class="bi bi-arrow-right ms-2"></i>
-        `;
-    }
-
-});
-
+    });
+}
 
 // Display error message
 function showError(message) {
+    if (errorMessage) {
+        errorMessage.textContent = message;
+        errorMessage.classList.remove("d-none");
+    }
+}
 
-    errorMessage.textContent = message;
+// Logout Function
+function logout() {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("username");
+    localStorage.removeItem("role");
 
-    errorMessage.classList.remove("d-none");
+    // Root directory path redirect
+    window.location.href = "../index.html";
 }
