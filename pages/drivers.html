@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Driver Management | DriveRent</title>
+
+<!-- Bootstrap 5.3.3 -->
+<link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="../css/style.css">
+
+<!-- Driver CSS -->
+<link rel="stylesheet" href="../css/drivers.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-wrapper">
+
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+    <!-- BRAND -->
+
+    <div class="sidebar-brand">
+
+        <div class="brand-icon">
+            <i class="bi bi-car-front-fill"></i>
+        </div>
+
+        <div>
+            <h4>DriveRent</h4>
+            <small>Fleet Management</small>
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="sidebar-menu">
+
+        <p class="menu-title">MAIN</p>
+
+
+        <a href="dashboard.html" class="menu-item">
+
+            <i class="bi bi-grid-1x2-fill"></i>
+
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="vehicles.html" class="menu-item">
+
+            <i class="bi bi-car-front-fill"></i>
+
+            <span>Vehicles</span>
+
+        </a>
+
+
+        <a href="customers.html" class="menu-item">
+
+            <i class="bi bi-people-fill"></i>
+
+            <span>Customers</span>
+
+        </a>
+
+
+        <a href="drivers.html" class="menu-item active">
+
+            <i class="bi bi-person-badge-fill"></i>
+
+            <span>Drivers</span>
+
+        </a>
+
+
+        <a href="rentals.html" class="menu-item">
+
+            <i class="bi bi-calendar-check-fill"></i>
+
+            <span>Rentals</span>
+
+        </a>
+
+
+        <a href="payments.html" class="menu-item">
+
+            <i class="bi bi-credit-card-fill"></i>
+
+            <span>Payments</span>
+
+        </a>
+
+
+        <a href="invoices.html" class="menu-item">
+
+            <i class="bi bi-receipt-cutoff"></i>
+
+            <span>Invoices</span>
+
+        </a>
+
+
+        <a href="maintenance.html" class="menu-item">
+
+            <i class="bi bi-tools"></i>
+
+            <span>Maintenance</span>
+
+        </a>
+
+
+        <a href="documents.html" class="menu-item">
+
+            <i class="bi bi-file-earmark-text-fill"></i>
+
+            <span>Documents</span>
+
+        </a>
+
+
+        <a href="reviews.html" class="menu-item">
+
+            <i class="bi bi-star-fill"></i>
+
+            <span>Reviews</span>
+
+        </a>
+
+    </div>
+
+
+    <!-- SIDEBAR FOOTER -->
+
+    <div class="sidebar-footer">
+
+        <div class="user-mini">
+
+            <div class="user-avatar" id="sidebarAvatar">
+                A
+            </div>
+
+            <div class="user-info">
+
+                <strong id="sidebarUsername">
+                    Admin
+                </strong>
+
+                <small id="sidebarRole">
+                    Administrator
+                </small>
+
+            </div>
+
+
+            <button
+                    class="logout-btn"
+                    onclick="logout()"
+                    title="Logout">
+
+                <i class="bi bi-box-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
+
+<main class="main-content driver-main-content">
+
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+
+        <button
+                class="mobile-menu-btn"
+                onclick="toggleSidebar()"
+                aria-label="Open menu">
+
+            <i class="bi bi-list"></i>
+
+        </button>
+
+
+        <div class="topbar-title">
+
+            <div class="title-icon">
+
+                <i class="bi bi-person-badge-fill"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>Driver Management</h2>
+
+                <p>
+                    Manage drivers and driver availability
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+            <div class="admin-profile">
+
+                <div
+                        class="profile-avatar"
+                        id="profileAvatar">
+
+                    A
+
+                </div>
+
+
+                <div class="profile-details">
+
+                    <strong id="profileUsername">
+                        Admin
+                    </strong>
+
+                    <small id="profileRole">
+                        Administrator
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         PAGE CONTENT
+    ====================================================== -->
+
+    <section class="page-container driver-page-container">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="driver-page-heading">
+
+            <div>
+
+                <div class="section-label">
+
+                    <i class="bi bi-speedometer2"></i>
+
+                    DRIVER OVERVIEW
+
+                </div>
+
+            </div>
+
+
+            <button
+                    class="btn add-driver-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#driverModal"
+                    onclick="openAddDriverModal()">
+
+                <i class="bi bi-plus-lg"></i>
+
+                Add Driver
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+        ================================================== -->
+
+        <div class="driver-summary-grid">
+
+
+            <!-- TOTAL -->
+
+            <div class="driver-summary-card">
+
+                <div class="summary-icon purple">
+
+                    <i class="bi bi-people-fill"></i>
+
+                </div>
+
+                <div class="summary-content">
+
+                    <span>Total Drivers</span>
+
+                    <strong id="totalDrivers">
+                        0
+                    </strong>
+
+                    <small>
+                        Registered drivers
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- AVAILABLE -->
+
+            <div class="driver-summary-card">
+
+                <div class="summary-icon green">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                </div>
+
+                <div class="summary-content">
+
+                    <span>Available</span>
+
+                    <strong id="availableDrivers">
+                        0
+                    </strong>
+
+                    <small>
+                        Ready for rental
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ON TRIP -->
+
+            <div class="driver-summary-card">
+
+                <div class="summary-icon orange">
+
+                    <i class="bi bi-car-front-fill"></i>
+
+                </div>
+
+                <div class="summary-content">
+
+                    <span>On Trip</span>
+
+                    <strong id="onTripDrivers">
+                        0
+                    </strong>
+
+                    <small>
+                        Currently assigned
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INACTIVE -->
+
+            <div class="driver-summary-card">
+
+                <div class="summary-icon red">
+
+                    <i class="bi bi-person-x-fill"></i>
+
+                </div>
+
+                <div class="summary-content">
+
+                    <span>Inactive</span>
+
+                    <strong id="inactiveDrivers">
+                        0
+                    </strong>
+
+                    <small>
+                        Not available
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             DRIVER MANAGEMENT CARD
+        ================================================== -->
+
+        <div class="driver-management-card">
+
+
+            <!-- CARD HEADER -->
+
+            <div class="management-header">
+
+
+                <div class="management-title">
+
+                    <div class="management-icon">
+
+                        <i class="bi bi-person-vcard-fill"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Driver List
+                        </h3>
+
+                        <p>
+                            View and manage registered drivers
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                        class="refresh-btn"
+                        onclick="loadDrivers()"
+                        title="Refresh">
+
+                    <i class="bi bi-arrow-clockwise"></i>
+
+                    <span>Refresh</span>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TOOLBAR
+            ================================================== -->
+
+            <div class="driver-toolbar">
+
+
+                <!-- SEARCH -->
+
+                <div class="driver-search">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search by Driver Name or License No..."
+                            oninput="filterDrivers()">
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <select
+                        id="statusFilter"
+                        class="driver-filter"
+                        onchange="filterDrivers()">
+
+                    <option value="">All Status</option>
+
+                    <option value="AVAILABLE">
+                        Available
+                    </option>
+
+                    <option value="ON_TRIP">
+                        On Trip
+                    </option>
+
+                    <option value="OFF_DUTY">
+                        Off Duty
+                    </option>
+
+                    <option value="INACTIVE">
+                        Inactive
+                    </option>
+
+                </select>
+
+
+                <button
+                        class="clear-filter-btn"
+                        onclick="clearFilters()"
+                        title="Clear Filters">
+
+                    <i class="bi bi-arrow-counterclockwise"></i>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TABLE
+            ================================================== -->
+
+            <div class="table-responsive driver-table-wrapper">
+
+                <table class="table driver-table">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>DRIVER</th>
+
+                        <th>USER ID</th>
+
+                        <th>LICENSE NUMBER</th>
+
+                        <th>STATUS</th>
+
+                        <th class="text-end">
+                            ACTIONS
+                        </th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="driverTableBody">
+
+                    <tr>
+
+                        <td
+                                colspan="6"
+                                class="loading-cell">
+
+                            <div class="spinner-border spinner-border-sm"></div>
+
+                            Loading drivers...
+
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                    id="emptyState"
+                    class="empty-state d-none">
+
+                <div class="empty-icon">
+
+                    <i class="bi bi-person-badge"></i>
+
+                </div>
+
+                <h4>
+                    No Drivers Found
+                </h4>
+
+                <p>
+                    No driver records match your current search or filter.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+```
+
+</div>
+
+<!-- =========================================================
+     ADD / EDIT DRIVER MODAL
+========================================================= -->
+
+<div
+        class="modal fade"
+        id="driverModal"
+        tabindex="-1"
+        aria-hidden="true">
+
+```
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-sm-down">
+
+    <div class="modal-content driver-modal">
+
+
+        <!-- MODAL HEADER -->
+
+        <div class="modal-header">
+
+            <div class="modal-heading">
+
+                <div class="modal-icon">
+
+                    <i class="bi bi-person-badge-fill"></i>
+
+                </div>
+
+                <div>
+
+                    <h5
+                            class="modal-title"
+                            id="driverModalTitle">
+
+                        Add Driver
+
+                    </h5>
+
+                    <p>
+                        Create a driver profile
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close">
+            </button>
+
+        </div>
+
+
+
+        <!-- MODAL BODY -->
+
+        <div class="modal-body">
+
+            <form id="driverForm">
+
+
+                <!-- DRIVER ID -->
+
+                <input
+                        type="hidden"
+                        id="driverId">
+
+
+
+                <!-- USER -->
+
+                <div class="form-section">
+
+                    <label
+                            for="userId"
+                            class="form-label">
+
+                        Driver User
+
+                        <span>*</span>
+
+                    </label>
+
+
+                    <select
+                            id="userId"
+                            class="form-select"
+                            required>
+
+                        <option value="">
+                            Select User
+                        </option>
+
+                    </select>
+
+
+                    <small class="form-help">
+                        Select the system user who will be assigned as the driver.
+                    </small>
+
+                </div>
+
+
+
+                <!-- LICENSE -->
+
+                <div class="form-section">
+
+                    <label
+                            for="licenseNo"
+                            class="form-label">
+
+                        License Number
+
+                        <span>*</span>
+
+                    </label>
+
+
+                    <div class="input-icon-wrapper">
+
+                        <i class="bi bi-card-text"></i>
+
+                        <input
+                                type="text"
+                                id="licenseNo"
+                                class="form-control"
+                                placeholder="Enter driving license number"
+                                maxlength="30"
+                                required>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- STATUS -->
+
+                <div class="form-section">
+
+                    <label
+                            for="driverStatus"
+                            class="form-label">
+
+                        Driver Status
+
+                        <span>*</span>
+
+                    </label>
+
+
+                    <select
+                            id="driverStatus"
+                            class="form-select"
+                            required>
+
+                        <option value="">
+                            Select Status
+                        </option>
+
+                        <option value="AVAILABLE">
+                            Available
+                        </option>
+
+                        <option value="ON_TRIP">
+                            On Trip
+                        </option>
+
+                        <option value="OFF_DUTY">
+                            Off Duty
+                        </option>
+
+                        <option value="INACTIVE">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- INFO BOX -->
+
+                <div class="driver-info-box">
+
+                    <i class="bi bi-info-circle-fill"></i>
+
+                    <div>
+
+                        <strong>Driver status</strong>
+
+                        <p>
+                            Available drivers can be assigned to rentals.
+                            Use On Trip when a driver is currently assigned.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- MODAL FOOTER -->
+
+        <div class="modal-footer">
+
+            <button
+                    type="button"
+                    class="btn cancel-btn"
+                    data-bs-dismiss="modal">
+
+                Cancel
+
+            </button>
+
+
+            <button
+                    type="button"
+                    class="btn save-driver-btn"
+                    onclick="saveDriver()">
+
+                <i class="bi bi-check-lg"></i>
+
+                <span id="saveDriverText">
+                    Save Driver
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+        class="toast-container position-fixed bottom-0 end-0 p-3">
+
+```
+<div
+        id="driverToast"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true">
+
+    <div class="toast-body">
+
+        <i
+                id="toastIcon"
+                class="bi bi-check-circle-fill">
+        </i>
+
+        <span id="toastMessage">
+            Operation successful
+        </span>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<!-- Bootstrap JS -->
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<!-- Existing Project JS -->
+
+<script src="../js/config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/driver.js"></script>
+
+</body>
+
+</html>
