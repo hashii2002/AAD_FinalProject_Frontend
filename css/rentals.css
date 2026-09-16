@@ -1,0 +1,1575 @@
+/* =========================================================
+   RENTAL MANAGEMENT PAGE
+========================================================= */
+.main-content {
+    margin-left: 255px;
+    width: calc(100% - 255px);
+    min-height: 100vh;
+    min-width: 0;
+    overflow-x: hidden;
+    padding-left: 15px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.rental-page-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 20px 28px 40px;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.main-content .topbar {
+    min-height: 100px;
+    width: 100%;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.topbar-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+}
+
+.topbar-title h2 {
+    margin: 0;
+    color: #252331;
+    font-size: 25px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.topbar-title p {
+    margin: 4px 0 0;
+    color: #888793;
+    font-size: 13px;
+}
+
+.title-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+    background: #f1eaff;
+    color: #7d2ae8;
+
+    font-size: 19px;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.profile-avatar {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: #7d2ae8;
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 90px;
+}
+
+.profile-details strong {
+    display: block;
+    margin: 0;
+
+    color: #252331;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.profile-details small {
+    display: block;
+    margin-top: 3px;
+
+    color: #888793;
+    font-size: 11px;
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.rental-page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 26px;
+}
+
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #7d2ae8;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+
+    margin-bottom: 8px;
+}
+
+.section-label i {
+    font-size: 15px;
+}
+
+.rental-page-header h1 {
+    margin: 0;
+
+    color: #252331;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.rental-page-header p {
+    margin: 7px 0 0;
+
+    color: #92909d;
+    font-size: 14px;
+}
+
+/* =========================================================
+   TABLE - ALLOW HORIZONTAL SCROLL
+========================================================= */
+
+.rental-table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.rental-table-wrapper .table-responsive {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/* =========================================================
+   ADD RENTAL BUTTON
+========================================================= */
+
+.btn-add-rental {
+    border: none;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    min-height: 46px;
+    padding: 0 20px;
+
+    border-radius: 12px;
+
+    background: #7d2ae8;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    box-shadow: 0 8px 20px rgba(125, 42, 232, 0.20);
+
+    transition: all 0.2s ease;
+}
+
+.btn-add-rental:hover {
+    background: #6d20d2;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(125, 42, 232, 0.27);
+}
+
+.btn-add-rental i {
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+========================================================= */
+
+.rental-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+
+    margin-bottom: 24px;
+}
+
+.rental-stat-card {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #eeeaf5;
+    border-radius: 17px;
+
+    box-shadow: 0 7px 24px rgba(39, 28, 67, 0.05);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rental-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(39, 28, 67, 0.08);
+}
+
+.stat-icon {
+    width: 52px;
+    height: 52px;
+
+    flex: 0 0 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    font-size: 21px;
+}
+
+.stat-icon.purple {
+    background: #f0e8ff;
+    color: #7d2ae8;
+}
+
+.stat-icon.blue {
+    background: #e8f1ff;
+    color: #3678df;
+}
+
+.stat-icon.green {
+    background: #e5f8ef;
+    color: #179b5d;
+}
+
+.stat-icon.orange {
+    background: #fff1df;
+    color: #e58a19;
+}
+
+.stat-content {
+    min-width: 0;
+}
+
+.stat-content span {
+    display: block;
+
+    color: #858291;
+    font-size: 12px;
+    font-weight: 500;
+
+    margin-bottom: 3px;
+}
+
+.stat-content strong {
+    display: block;
+
+    color: #211e2d;
+    font-size: 25px;
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+.stat-content small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #aaa7b2;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MANAGEMENT CARD
+========================================================= */
+
+.rental-management-card {
+    width: 100%;
+    min-width: 0;
+
+    background: #ffffff;
+
+    border: 1px solid #eeeaf5;
+    border-radius: 20px;
+
+    box-shadow: 0 8px 28px rgba(39, 28, 67, 0.05);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   MANAGEMENT HEADER
+========================================================= */
+
+.management-header {
+    min-height: 84px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 18px 25px;
+
+    border-bottom: 1px solid #f0edf5;
+}
+
+.management-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    min-width: 0;
+}
+
+.management-icon {
+    width: 47px;
+    height: 47px;
+
+    flex: 0 0 47px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #f0e8ff;
+    color: #7d2ae8;
+
+    font-size: 20px;
+}
+
+.management-title h3 {
+    margin: 0;
+
+    color: #292633;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.management-title p {
+    margin: 4px 0 0;
+
+    color: #9b98a4;
+    font-size: 12px;
+}
+
+.refresh-btn {
+    border: 1px solid #e7e3ed;
+
+    background: #ffffff;
+    color: #65616f;
+
+    height: 40px;
+    padding: 0 14px;
+
+    border-radius: 10px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition: all 0.2s ease;
+}
+
+.refresh-btn:hover {
+    border-color: #7d2ae8;
+    color: #7d2ae8;
+    background: #faf7ff;
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.rental-toolbar {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 18px 25px;
+
+    border-bottom: 1px solid #f0edf5;
+
+    background: #fcfbfe;
+}
+
+.rental-search {
+    position: relative;
+
+    flex: 1 1 400px;
+
+    min-width: 220px;
+}
+
+.rental-search i {
+    position: absolute;
+
+    left: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #aaa6b3;
+
+    font-size: 16px;
+
+    pointer-events: none;
+}
+
+.rental-search input {
+    width: 100%;
+    height: 44px;
+
+    padding: 0 15px 0 43px;
+
+    border: 1px solid #e5e1eb;
+    border-radius: 11px;
+
+    outline: none;
+
+    background: #ffffff;
+    color: #302d39;
+
+    font-size: 13px;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rental-search input::placeholder {
+    color: #aaa7b1;
+}
+
+.rental-search input:focus {
+    border-color: #a56ae9;
+    box-shadow: 0 0 0 3px rgba(125, 42, 232, 0.08);
+}
+
+.rental-filter {
+    width: 175px;
+    height: 44px;
+
+    border: 1px solid #e5e1eb;
+    border-radius: 11px;
+
+    padding: 0 12px;
+
+    background: #ffffff;
+    color: #514d59;
+
+    font-size: 13px;
+
+    outline: none;
+}
+
+.rental-filter:focus {
+    border-color: #a56ae9;
+    box-shadow: 0 0 0 3px rgba(125, 42, 232, 0.08);
+}
+
+.clear-filter-btn {
+    height: 44px;
+
+    border: 1px solid #e5e1eb;
+    border-radius: 11px;
+
+    background: #ffffff;
+    color: #6e6a77;
+
+    padding: 0 14px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.clear-filter-btn:hover {
+    border-color: #7d2ae8;
+    color: #7d2ae8;
+    background: #faf7ff;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.rental-table-wrapper {
+    width: 100%;
+    min-width: 0;
+}
+
+.rental-table-wrapper .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.rental-table {
+    width: 100%;
+    min-width: 1050px;
+
+    margin: 0;
+
+    vertical-align: middle;
+}
+
+.rental-table thead th {
+    height: 53px;
+
+    padding: 0 20px;
+
+    background: #faf9fc;
+
+    border-bottom: 1px solid #eeeaf3;
+    border-top: none;
+
+    color: #777380;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.4px;
+
+    white-space: nowrap;
+}
+
+.rental-table tbody td {
+    padding: 16px 20px;
+
+    border-bottom: 1px solid #f2eff5;
+
+    color: #595561;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+}
+
+.rental-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.rental-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.rental-table tbody tr:hover {
+    background: #fcfaff;
+}
+
+
+/* =========================================================
+   RENTAL ID
+========================================================= */
+
+.rental-id-main {
+    display: block;
+
+    color: #272330;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.rental-id-sub {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #8b46d8;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   CUSTOMER
+========================================================= */
+
+.customer-cell strong,
+.vehicle-cell strong {
+    display: block;
+
+    color: #2b2734;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.customer-cell small,
+.vehicle-cell small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #9b98a3;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.date-cell {
+    line-height: 1.5;
+}
+
+.date-start {
+    color: #33303b;
+    font-weight: 600;
+}
+
+.date-end {
+    color: #9b98a4;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   DRIVER
+========================================================= */
+
+.driver-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 7px 10px;
+
+    border-radius: 8px;
+
+    background: #f2edff;
+    color: #7d2ae8;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.no-driver {
+    color: #a29eaa;
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   AMOUNT
+========================================================= */
+
+.amount-cell {
+    color: #292532 !important;
+
+    font-size: 14px !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.rental-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 88px;
+
+    padding: 7px 11px;
+
+    border-radius: 30px;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.2px;
+}
+
+.status-pending {
+    background: #fff4dc;
+    color: #c48112;
+}
+
+.status-confirmed {
+    background: #e7f0ff;
+    color: #3676d7;
+}
+
+.status-ongoing {
+    background: #e2f8ed;
+    color: #168c56;
+}
+
+.status-completed {
+    background: #eeeaf4;
+    color: #716b79;
+}
+
+.status-cancelled {
+    background: #ffe9ed;
+    color: #d64b63;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.table-action-btn {
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 9px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+
+    transition: all 0.2s ease;
+}
+
+.view-btn {
+    background: #f0e8ff;
+    color: #7d2ae8;
+}
+
+.view-btn:hover {
+    background: #7d2ae8;
+    color: #ffffff;
+}
+
+.edit-btn {
+    background: #eaf2ff;
+    color: #3c79d8;
+}
+
+.edit-btn:hover {
+    background: #3c79d8;
+    color: #ffffff;
+}
+
+.delete-btn {
+    background: #ffebee;
+    color: #dc4f62;
+}
+
+.delete-btn:hover {
+    background: #dc4f62;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   EMPTY / LOADING
+========================================================= */
+
+.table-loading,
+.table-empty {
+    min-height: 180px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    color: #98949f;
+
+    font-size: 13px;
+}
+
+.table-empty i {
+    font-size: 25px;
+    color: #c3bdcb;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.rental-modal {
+    border: none;
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: 0 20px 60px rgba(30, 20, 50, 0.18);
+}
+
+.modal-header {
+    padding: 19px 22px;
+
+    border-bottom: 1px solid #eeeaf4;
+
+    background: #ffffff;
+}
+
+.modal-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #f0e8ff;
+    color: #7d2ae8;
+
+    font-size: 18px;
+}
+
+.modal-title-wrapper h5 {
+    margin: 0;
+
+    color: #282430;
+
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.modal-title-wrapper p {
+    margin: 3px 0 0;
+
+    color: #9995a1;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.modal-body {
+    padding: 24px;
+
+    background: #ffffff;
+}
+
+.form-section {
+    padding-bottom: 23px;
+    margin-bottom: 23px;
+
+    border-bottom: 1px solid #f0edf4;
+}
+
+.form-section:last-of-type {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.form-section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 16px;
+
+    color: #332e3b;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.form-section-title i {
+    color: #7d2ae8;
+    font-size: 16px;
+}
+
+.form-label {
+    margin-bottom: 7px;
+
+    color: #514d58;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.form-label span {
+    color: #dc4f62;
+}
+
+.form-control,
+.form-select {
+    min-height: 44px;
+
+    border: 1px solid #e3dfe9;
+    border-radius: 10px;
+
+    color: #383440;
+
+    font-size: 13px;
+
+    box-shadow: none;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #a56ae9;
+
+    box-shadow: 0 0 0 3px rgba(125, 42, 232, 0.08);
+}
+
+.field-help {
+    margin-top: 6px;
+
+    color: #aaa6b1;
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   DRIVER OPTIONS
+========================================================= */
+
+.driver-option-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+.driver-option-card {
+    position: relative;
+
+    display: block;
+
+    cursor: pointer;
+}
+
+.driver-option-card input {
+    position: absolute;
+    opacity: 0;
+}
+
+.driver-option-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px;
+
+    border: 1px solid #e5e1eb;
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    transition: all 0.2s ease;
+}
+
+.driver-option-card input:checked + .driver-option-content {
+    border-color: #8d45e5;
+    background: #faf7ff;
+    box-shadow: 0 0 0 2px rgba(125, 42, 232, 0.08);
+}
+
+.driver-option-icon {
+    width: 40px;
+    height: 40px;
+
+    flex: 0 0 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #f0e8ff;
+    color: #7d2ae8;
+}
+
+.driver-option-content strong {
+    display: block;
+
+    color: #36313f;
+
+    font-size: 12px;
+}
+
+.driver-option-content small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #9995a0;
+
+    font-size: 10px;
+}
+
+.driver-select-wrapper {
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background: #faf9fc;
+    border: 1px solid #eeeaf4;
+}
+
+
+/* =========================================================
+   RENTAL PREVIEW
+========================================================= */
+
+.rental-preview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+
+    padding: 15px;
+
+    border: 1px solid #e9e2f5;
+    border-radius: 13px;
+
+    background: #faf7ff;
+}
+
+.preview-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.preview-item span {
+    color: #7c7785;
+
+    font-size: 12px;
+}
+
+.preview-item span i {
+    margin-right: 5px;
+    color: #7d2ae8;
+}
+
+.preview-item strong {
+    color: #2e2936;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   MODAL FOOTER
+========================================================= */
+
+.modal-footer {
+    padding: 15px 22px;
+
+    border-top: 1px solid #eeeaf4;
+
+    background: #fcfbfe;
+}
+
+.btn-modal-cancel {
+    height: 42px;
+
+    padding: 0 18px;
+
+    border: 1px solid #e2dee8;
+    border-radius: 10px;
+
+    background: #ffffff;
+    color: #716d78;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.btn-modal-save {
+    height: 42px;
+
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #7d2ae8;
+    color: #ffffff;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    box-shadow: 0 6px 15px rgba(125, 42, 232, 0.18);
+}
+
+.btn-modal-save:hover {
+    background: #6d20d2;
+}
+
+
+/* =========================================================
+   VIEW DETAILS
+========================================================= */
+
+.rental-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.detail-item {
+    padding: 14px;
+
+    border: 1px solid #eeeaf4;
+    border-radius: 12px;
+
+    background: #fcfbfe;
+}
+
+.detail-item.full {
+    grid-column: 1 / -1;
+}
+
+.detail-item span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #9995a1;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.detail-item strong {
+    color: #332f3a;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast-container {
+    z-index: 9999;
+}
+
+.toast {
+    min-width: 320px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    box-shadow: 0 12px 35px rgba(30, 20, 50, 0.16);
+
+    overflow: hidden;
+}
+
+.toast-header {
+    border-bottom: 1px solid #f0edf4;
+
+    background: #ffffff;
+}
+
+.toast-icon {
+    margin-right: 8px;
+
+    color: #179b5d;
+}
+
+.toast-body {
+    background: #ffffff;
+    color: #5f5a67;
+
+    font-size: 13px;
+}
+
+/* =========================================================
+   SIDEBAR USER FOOTER
+========================================================= */
+
+.sidebar-footer {
+    padding: 14px 16px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    flex-shrink: 0;
+}
+
+.user-mini {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #7d2ae8;
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    flex: 1;
+}
+
+.user-info strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-info small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #8d98ad;
+
+    font-size: 10px;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.logout-btn {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #d8deea;
+
+    font-size: 17px;
+
+    cursor: pointer;     
+
+    transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .rental-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 992px) {
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .rental-page-container {
+        padding: 20px 20px 30px;
+    }
+
+    .rental-page-header {
+        align-items: flex-start;
+    }
+
+    .rental-toolbar {
+        flex-wrap: wrap;
+    }
+
+    .rental-search {
+        flex: 1 1 100%;
+    }
+
+    .rental-filter {
+        flex: 1 1 180px;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .rental-page-container {
+        padding: 18px 15px 25px;
+    }
+
+    .rental-page-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .rental-page-header h1 {
+        font-size: 25px;
+    }
+
+    .btn-add-rental {
+        width: 100%;
+    }
+
+    .rental-summary {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .rental-stat-card {
+        padding: 17px;
+    }
+
+    .management-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .refresh-btn {
+        width: 100%;
+    }
+
+    .rental-toolbar {
+        padding: 15px;
+    }
+
+    .rental-filter,
+    .clear-filter-btn {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .rental-table {
+        min-width: 1050px;
+    }
+
+    .modal-body {
+        padding: 18px;
+    }
+
+    .driver-option-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rental-preview {
+        grid-template-columns: 1fr;
+    }
+
+    .rental-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-item.full {
+        grid-column: auto;
+    }
+
+    .toast {
+        min-width: 0;
+        width: calc(100vw - 30px);
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .rental-page-container {
+        padding: 15px 12px 20px;
+    }
+
+    .section-label {
+        font-size: 11px;
+    }
+
+    .rental-page-header h1 {
+        font-size: 22px;
+    }
+
+    .rental-page-header p {
+        font-size: 12px;
+    }
+
+    .management-header {
+        padding: 16px;
+    }
+
+    .management-title h3 {
+        font-size: 16px;
+    }
+
+    .management-title p {
+        font-size: 11px;
+    }
+
+    .stat-icon {
+        width: 45px;
+        height: 45px;
+        flex-basis: 45px;
+    }
+
+    .stat-content strong {
+        font-size: 22px;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+    }
+
+    .modal-footer button {
+        width: 100%;
+    }
+
+}
