@@ -56,7 +56,6 @@ function getMaintenanceHeaders() {
 
 }
 
-
 /* =========================================================
    USER
 ========================================================= */
@@ -70,20 +69,95 @@ function loadMaintenanceUser() {
         localStorage.getItem("role");
 
 
+    /* =========================================
+       USERNAME
+    ========================================= */
+
     if (username) {
 
-        document.getElementById(
-            "maintenanceUsername"
-        ).textContent = username;
+        // Top-right username
+        const topUsername =
+            document.getElementById(
+                "maintenanceUsername"
+            );
+
+        if (topUsername) {
+            topUsername.textContent = username;
+        }
+
+        const maintenanceAvatar =
+            document.getElementById(
+                "maintenanceAvatar"
+            );
+
+        if (maintenanceAvatar) {
+
+            maintenanceAvatar.textContent =
+                username
+                    .trim()
+                    .charAt(0)
+                    .toUpperCase();
+
+        }
+
+
+        // Sidebar footer username
+        const sidebarUsername =
+            document.getElementById(
+                "sidebarUsername"
+            );
+
+        if (sidebarUsername) {
+            sidebarUsername.textContent = username;
+        }
+
+
+        /* =====================================
+           AVATAR - FIRST LETTER
+        ===================================== */
+
+        const sidebarAvatar =
+            document.getElementById(
+                "sidebarAvatar"
+            );
+
+        if (sidebarAvatar) {
+
+            sidebarAvatar.textContent =
+                username
+                    .trim()
+                    .charAt(0)
+                    .toUpperCase();
+
+        }
 
     }
 
 
+    /* =========================================
+       ROLE
+    ========================================= */
+
     if (role) {
 
-        document.getElementById(
-            "maintenanceUserRole"
-        ).textContent = role;
+        const topRole =
+            document.getElementById(
+                "maintenanceUserRole"
+            );
+
+        if (topRole) {
+            topRole.textContent = role;
+        }
+
+
+        const sidebarRole =
+            document.getElementById(
+                "sidebarRole"
+            );
+
+        if (sidebarRole) {
+            sidebarRole.textContent = role;
+        }
 
     }
 
@@ -863,27 +937,17 @@ async function cancelMaintenance(maintenanceId) {
 
 function searchMaintenance() {
 
-    const search =
-        document.getElementById(
-            "maintenanceSearch"
-        ).value
-            .trim()
-            .toLowerCase();
+    const searchInput = document.getElementById("maintenanceSearch");
 
+    const statusInput = document.getElementById("maintenanceStatusFilter");
 
-    const status =
-        document.getElementById(
-            "maintenanceStatusFilter"
-        ).value;
+    const search = searchInput ? searchInput.value : "";
 
+    const status =  statusInput ? statusInput.value : "ALL";
 
-    applyMaintenanceFilters(
-        search,
-        status
-    );
+    applyMaintenanceFilters(search,status );
 
 }
-
 
 /* =========================================================
    FILTER
@@ -891,79 +955,72 @@ function searchMaintenance() {
 
 function filterMaintenance() {
 
-    const search =
-        document.getElementById(
-            "maintenanceSearch"
-        ).value
-            .trim()
-            .toLowerCase();
+    const searchInput =document.getElementById("maintenanceSearch");
+
+    const statusInput =document.getElementById("maintenanceStatusFilter");
 
 
-    const status =
-        document.getElementById(
-            "maintenanceStatusFilter"
-        ).value;
+    const search =searchInput? searchInput.value: "";
+    const status = statusInput ? statusInput.value : "ALL";
 
 
-    applyMaintenanceFilters(
-        search,
-        status
-    );
+    applyMaintenanceFilters(search,status);
 
 }
-
 
 /* =========================================================
    APPLY FILTERS
 ========================================================= */
 
-function applyMaintenanceFilters(
-    search,
-    status
-) {
+function applyMaintenanceFilters(search, status) {
 
-    const filtered =
-        maintenanceRecords.filter(record => {
+    const searchValue =String(search || "").trim().toLowerCase();
 
-            const searchableText = `
+    /* =============================================
+       FILTER RECORDS
+    ============================================= */
 
-                ${record.maintenanceId}
+    const filtered = maintenanceRecords.filter(record => {
 
-                ${record.vehicleId}
+            const maintenanceId = Number(record.maintenanceId);
+            const maintenanceDisplay = "#MNT-" + String(maintenanceId).padStart(4, "0");
+            const vehicleId = Number(record.vehicleId);
+            const vehicleDisplay = "Vehicle #" + String(vehicleId);
 
-                ${record.maintenanceType}
-
-                ${record.description || ""}
-
-                ${record.status}
-
-            `.toLowerCase();
+            let matchesSearch = true;
 
 
-            const matchesSearch =
-                searchableText.includes(search);
+            if (searchValue !== "") {
 
+                const maintenanceText = maintenanceDisplay.toLowerCase();
+                const vehicleText = vehicleDisplay.toLowerCase();
+                const maintenanceNumber = String(maintenanceId);
+                const vehicleNumber =String(vehicleId);
 
-            const matchesStatus =
-                status === "ALL" ||
-                record.status === status;
+                matchesSearch =maintenanceText.includes( searchValue)||
 
+                    maintenanceText .replace("#", "") .includes(searchValue)||
 
-            return (
-                matchesSearch &&
-                matchesStatus
-            );
+                    maintenanceNumber.includes( searchValue)||
+
+                    vehicleText.includes(searchValue)||
+
+                    vehicleNumber.includes( searchValue);
+
+            }
+
+            const matchesStatus = status === "ALL" || record.status === status;
+                return (matchesSearch && matchesStatus);
 
         });
 
+        // show result
 
     renderMaintenanceRecords(
         filtered
     );
 
 }
-
-
 /* =========================================================
    FORMAT TYPE
 ========================================================= */
