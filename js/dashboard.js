@@ -26,7 +26,19 @@ async function initializeDashboard() {
 
         setupUserInformation();
 
-        const [  vehicles,customers,drivers,rentals,payments,maintenance,reviews,categories] = await Promise.all([
+        // Load document expiry notifications
+        await loadDocumentExpiryNotifications();
+
+        const [
+            vehicles,
+            customers,
+            drivers,
+            rentals,
+            payments,
+            maintenance,
+            reviews,
+            categories
+        ] = await Promise.all([
 
             fetchData("/v1/vehicle/all"),
             fetchData("/v1/customer/all"),
@@ -39,9 +51,7 @@ async function initializeDashboard() {
 
         ]);
 
-
         const dashboardData = {
-
             vehicles,
             customers,
             drivers,
@@ -50,24 +60,17 @@ async function initializeDashboard() {
             maintenance,
             reviews,
             categories
-
         };
-
 
         updateStatistics(dashboardData);
 
         createVehicleStatusChart(vehicles);
-
         createRentalStatusChart(rentals);
-
         createRevenueChart(payments);
-
         createCategoryChart(vehicles, categories);
-
         loadRecentRentals(rentals);
 
         hideLoading();
-
 
     } catch (error) {
 
@@ -887,8 +890,438 @@ function loadRecentRentals(rentals) {
 
 }
 
+/* =========================================================
+   DOCUMENT EXPIRY NOTIFICATIONS
+========================================================= */
+
+async function loadDocumentExpiryNotifications() {
+
+    try {
+
+        const token =
+            localStorage.getItem("accessToken");
+
+        if (!token) {
+            console.log("No access token found.");
+            return;
+        }
+
+        console.log(
+            "Loading document expiry notifications..."
+        );
+
+        const response = await fetch(
+            `${API_BASE_URL}/v1/vehicleDocument/expiry-alerts`,
+            {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            }
+        );
+
+        console.log(
+            "Document Expiry API Status:",
+            response.status
+        );
+
+        if (response.status === 401) {
+
+            localStorage.clear();
+
+            window.location.href = "index.html";
+
+            return;
+        }
+
+        if (response.status === 403) {
+
+            console.error(
+                "You do not have permission to view document expiry alerts."
+            );
+
+            renderDocumentExpiryNotifications([]);
+
+            return;
+        }
+
+        if (!response.ok) {
+
+            console.error(
+                "Document expiry API failed:",
+                response.status
+            );
+
+            renderDocumentExpiryNotifications([]);
+
+            return;
+        }
+
+        const data =
+            await response.json();
+
+        console.log(
+            "Document Expiry API Response:",
+            data
+        );
+
+
+        /* ================= RESPONSE ================= */
+
+        let documents = [];
+
+        if (Array.isArray(data)) {
+
+            documents = data;
+
+        } else if (
+            data &&
+            Array.isArray(data.body)
+        ) {
+
+            documents = data.body;
+
+        }
+
+
+        console.log(
+            "All Expiring Documents:",
+            documents
+        );
+
+
+        /* ================= EXACTLY 7 DAYS ================= */
+
+        const sevenDayDocuments =
+            documents.filter(doc => {
+
+                if (!doc.expiryDate) {
+                    return false;
+                }
+
+                const remainingDays =
+                    calculateRemainingDays(
+                        doc.expiryDate
+                    );
+
+                console.log(
+                    "Document:",
+                    doc.documentId,
+                    "Expiry:",
+                    doc.expiryDate,
+                    "Remaining:",
+                    remainingDays
+                );
+
+                return remainingDays >= 0 && remainingDays <= 7;
+
+            });
+
+
+        console.log(
+            "Documents Expiring Exactly In 7 Days:",
+            sevenDayDocuments
+        );
+
+
+        renderDocumentExpiryNotifications(
+            sevenDayDocuments
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Document expiry notification error:",
+            error
+        );
+
+        renderDocumentExpiryNotifications([]);
+
+    }
+
+}
+
+function calculateRemainingDays(expiryDate) {
+
+    const today = new Date();
+
+    const expiry = new Date(expiryDate);
+
+
+    today.setHours(0, 0, 0, 0);
+
+    expiry.setHours(0, 0, 0, 0);
+
+
+    const difference =
+        expiry.getTime() - today.getTime();
+
+
+    return Math.round(
+        difference / (1000 * 60 * 60 * 24)
+    );
+
+}
+function renderDocumentExpiryNotifications(
+    expiringDocuments
+) {
+
+    const notificationBadge =
+        document.getElementById(
+            "notificationBadge"
+        );
+
+    const notificationList =
+        document.getElementById(
+            "notificationList"
+        );
+
+    const notificationSummary =
+        document.getElementById(
+            "notificationSummary"
+        );
+
+
+    if (
+        !notificationBadge ||
+        !notificationList ||
+        !notificationSummary
+    ) {
+
+        console.error(
+            "Notification HTML elements not found."
+        );
+
+        return;
+
+    }
+
+
+    notificationList.innerHTML = "";
+
+
+    /* ================= NO ALERTS ================= */
+
+    if (
+        !expiringDocuments ||
+        expiringDocuments.length === 0
+    ) {
+
+        notificationBadge.textContent = "0";
+
+        notificationBadge.classList.add(
+            "d-none"
+        );
+
+        notificationSummary.textContent =
+            "No new notifications";
+
+
+        notificationList.innerHTML = `
+
+            <div class="notification-empty">
+
+                <div class="notification-empty-icon">
+                    <i class="bi bi-check-circle"></i>
+                </div>
+
+                <strong>
+                    You're all caught up
+                </strong>
+
+                <span>
+                    No document expiry alerts today.
+                </span>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* ================= COUNT ================= */
+
+    notificationBadge.textContent =
+        expiringDocuments.length;
+
+    notificationBadge.classList.remove(
+        "d-none"
+    );
+
+
+    notificationSummary.textContent =
+        `${expiringDocuments.length} document${
+            expiringDocuments.length > 1
+                ? "s"
+                : ""
+        } require attention`;
+
+
+    /* ================= ITEMS ================= */
+
+    expiringDocuments.forEach(doc => {
+
+        const documentType =
+            formatDocumentType(
+                doc.documentType
+            );
+
+        const expiryDate =
+            formatDocumentDate(
+                doc.expiryDate
+            );
+
+
+        const notificationItem =
+            document.createElement("a");
+
+
+        notificationItem.href =
+            "documents.html";
+
+        notificationItem.className =
+            "notification-item";
+
+
+        notificationItem.innerHTML = `
+
+            <div class="notification-icon">
+
+                <i class="bi bi-file-earmark-exclamation-fill"></i>
+
+            </div>
+
+
+            <div class="notification-content">
+
+                <strong>
+                    Document Expiry Alert
+                </strong>
+
+                <p>
+                    ${documentType}
+                    for Vehicle #${doc.vehicleId ?? "-"}
+                    will expire in 7 days.
+                </p>
+
+                <span>
+
+                    <i class="bi bi-calendar-event"></i>
+
+                    Expiry:
+                    ${expiryDate}
+
+                </span>
+
+            </div>
+
+
+            <i class="bi bi-chevron-right notification-arrow"></i>
+
+        `;
+
+
+        notificationList.appendChild(
+            notificationItem
+        );
+
+    });
+
+}
+
+/* =========================================================
+   NOTIFICATION DROPDOWN
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const notificationButton =
+            document.getElementById(
+                "notificationButton"
+            );
+
+
+        const notificationDropdown =
+            document.getElementById(
+                "notificationDropdown"
+            );
+
+
+        if (!notificationButton ||
+            !notificationDropdown) {
+
+            return;
+
+        }
+
+
+        notificationButton.addEventListener(
+            "click",
+            function (event) {
+
+                event.stopPropagation();
+
+
+                notificationDropdown.classList.toggle(
+                    "show"
+                );
+
+            }
+        );
+
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    !notificationDropdown.contains(event.target) &&
+                    !notificationButton.contains(event.target)
+                ) {
+
+                    notificationDropdown.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
+
+function formatNotificationDate(dateString) {
+
+    if (!dateString) {
+        return "N/A";
+    }
+
+    const date = new Date(dateString);
+
+    return date.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+    });
+}
+
 
 /* ================= HELPERS ================= */
+
+// QUICK ACTION NAVIGATION 
+function goToPage(page) {
+
+    window.location.href = page;
+
+}
 
 function formatCurrency(value) {
 
@@ -972,6 +1405,50 @@ function getStatusClass(status) {
             return "status-neutral";
 
     }
+
+}
+
+function formatDocumentType(type) {
+
+    if (!type) {
+        return "Vehicle document";
+    }
+
+
+    return String(type)
+        .toLowerCase()
+        .replace(/_/g, " ")
+        .replace(/\b\w/g, char =>
+            char.toUpperCase()
+        );
+
+}
+
+
+function formatDocumentDate(value) {
+
+    if (!value) {
+        return "-";
+    }
+
+
+    const date =
+        new Date(value);
+
+
+    if (isNaN(date.getTime())) {
+        return "-";
+    }
+
+
+    return date.toLocaleDateString(
+        "en-GB",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        }
+    );
 
 }
 

@@ -81,29 +81,29 @@
             <span>Rentals</span>
         </a>
 
-        <a href="#" class="menu-item">
+        <a href="payments.html" class="menu-item">
             <i class="bi bi-credit-card"></i>
             <span>Payments</span>
         </a>
 
-        <a href="#" class="menu-item">
+        <a href="invoices.html" class="menu-item">
             <i class="bi bi-receipt"></i>
             <span>Invoices</span>
         </a>
 
         <p class="menu-title">FLEET</p>
 
-        <a href="#" class="menu-item">
+        <a href="maintenance.html" class="menu-item">
             <i class="bi bi-tools"></i>
             <span>Maintenance</span>
         </a>
 
-        <a href="#" class="menu-item">
+        <a href="documents.html" class="menu-item">
             <i class="bi bi-file-earmark-text"></i>
             <span>Documents</span>
         </a>
 
-        <a href="#" class="menu-item">
+        <a href="reviews.html" class="menu-item">
             <i class="bi bi-star"></i>
             <span>Reviews</span>
         </a>
@@ -162,10 +162,68 @@
 
         <div class="header-right">
 
-            <button class="notification-btn">
-                <i class="bi bi-bell"></i>
-                <span></span>
-            </button>
+            <!-- ================= NOTIFICATIONS ================= -->
+
+            <div class="notification-wrapper">
+
+                <button
+                        class="notification-btn"
+                        id="notificationButton"
+                        type="button"
+                        title="Notifications">
+
+                    <i class="bi bi-bell"></i>
+
+                    <span
+                            id="notificationBadge"
+                            class="notification-badge d-none">
+                        0
+                    </span>
+
+                </button>
+
+
+                <!-- Notification Dropdown -->
+
+                <div
+                        class="notification-dropdown"
+                        id="notificationDropdown">
+
+                    <div class="notification-header">
+
+                        <div>
+                            <h6>Notifications</h6>
+                            <span id="notificationSummary">
+                                No new notifications
+                            </span>
+                        </div>
+
+                        <i class="bi bi-bell-fill"></i>
+
+                    </div>
+
+
+                    <div
+                            class="notification-list"
+                            id="notificationList">
+
+                        <!-- Notifications will load here -->
+
+                    </div>
+
+
+                    <div class="notification-footer">
+
+                        <a href="documents.html">
+                            View Documents
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
 
             <div class="header-user">
 
@@ -527,35 +585,35 @@
                 </div>
 
                 <div class="quick-actions">
-                    <a href="pages/users.html" class="quick-action">
+                    <a href="users.html" class="quick-action">
                         <div>
                             <i class="bi bi-person-plus-fill"></i>
                         </div>
                         <span>Add User</span>
                     </a>
 
-                    <a href="pages/vehicles.html" class="quick-action">
+                    <a href="vehicles.html" class="quick-action">
                         <div>
                             <i class="bi bi-plus-lg"></i>
                         </div>
                         <span>Add Vehicle</span>
                     </a>
 
-                    <a href="pages/customers.html" class="quick-action">
+                    <a href="customers.html" class="quick-action">
                         <div>
                             <i class="bi bi-person-plus"></i>
                         </div>
                         <span>Add Customer</span>
                     </a>
 
-                    <a href="pages/drivers.html" class="quick-action">
+                    <a href="drivers.html" class="quick-action">
                         <div>
                             <i class="bi bi-person-badge"></i>
                         </div>
                         <span>Add Driver</span>
                     </a>
 
-                    <a href="pages/rentals.html" class="quick-action">
+                    <a href="rentals.html" class="quick-action">
                         <div>
                             <i class="bi bi-calendar-plus"></i>
                         </div>
