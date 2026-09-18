@@ -943,25 +943,11 @@ async function cancelInvoice(invoiceId) {
 
 function searchInvoices() {
 
-    const search =
-        document.getElementById(
-            "invoiceSearch"
-        ).value
-            .trim()
-            .toLowerCase();
+    const search =document.getElementById("invoiceSearch") .value .trim() .toLowerCase();
 
+    const status =document.getElementById("invoiceStatusFilter")  .value;
 
-    const status =
-        document.getElementById(
-            "invoiceStatusFilter"
-        ).value;
-
-
-    applyInvoiceFilters(
-        search,
-        status
-    );
-
+    applyInvoiceFilters(search, status);
 }
 
 
@@ -971,66 +957,63 @@ function searchInvoices() {
 
 function filterInvoices() {
 
-    const search =
-        document.getElementById(
-            "invoiceSearch"
-        ).value
-            .trim()
-            .toLowerCase();
+    const search = document.getElementById("invoiceSearch") .value.trim() .toLowerCase();
 
+    const status = document.getElementById("invoiceStatusFilter") .value;
 
-    const status =
-        document.getElementById(
-            "invoiceStatusFilter"
-        ).value;
-
-
-    applyInvoiceFilters(
-        search,
-        status
-    );
-
+    applyInvoiceFilters(search, status);
 }
 
 
 /* =========================================================
-   APPLY FILTERS
+   APPLY SEARCH + FILTER
 ========================================================= */
 
 function applyInvoiceFilters(search, status) {
 
-    const filtered =
-        invoices.filter(invoice => {
+    const filtered = invoices.filter(invoice => {
 
-            const searchableText =
-                `
-                ${invoice.invoiceId}
-                ${invoice.rentalId}
-                ${invoice.customerId}
-                ${invoice.customerName || ""}
-                ${invoice.status || ""}
-                `.toLowerCase();
+        const invoiceId = String(invoice.invoiceId ?? "").toLowerCase();
+
+        const rentalId = String(invoice.rentalId ?? "").toLowerCase();
+
+        const customerId = String(invoice.customerId ?? "") .toLowerCase();
+
+        const customerName = String(invoice.customerName ?? "").trim() .toLowerCase();
 
 
-            const matchesSearch =
-                searchableText.includes(search);
+        /* Display formats */
+
+        const formattedInvoiceId = `inv-${String(invoice.invoiceId ?? "")}`.toLowerCase();
+
+        const formattedInvoiceNumber =`#inv-${String(invoice.invoiceId ?? "") .padStart(4, "0")}`.toLowerCase();
 
 
-            const matchesStatus =
-                status === "ALL" ||
-                invoice.status === status;
+        /* Search */
+
+        const matchesSearch = search === "" ||
+
+            invoiceId.includes(search) ||
+
+            rentalId.includes(search) ||
+
+            customerId.includes(search) ||
+
+            customerName.includes(search) ||
+
+            formattedInvoiceId.includes(search) ||
+
+            formattedInvoiceNumber.includes(search);
+
+        const matchesStatus = status === "ALL" || invoice.status === status;
 
 
-            return (
-                matchesSearch &&
-                matchesStatus
-            );
+        return matchesSearch && matchesStatus;
 
-        });
+    });
 
 
     renderInvoices(filtered);
-
 }
 
 
