@@ -32,11 +32,11 @@
 <body>
 
 
-<!-- =========================================================
+<div class="dashboard-wrapper">
+<!-- =====================================================
      SIDEBAR
-========================================================= -->
-
-<aside class="sidebar" id="sidebar">
+====================================================== -->
+<aside class="sidebar">
 
     <div class="sidebar-brand">
 
@@ -45,69 +45,110 @@
         </div>
 
         <div>
-            <h3>DriveGo</h3>
-            <span>Vehicle Rental</span>
+            <h4>DriveGo</h4>
+            <small>Fleet Management</small>
         </div>
 
     </div>
 
 
-    <nav class="sidebar-nav">
+    <div class="sidebar-menu">
 
-        <a href="../dashboard.html" class="sidebar-link">
+        <p class="menu-title">MAIN</p>
+
+        <a href="dashboard.html" class="menu-item">
             <i class="bi bi-grid-1x2-fill"></i>
             <span>Dashboard</span>
         </a>
 
-        <a href="vehicles.html" class="sidebar-link">
-            <i class="bi bi-car-front"></i>
+
+        <p class="menu-title">MANAGEMENT</p>
+
+        <a href="users.html" class="menu-item">
+            <i class="bi bi-person-gear"></i>
+            <span>Users</span>
+        </a>
+
+
+        <a href="vehicles.html" class="menu-item">
+            <i class="bi bi-car-front-fill"></i>
             <span>Vehicles</span>
         </a>
 
-        <a href="customers.html" class="sidebar-link">
-            <i class="bi bi-people"></i>
+        <a href="customers.html" class="menu-item">
+            <i class="bi bi-people-fill"></i>
             <span>Customers</span>
         </a>
 
-        <a href="drivers.html" class="sidebar-link">
-            <i class="bi bi-person-badge"></i>
+        <a href="drivers.html" class="menu-item">
+            <i class="bi bi-person-badge-fill"></i>
             <span>Drivers</span>
         </a>
 
-        <a href="rentals.html" class="sidebar-link">
-            <i class="bi bi-calendar2-check"></i>
+        <a href="rentals.html" class="menu-item active">
+            <i class="bi bi-calendar-check-fill"></i>
             <span>Rentals</span>
         </a>
 
-        <a href="payments.html" class="sidebar-link">
-            <i class="bi bi-credit-card"></i>
+        <a href="payments.html" class="menu-item">
+            <i class="bi bi-credit-card-fill"></i>
             <span>Payments</span>
         </a>
 
-        <a href="invoices.html" class="sidebar-link">
+        <a href="invoices.html" class="menu-item">
             <i class="bi bi-receipt-cutoff"></i>
             <span>Invoices</span>
         </a>
 
-        <a href="maintenance.html" class="sidebar-link">
+
+        <p class="menu-title">FLEET</p>
+
+        <a href="maintenance.html" class="menu-item">
             <i class="bi bi-tools"></i>
             <span>Maintenance</span>
         </a>
 
-        <a href="documents.html" class="sidebar-link active">
-            <i class="bi bi-file-earmark-text"></i>
+        <a href="documents.html" class="menu-item">
+            <i class="bi bi-file-earmark-text-fill"></i>
             <span>Documents</span>
         </a>
 
-        <a href="reviews.html" class="sidebar-link">
-            <i class="bi bi-star"></i>
+        <a href="reviews.html" class="menu-item">
+            <i class="bi bi-star-fill"></i>
             <span>Reviews</span>
         </a>
 
-    </nav>
+    </div>
+
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+
+        <div class="user-mini">
+
+            <div class="user-avatar" id="sidebarAvatar">
+                A
+            </div>
+
+            <div class="user-info">
+                <strong id="sidebarUsername">Admin</strong>
+                <small id="sidebarRole">Administrator</small>
+            </div>
+
+            <button
+                    class="logout-btn"
+                    onclick="logout()"
+                    title="Logout">
+
+                <i class="bi bi-box-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+    </div>
 
 </aside>
-
 
 
 <!-- =========================================================
