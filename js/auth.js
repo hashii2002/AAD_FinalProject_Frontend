@@ -4,56 +4,82 @@ const errorMessage = document.getElementById("loginError");
 const togglePassword = document.getElementById("togglePassword");
 const passwordInput = document.getElementById("password");
 
-// Show / Hide Password
+
+// =====================================================
+// SHOW / HIDE PASSWORD
+// =====================================================
+
 if (togglePassword && passwordInput) {
+
     togglePassword.addEventListener("click", function () {
+
         if (passwordInput.type === "password") {
+
             passwordInput.type = "text";
-            togglePassword.innerHTML = '<i class="bi bi-eye-slash"></i>';
+
+            togglePassword.innerHTML =  '<i class="bi bi-eye-slash"></i>';
+
         } else {
+
             passwordInput.type = "password";
-            togglePassword.innerHTML = '<i class="bi bi-eye"></i>';
+
+            togglePassword.innerHTML =  '<i class="bi bi-eye"></i>';
         }
+
     });
+
 }
 
-// Login (Check if loginForm exists before adding Event Listener)
-if (loginForm) {
-    loginForm.addEventListener("submit", async function (event) {
-        event.preventDefault();
 
+// =====================================================
+// LOGIN
+// =====================================================
+
+if (loginForm) {
+
+    loginForm.addEventListener("submit", async function (event) {
+
+        event.preventDefault();
         const username = document.getElementById("username").value.trim();
+
         const password = passwordInput.value;
 
-        // Clear previous error
         if (errorMessage) {
+
             errorMessage.classList.add("d-none");
+
             errorMessage.textContent = "";
         }
 
-        // Validation
+        // VALIDATION
         if (!username || !password) {
-            showError("Please enter your username and password.");
+
+            showError(  "Please enter your username and password." );
+
             return;
         }
 
-        // Loading state
+        // LOADING STATE
         if (loginButton) {
+
             loginButton.disabled = true;
+
             loginButton.innerHTML = `
                 <span class="spinner-border spinner-border-sm me-2"></span>
                 Signing in...
             `;
         }
 
+
         try {
+
             const response = await fetch(
                 `${API_BASE_URL}/v1/user/login`,
                 {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+
+                    headers: { "Content-Type": "application/json" },
+
                     body: JSON.stringify({
                         username: username,
                         password: password
@@ -61,56 +87,66 @@ if (loginForm) {
                 }
             );
 
+
             const data = await response.json();
 
+            // RESPONSE ERROR
             if (!response.ok) {
-                throw new Error(
-                    data.message || "Invalid username or password."
-                );
+                throw new Error( data.message || "Invalid username or password.");
             }
+
+
+            // =================================================
+            // GET LOGIN DATA
+            // =================================================
 
             const token = data.body?.token;
-            const userId = data.body?.userId;
-            const loggedUsername = data.body?.username;
-            const role = data.body?.role;
 
-            console.log("FULL LOGIN RESPONSE:", data);
-            console.log("ROLE FROM BACKEND:", data.body?.role);
+            const userId = data.body?.userId;
+
+            const loggedUsername = data.body?.username;
+
+            const roleId = String(data.body?.role || "").trim();
+
+
+            console.log("FULL LOGIN RESPONSE:",data);
+
+            console.log( "ROLE ID FROM BACKEND:", roleId);
 
             if (!token) {
-                throw new Error(
-                    "JWT token was not received from the server."
-                );
+                throw new Error( "JWT token was not received from the server." );
             }
 
-            // Save authentication information
-            localStorage.setItem("accessToken", token);
-            localStorage.setItem("userId", userId);
-            localStorage.setItem("username", loggedUsername);
-            localStorage.setItem("role", role);
+            // SAVE AUTHENTICATION INFORMATION
 
-            // Redirect user according to role
-            switch (String(role)) {
+            localStorage.setItem( "accessToken", token);
+            localStorage.setItem( "userId", userId);
+            localStorage.setItem( "username", loggedUsername);
+
+            let roleName;
+
+
+            switch (roleId) {
 
                 case "1":
-                    window.location.href = "pages/dashboard.html";
+                    roleName = "ADMIN";
                     break;
 
                 case "2":
-                    window.location.href = "pages/fleet-manager-dashboard.html";
-                    break;
-
-                case "4":
-                    window.location.href = "pages/customer-dashboard.html";
+                    roleName = "FLEET_MANAGER";
                     break;
 
                 case "3":
-                    window.location.href = "pages/driver-dashboard.html";
+                    roleName = "DRIVER";
+                    break;
+
+                case "4":
+                    roleName = "CUSTOMER";
                     break;
 
                 default:
                     localStorage.clear();
-                    showError("Invalid user role. Please contact the administrator.");
+                    showError( "Invalid user role. Please contact the administrator.");
 
                     if (loginButton) {
                         loginButton.disabled = false;
@@ -119,212 +155,349 @@ if (loginForm) {
                             <i class="bi bi-arrow-right ms-2"></i>
                         `;
                     }
+
+                    return;
             }
 
+            // SAVE ROLE NAME
+            localStorage.setItem("role",roleName);
+            console.log("ROLE NAME:", roleName);
+
+            // REDIRECT USER ACCORDING TO ROLE
+            switch (roleName) {
+
+                case "ADMIN":
+                    window.location.href = "pages/dashboard.html";
+                    break;
+
+
+                case "FLEET_MANAGER":
+                    window.location.href = "pages/fleet-manager-dashboard.html";
+                    break;
+
+
+                case "CUSTOMER":
+                    window.location.href ="pages/customer-dashboard.html";
+                    break;
+
+
+                case "DRIVER":
+                    window.location.href ="pages/driver-dashboard.html";
+                    break;
+
+                default:
+                    localStorage.clear();
+                    showError( "Invalid user role. Please contact the administrator.");
+
+                    if (loginButton) {
+                        loginButton.disabled = false;
+                        loginButton.innerHTML = `
+                            Sign In
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        `;
+                    }
+
+                    break;
+            }
+
+
         } catch (error) {
-            console.error("Login Error:", error);
+
+            console.error("Login Error:", error );
             showError(error.message);
 
+
             if (loginButton) {
+
                 loginButton.disabled = false;
+
                 loginButton.innerHTML = `
                     Sign In
                     <i class="bi bi-arrow-right ms-2"></i>
                 `;
             }
+
         }
+
     });
+
 }
 
-// Display error message
+// DISPLAY ERROR MESSAGE
 function showError(message) {
+
     if (errorMessage) {
+
         errorMessage.textContent = message;
-        errorMessage.classList.remove("d-none");
+
+        errorMessage.classList.remove(
+            "d-none"
+        );
     }
 }
 
-// Logout Function
+// LOGOUT FUNCTION
+
 function logout() {
-    localStorage.removeItem("accessToken");
+
+    localStorage.removeItem( "accessToken");
     localStorage.removeItem("userId");
     localStorage.removeItem("username");
     localStorage.removeItem("role");
 
-    // Root directory path redirect
     window.location.href = "../index.html";
 }
 
-/* =====================================================
-   MOBILE SIDEBAR
-===================================================== */
+// MOBILE SIDEBAR
 
 function toggleSidebar() {
 
     const sidebar = document.querySelector(".sidebar");
+
     const overlay = document.querySelector(".sidebar-overlay");
+
 
     if (!sidebar) {
         return;
     }
 
-    const isOpen = sidebar.classList.toggle("sidebar-open");
+    const isOpen = sidebar.classList.toggle("sidebar-open" );
 
-    // Overlay show / hide
     if (overlay) {
-        overlay.classList.toggle("active", isOpen);
+        overlay.classList.toggle("active",isOpen);
     }
 
 }
 
-
-/* =====================================================
-   CLOSE MOBILE SIDEBAR
-===================================================== */
+// CLOSE MOBILE SIDEBAR
 
 function closeSidebar() {
 
     const sidebar = document.querySelector(".sidebar");
+
     const overlay = document.querySelector(".sidebar-overlay");
 
+
     if (!sidebar) {
+
         return;
     }
 
-    sidebar.classList.remove("sidebar-open");
+
+    sidebar.classList.remove( "sidebar-open");
+
 
     if (overlay) {
-        overlay.classList.remove("active");
+        overlay.classList.remove( "active");
     }
 
 }
 
-/* =====================================================
-   MOBILE SIDEBAR EVENTS
-===================================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
+// =====================================================
+// MOBILE SIDEBAR EVENTS
+// =====================================================
 
-    const sidebar = document.querySelector(".sidebar");
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    if (!sidebar) {
-        return;
-    }
+        const sidebar =
+            document.querySelector(".sidebar");
 
 
-    /* =================================================
-       1. CLICK OUTSIDE SIDEBAR → CLOSE
-    ================================================= */
+        if (!sidebar) {
 
-    document.addEventListener("click", function (event) {
-
-        if (window.innerWidth > 991) {
             return;
         }
 
-        const menuButton = document.querySelector(".mobile-menu-btn");
 
-        const clickedInsideSidebar =
-            sidebar.contains(event.target);
+        // =================================================
+        // CLICK OUTSIDE SIDEBAR → CLOSE
+        // =================================================
 
-        const clickedMenuButton =
-            menuButton && menuButton.contains(event.target);
+        document.addEventListener(
+            "click",
+            function (event) {
 
-        if (
-            sidebar.classList.contains("sidebar-open") &&
-            !clickedInsideSidebar &&
-            !clickedMenuButton
-        ) {
-            closeSidebar();
+                if (window.innerWidth > 991) {
+
+                    return;
+                }
+
+
+                const menuButton =
+                    document.querySelector(
+                        ".mobile-menu-btn"
+                    );
+
+
+                const clickedInsideSidebar =
+                    sidebar.contains(
+                        event.target
+                    );
+
+
+                const clickedMenuButton =
+                    menuButton &&
+                    menuButton.contains(
+                        event.target
+                    );
+
+
+                if (
+                    sidebar.classList.contains(
+                        "sidebar-open"
+                    ) &&
+                    !clickedInsideSidebar &&
+                    !clickedMenuButton
+                ) {
+
+                    closeSidebar();
+                }
+
+            }
+        );
+
+
+        // =================================================
+        // CLICK MENU ITEM → CLOSE
+        // =================================================
+
+        const menuItems =
+            sidebar.querySelectorAll(
+                ".menu-item"
+            );
+
+
+        menuItems.forEach(
+            function (item) {
+
+                item.addEventListener(
+                    "click",
+                    function () {
+
+                        if (
+                            window.innerWidth <= 991
+                        ) {
+
+                            closeSidebar();
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        // =================================================
+        // CLICK LOGOUT → CLOSE
+        // =================================================
+
+        const logoutButton =
+            sidebar.querySelector(
+                ".logout-btn"
+            );
+
+
+        if (logoutButton) {
+
+            logoutButton.addEventListener(
+                "click",
+                function () {
+
+                    if (
+                        window.innerWidth <= 991
+                    ) {
+
+                        closeSidebar();
+                    }
+
+                }
+            );
         }
 
-    });
 
+        // =================================================
+        // WINDOW RESIZE → CLOSE
+        // =================================================
 
-    /* =================================================
-       2. CLICK MENU ITEM → CLOSE
-    ================================================= */
+        window.addEventListener(
+            "resize",
+            function () {
 
-    const menuItems =
-        sidebar.querySelectorAll(".menu-item");
+                if (
+                    window.innerWidth > 991
+                ) {
 
-    menuItems.forEach(function (item) {
+                    closeSidebar();
+                }
 
-        item.addEventListener("click", function () {
-
-            if (window.innerWidth <= 991) {
-                closeSidebar();
             }
-
-        });
-
-    });
-
-
-    /* =================================================
-       3. CLICK LOGOUT → CLOSE
-    ================================================= */
-
-    const logoutButton =
-        sidebar.querySelector(".logout-btn");
-
-    if (logoutButton) {
-
-        logoutButton.addEventListener("click", function () {
-
-            if (window.innerWidth <= 991) {
-                closeSidebar();
-            }
-
-        });
+        );
 
     }
+);
 
 
-    /* =================================================
-       4. WINDOW RESIZE → CLOSE
-    ================================================= */
-
-    window.addEventListener("resize", function () {
-
-        if (window.innerWidth > 991) {
-            closeSidebar();
-        }
-
-    });
-
-});
-
-/* =====================================================
-   ROLE BASED PAGE ACCESS
-===================================================== */
+// =====================================================
+// ROLE BASED PAGE ACCESS
+// =====================================================
 
 function checkRoleAccess(allowedRoles) {
 
-    const token = localStorage.getItem("accessToken");
-    const role = localStorage.getItem("role");
+    const token =
+        localStorage.getItem(
+            "accessToken"
+        );
+
+    const role =
+        localStorage.getItem(
+            "role"
+        );
+
+
+    // =================================================
+    // NOT LOGGED IN
+    // =================================================
 
     if (!token || !role) {
-        window.location.href = "../index.html";
+
+        window.location.href =
+            "../index.html";
+
         return false;
     }
+
+
+    // =================================================
+    // ROLE NOT ALLOWED
+    // =================================================
 
     if (!allowedRoles.includes(role)) {
 
-        alert("You do not have permission to access this page.");
+        alert(
+            "You do not have permission to access this page."
+        );
 
-        redirectByRole(role);
+
+        redirectByRole(
+            role
+        );
+
 
         return false;
     }
+
 
     return true;
 }
 
 
-/* =====================================================
-   ROLE BASED REDIRECT
-===================================================== */
+// =====================================================
+// ROLE BASED REDIRECT
+// =====================================================
 
 function redirectByRole(role) {
 
@@ -335,11 +508,11 @@ function redirectByRole(role) {
             break;
 
         case "FLEET_MANAGER":
-            window.location.href = "fleet-manager-dashboard.html";
+            window.location.href ="fleet-manager-dashboard.html";
             break;
 
         case "CUSTOMER":
-            window.location.href = "customer-dashboard.html";
+            window.location.href ="customer-dashboard.html";
             break;
 
         case "DRIVER":

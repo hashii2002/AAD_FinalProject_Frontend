@@ -1,0 +1,404 @@
+/* =========================================================
+   FLEET MANAGER DASHBOARD
+========================================================= */
+
+.fleet-dashboard-page {
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   WELCOME
+========================================================= */
+
+.fleet-welcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 28px 30px;
+    margin-bottom: 24px;
+
+    background: linear-gradient(
+        135deg,
+        #7d2ae8,
+        #904ce9
+    );
+
+    border-radius: 18px;
+    color: #ffffff;
+
+    box-shadow: 0 10px 30px rgba(125, 42, 232, 0.18);
+}
+
+
+.welcome-label {
+    margin: 0 0 5px;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+
+.fleet-welcome h1 {
+    margin: 0;
+
+    font-size: 27px;
+    font-weight: 700;
+}
+
+
+.fleet-welcome p:last-child {
+    margin: 7px 0 0;
+
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+
+.welcome-icon {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.16);
+
+    font-size: 31px;
+}
+
+
+/* =========================================================
+   STAT CARDS
+========================================================= */
+
+.fleet-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 24px;
+}
+
+
+.fleet-stat-card {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #ebe8f1;
+
+    border-radius: 16px;
+
+    box-shadow: 0 5px 18px rgba(17, 24, 39, 0.04);
+
+    transition: 0.2s ease;
+}
+
+
+.fleet-stat-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(17, 24, 39, 0.08);
+}
+
+
+.fleet-stat-icon {
+    width: 48px;
+    height: 48px;
+
+    min-width: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    font-size: 20px;
+}
+
+
+.fleet-stat-icon.vehicles {
+    background: #f1eaff;
+    color: #7d2ae8;
+}
+
+
+.fleet-stat-icon.rentals {
+    background: #eaf2ff;
+    color: #2563eb;
+}
+
+
+.fleet-stat-icon.customers {
+    background: #eafaf2;
+    color: #059669;
+}
+
+
+.fleet-stat-icon.maintenance {
+    background: #fff5e8;
+    color: #d97706;
+}
+
+
+.fleet-stat-card span {
+    display: block;
+
+    color: #6b7280;
+
+    font-size: 13px;
+}
+
+
+.fleet-stat-card h3 {
+    margin: 4px 0 0;
+
+    color: #111827;
+
+    font-size: 23px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   MANAGEMENT GRID
+========================================================= */
+
+.fleet-management-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+
+.management-card {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    min-width: 0;
+
+    padding: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #ebe8f1;
+
+    border-radius: 16px;
+
+    text-decoration: none;
+
+    box-shadow: 0 5px 18px rgba(17, 24, 39, 0.04);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.management-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #d8c4fa;
+
+    box-shadow:
+        0 12px 28px rgba(17, 24, 39, 0.08);
+}
+
+
+.management-card-icon {
+    width: 48px;
+    height: 48px;
+
+    min-width: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #f3edff;
+
+    color: #7d2ae8;
+
+    font-size: 20px;
+}
+
+
+.management-card h3 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+.management-card p {
+    margin: 5px 0 0;
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+.card-arrow {
+    margin-left: auto;
+
+    color: #9ca3af;
+
+    font-size: 16px;
+
+    transition: 0.2s ease;
+}
+
+
+.management-card:hover .card-arrow {
+    color: #7d2ae8;
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .fleet-stats {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .fleet-management-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .fleet-welcome {
+        padding: 22px;
+
+        border-radius: 15px;
+    }
+
+
+    .fleet-welcome h1 {
+        font-size: 23px;
+    }
+
+
+    .welcome-icon {
+        width: 55px;
+        height: 55px;
+
+        border-radius: 15px;
+
+        font-size: 24px;
+    }
+
+
+    .fleet-management-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .fleet-welcome {
+        align-items: flex-start;
+
+        padding: 18px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .fleet-welcome h1 {
+        font-size: 20px;
+    }
+
+
+    .fleet-welcome p:last-child {
+        font-size: 12px;
+    }
+
+
+    .welcome-icon {
+        width: 45px;
+        height: 45px;
+
+        min-width: 45px;
+
+        border-radius: 12px;
+
+        font-size: 19px;
+    }
+
+
+    .fleet-stats {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+
+    .fleet-stat-card {
+        padding: 15px;
+    }
+
+
+    .fleet-management-grid {
+        gap: 10px;
+    }
+
+
+    .management-card {
+        padding: 16px;
+    }
+
+}
