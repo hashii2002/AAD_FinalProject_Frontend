@@ -122,3 +122,175 @@ function logout() {
     // Root directory path redirect
     window.location.href = "../index.html";
 }
+
+/* =====================================================
+   MOBILE SIDEBAR
+===================================================== */
+
+function toggleSidebar() {
+
+    const sidebar = document.querySelector(".sidebar");
+    const overlay = document.querySelector(".sidebar-overlay");
+
+    if (!sidebar) {
+        return;
+    }
+
+    const isOpen = sidebar.classList.toggle("sidebar-open");
+
+    // Overlay show / hide
+    if (overlay) {
+        overlay.classList.toggle("active", isOpen);
+    }
+
+}
+
+
+/* =====================================================
+   CLOSE MOBILE SIDEBAR
+===================================================== */
+
+function closeSidebar() {
+
+    const sidebar = document.querySelector(".sidebar");
+    const overlay = document.querySelector(".sidebar-overlay");
+
+    if (!sidebar) {
+        return;
+    }
+
+    sidebar.classList.remove("sidebar-open");
+
+    if (overlay) {
+        overlay.classList.remove("active");
+    }
+
+}
+
+/* =====================================================
+   MOBILE SIDEBAR
+===================================================== */
+
+function toggleSidebar() {
+
+    const sidebar = document.querySelector(".sidebar");
+
+    if (!sidebar) {
+        return;
+    }
+
+    sidebar.classList.toggle("sidebar-open");
+}
+
+
+/* =====================================================
+   CLOSE MOBILE SIDEBAR
+===================================================== */
+
+function closeSidebar() {
+
+    const sidebar = document.querySelector(".sidebar");
+
+    if (!sidebar) {
+        return;
+    }
+
+    sidebar.classList.remove("sidebar-open");
+}
+
+
+/* =====================================================
+   MOBILE SIDEBAR EVENTS
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const sidebar = document.querySelector(".sidebar");
+
+    if (!sidebar) {
+        return;
+    }
+
+
+    /* =================================================
+       1. CLICK OUTSIDE SIDEBAR → CLOSE
+    ================================================= */
+
+    document.addEventListener("click", function (event) {
+
+        if (window.innerWidth > 991) {
+            return;
+        }
+
+        const menuButton = document.querySelector(".mobile-menu-btn");
+
+        const clickedInsideSidebar =
+            sidebar.contains(event.target);
+
+        const clickedMenuButton =
+            menuButton && menuButton.contains(event.target);
+
+        if (
+            sidebar.classList.contains("sidebar-open") &&
+            !clickedInsideSidebar &&
+            !clickedMenuButton
+        ) {
+            closeSidebar();
+        }
+
+    });
+
+
+    /* =================================================
+       2. CLICK MENU ITEM → CLOSE
+    ================================================= */
+
+    const menuItems =
+        sidebar.querySelectorAll(".menu-item");
+
+    menuItems.forEach(function (item) {
+
+        item.addEventListener("click", function () {
+
+            if (window.innerWidth <= 991) {
+                closeSidebar();
+            }
+
+        });
+
+    });
+
+
+    /* =================================================
+       3. CLICK LOGOUT → CLOSE
+    ================================================= */
+
+    const logoutButton =
+        sidebar.querySelector(".logout-btn");
+
+    if (logoutButton) {
+
+        logoutButton.addEventListener("click", function () {
+
+            if (window.innerWidth <= 991) {
+                closeSidebar();
+            }
+
+        });
+
+    }
+
+
+    /* =================================================
+       4. WINDOW RESIZE → CLOSE
+    ================================================= */
+
+    window.addEventListener("resize", function () {
+
+        if (window.innerWidth > 991) {
+            closeSidebar();
+        }
+
+    });
+
+});

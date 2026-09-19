@@ -78,9 +78,6 @@
     box-shadow: 0 4px 12px rgba(125, 42, 232, 0.20);
 }
 
-
-/* Make sure header user is aligned properly */
-
 .header-user {
     display: flex;
     align-items: center;
@@ -1055,6 +1052,13 @@
 
 @media (max-width: 768px) {
 
+    .topbar-title {
+        font-size: 25px !important;
+    }
+
+    .topbar-title i {
+        font-size: 27px;
+    }
     .review-page-container {
         padding: 22px 0 35px;
     }
