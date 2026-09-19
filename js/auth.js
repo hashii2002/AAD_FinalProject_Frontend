@@ -74,6 +74,9 @@ if (loginForm) {
             const loggedUsername = data.body?.username;
             const role = data.body?.role;
 
+            console.log("FULL LOGIN RESPONSE:", data);
+            console.log("ROLE FROM BACKEND:", data.body?.role);
+
             if (!token) {
                 throw new Error(
                     "JWT token was not received from the server."
@@ -86,8 +89,37 @@ if (loginForm) {
             localStorage.setItem("username", loggedUsername);
             localStorage.setItem("role", role);
 
-            // Redirect to Dashboard
-            window.location.href = "pages/dashboard.html";
+            // Redirect user according to role
+            switch (String(role)) {
+
+                case "1":
+                    window.location.href = "pages/dashboard.html";
+                    break;
+
+                case "2":
+                    window.location.href = "pages/fleet-manager-dashboard.html";
+                    break;
+
+                case "4":
+                    window.location.href = "pages/customer-dashboard.html";
+                    break;
+
+                case "3":
+                    window.location.href = "pages/driver-dashboard.html";
+                    break;
+
+                default:
+                    localStorage.clear();
+                    showError("Invalid user role. Please contact the administrator.");
+
+                    if (loginButton) {
+                        loginButton.disabled = false;
+                        loginButton.innerHTML = `
+                            Sign In
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        `;
+                    }
+            }
 
         } catch (error) {
             console.error("Login Error:", error);
@@ -262,3 +294,60 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+/* =====================================================
+   ROLE BASED PAGE ACCESS
+===================================================== */
+
+function checkRoleAccess(allowedRoles) {
+
+    const token = localStorage.getItem("accessToken");
+    const role = localStorage.getItem("role");
+
+    if (!token || !role) {
+        window.location.href = "../index.html";
+        return false;
+    }
+
+    if (!allowedRoles.includes(role)) {
+
+        alert("You do not have permission to access this page.");
+
+        redirectByRole(role);
+
+        return false;
+    }
+
+    return true;
+}
+
+
+/* =====================================================
+   ROLE BASED REDIRECT
+===================================================== */
+
+function redirectByRole(role) {
+
+    switch (role) {
+
+        case "ADMIN":
+            window.location.href = "dashboard.html";
+            break;
+
+        case "FLEET_MANAGER":
+            window.location.href = "fleet-manager-dashboard.html";
+            break;
+
+        case "CUSTOMER":
+            window.location.href = "customer-dashboard.html";
+            break;
+
+        case "DRIVER":
+            window.location.href = "driver-dashboard.html";
+            break;
+
+        default:
+            localStorage.clear();
+            window.location.href = "../index.html";
+    }
+}
