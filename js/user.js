@@ -1089,20 +1089,6 @@ function handleAuthError(status) {
     }
 }
 
-
-/* =====================================================
-   SIDEBAR
-===================================================== */
-
-function toggleSidebar() {
-
-    const sidebar =
-        document.querySelector(".sidebar");
-
-    sidebar.classList.toggle("active");
-}
-
-
 /* =====================================================
    LOGOUT
 ===================================================== */

@@ -1171,24 +1171,3 @@ function showMaintenanceMessage(
     alert(message);
 
 }
-
-
-/* =========================================================
-   MOBILE SIDEBAR
-========================================================= */
-
-function toggleMaintenanceSidebar() {
-
-    const sidebar =
-        document.getElementById("sidebar");
-
-
-    if (sidebar) {
-
-        sidebar.classList.toggle(
-            "sidebar-open"
-        );
-
-    }
-
-}

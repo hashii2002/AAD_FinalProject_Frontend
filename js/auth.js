@@ -168,38 +168,6 @@ function closeSidebar() {
 }
 
 /* =====================================================
-   MOBILE SIDEBAR
-===================================================== */
-
-function toggleSidebar() {
-
-    const sidebar = document.querySelector(".sidebar");
-
-    if (!sidebar) {
-        return;
-    }
-
-    sidebar.classList.toggle("sidebar-open");
-}
-
-
-/* =====================================================
-   CLOSE MOBILE SIDEBAR
-===================================================== */
-
-function closeSidebar() {
-
-    const sidebar = document.querySelector(".sidebar");
-
-    if (!sidebar) {
-        return;
-    }
-
-    sidebar.classList.remove("sidebar-open");
-}
-
-
-/* =====================================================
    MOBILE SIDEBAR EVENTS
 ===================================================== */
 

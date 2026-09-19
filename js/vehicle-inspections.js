@@ -228,10 +228,6 @@ function setupInspectionEvents() {
         });
 
     }
-
-
-    setupMobileSidebar();
-
 }
 
 
@@ -2033,83 +2029,6 @@ function searchInspections() {
     });
 
     renderInspections(filteredInspections);
-}
-
-/* =========================================================
-   MOBILE SIDEBAR
-========================================================= */
-
-function setupMobileSidebar() {
-
-    const button =
-        document.getElementById(
-            "mobileMenuBtn"
-        );
-
-    const sidebar =
-        document.getElementById(
-            "sidebar"
-        );
-
-    const overlay =
-        document.getElementById(
-            "sidebarOverlay"
-        );
-
-
-    if (!button || !sidebar) {
-        return;
-    }
-
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            sidebar.classList.toggle(
-                "sidebar-open"
-            );
-
-            overlay?.classList.toggle(
-                "show"
-            );
-
-        }
-    );
-
-
-    overlay?.addEventListener(
-        "click",
-        () => {
-
-            sidebar.classList.remove(
-                "sidebar-open"
-            );
-
-            overlay.classList.remove(
-                "show"
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-function logout() {
-
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("username");
-    localStorage.removeItem("role");
-
-    window.location.href =
-        "../index.html";
-
 }
 
 

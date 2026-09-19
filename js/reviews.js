@@ -585,22 +585,6 @@ function escapeHtml(value) {
         .replace(/'/g, "&#039;");
 }
 
-
-/* =========================================================
-   SIDEBAR
-========================================================= */
-
-function toggleSidebar() {
-
-    const sidebar =
-        document.getElementById("sidebar");
-
-    if (sidebar) {
-        sidebar.classList.toggle("sidebar-open");
-    }
-}
-
-
 /* =========================================================
    LOGOUT
 ========================================================= */

@@ -144,7 +144,7 @@
     margin: 3px 0 0 48px;
 
     color: #888793;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 400;
 }
 
@@ -1724,7 +1724,7 @@
         box-shadow: none;
     }
 
-    .dashboard-wrapper .sidebar.active {
+    .dashboard-wrapper .sidebar.sidebar-open {
         left: 0;
 
         box-shadow:

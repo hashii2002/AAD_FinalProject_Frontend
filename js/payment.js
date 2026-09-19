@@ -1289,21 +1289,6 @@ function showToast(title, message, type = "success") {
     toast.show();
 }
 
-
-/* =========================================================
-   SIDEBAR
-========================================================= */
-
-function toggleSidebar() {
-
-    const sidebar =
-        document.getElementById("sidebar");
-
-    if (sidebar) {
-        sidebar.classList.toggle("active");
-    }
-}
-
 /* =========================================================
    REFRESH PAYMENTS
 ========================================================= */
@@ -1339,20 +1324,4 @@ async function refreshPayments() {
 
     /* Reload payment data */
     await loadPayments();
-}
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-function logout() {
-
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("username");
-    localStorage.removeItem("role");
-
-    window.location.href =
-        "../index.html";
 }

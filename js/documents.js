@@ -1318,26 +1318,3 @@ function escapeHtml(value) {
         .replaceAll("'", "&#039;");
 
 }
-
-
-/* =========================================================
-   MOBILE SIDEBAR
-========================================================= */
-
-function toggleDocumentSidebar() {
-
-    const sidebar =
-        document.getElementById(
-            "sidebar"
-        );
-
-
-    if (sidebar) {
-
-        sidebar.classList.toggle(
-            "sidebar-open"
-        );
-
-    }
-
-}

@@ -64,10 +64,6 @@ function getAuthHeaders() {
    USER
 ========================================================= */
 
-/* =========================================================
-   LOAD LOGGED-IN USER
-========================================================= */
-
 function loadInvoiceUser() {
 
     const username = localStorage.getItem("username");
@@ -1157,27 +1153,6 @@ function showInvoiceMessage(message, type) {
     } else {
 
         alert(message);
-
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE SIDEBAR
-========================================================= */
-
-function toggleInvoiceSidebar() {
-
-    const sidebar =
-        document.getElementById("sidebar");
-
-
-    if (sidebar) {
-
-        sidebar.classList.toggle(
-            "sidebar-open"
-        );
 
     }
 

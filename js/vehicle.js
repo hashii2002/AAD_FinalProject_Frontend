@@ -1678,21 +1678,6 @@ function showToast(message, type = "success") {
 
 }
 
-
-/* =========================================
-   SIDEBAR
-========================================= */
-
-function toggleSidebar() {
-
-    const sidebar =
-        document.querySelector(".sidebar");
-
-    sidebar.classList.toggle("show");
-
-}
-
-
 function logout() {
 
     localStorage.removeItem("accessToken");
