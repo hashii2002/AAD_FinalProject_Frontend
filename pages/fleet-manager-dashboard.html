@@ -4,35 +4,28 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0">
 
     <title>DriveGo - Fleet Manager Dashboard</title>
-
-    <!-- Bootstrap -->
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-            rel="stylesheet">
-
-    <!-- Bootstrap Icons -->
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-            rel="stylesheet">
-
-    <!-- Main CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-
-    <!-- Fleet Manager CSS -->
     <link rel="stylesheet" href="../css/fleet-manager-dashboard.css">
 
 </head>
 
 <body>
 
-<!-- =====================================================
+
+<!-- =========================================================
      SIDEBAR
-===================================================== -->
+========================================================= -->
 
 <aside class="sidebar">
+
+    <!-- LOGO -->
 
     <div class="sidebar-logo">
 
@@ -40,129 +33,88 @@
             <i class="bi bi-car-front-fill"></i>
         </div>
 
-        <div>
+        <div class="sidebar-brand">
+
             <h4>DriveGo</h4>
-            <span>Fleet Manager</span>
+
+            <span>Fleet Management</span>
+
         </div>
 
     </div>
 
 
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
 
     <nav class="sidebar-nav">
 
-        <a href="fleet-manager-dashboard.html"
-           class="menu-item active">
-
+        <a href="fleet-manager-dashboard.html" class="menu-item active">
             <i class="bi bi-grid-1x2-fill"></i>
             <span>Dashboard</span>
-
         </a>
 
-
-        <a href="vehicles.html"
-           class="menu-item">
-
+        <a href="vehicles.html" class="menu-item">
             <i class="bi bi-car-front"></i>
             <span>Vehicles</span>
-
         </a>
 
-
-        <a href="customers.html"
-           class="menu-item">
-
+        <a href="customers.html" class="menu-item">
             <i class="bi bi-people"></i>
             <span>Customers</span>
 
         </a>
 
-
-        <a href="drivers.html"
-           class="menu-item">
-
-            <i class="bi bi-person-badge"></i>
+        <a href="drivers.html" class="menu-item">
+             <i class="bi bi-person-badge"></i>
             <span>Drivers</span>
 
         </a>
 
-
-        <a href="rentals.html"
-           class="menu-item">
-
+        <a href="rentals.html" class="menu-item">
             <i class="bi bi-calendar-check"></i>
             <span>Rentals</span>
-
         </a>
 
-
-        <a href="payments.html"
-           class="menu-item">
-
+        <a href="payments.html" class="menu-item">
             <i class="bi bi-credit-card"></i>
             <span>Payments</span>
-
         </a>
 
-
-        <a href="invoices.html"
-           class="menu-item">
-
+        <a href="invoices.html" class="menu-item">
             <i class="bi bi-receipt"></i>
             <span>Invoices</span>
-
         </a>
 
-
-        <a href="maintenance.html"
-           class="menu-item">
-
+        <a href="maintenance.html" class="menu-item">
             <i class="bi bi-tools"></i>
             <span>Maintenance</span>
-
         </a>
 
-
-        <a href="documents.html"
-           class="menu-item">
-
+        <a href="documents.html" class="menu-item">
             <i class="bi bi-file-earmark-text"></i>
             <span>Documents</span>
-
         </a>
 
-
-        <a href="vehicle-inspections.html"
-           class="menu-item">
-
+        <a href="vehicle-inspections.html"  class="menu-item">
             <i class="bi bi-clipboard2-check"></i>
             <span>Inspections</span>
-
         </a>
 
-
-        <a href="rental-rates.html"
-           class="menu-item">
-
+        <a  href="rental-rates.html"  class="menu-item">
             <i class="bi bi-tags"></i>
             <span>Rental Rates</span>
-
         </a>
 
 
-        <a href="reviews.html"
-           class="menu-item">
-
+        <a  href="reviews.html"  class="menu-item">
             <i class="bi bi-star"></i>
             <span>Reviews</span>
-
         </a>
 
     </nav>
 
 
-    <!-- Logout -->
+    <!-- LOGOUT -->
 
     <div class="sidebar-footer">
 
@@ -172,6 +124,7 @@
                 onclick="logout()">
 
             <i class="bi bi-box-arrow-left"></i>
+
             <span>Logout</span>
 
         </button>
@@ -180,24 +133,14 @@
 
 </aside>
 
-
-<!-- Sidebar Overlay -->
-
 <div class="sidebar-overlay"></div>
 
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
 <main class="dashboard-main">
-
-
-    <!-- TOPBAR -->
-
     <header class="dashboard-header">
+        <!-- MOBILE MENU -->
 
         <button
+                type="button"
                 class="mobile-menu-btn"
                 onclick="toggleSidebar()">
 
@@ -206,22 +149,29 @@
         </button>
 
 
+        <!-- TITLE -->
+
         <div class="topbar-title">
 
-            <i class="bi bi-grid-1x2-fill"></i>
+            <i class="bi bi-speedometer2"></i>
 
             <span>Fleet Manager Dashboard</span>
 
         </div>
 
 
+        <!-- USER -->
+
         <div class="header-user">
 
             <div class="header-user-icon">
+
                 <i class="bi bi-person-fill"></i>
+
             </div>
 
-            <div>
+
+            <div class="header-user-info">
 
                 <strong id="headerUsername">
                     Fleet Manager
@@ -238,36 +188,26 @@
     </header>
 
 
-    <!-- =================================================
-         PAGE CONTENT
-    ================================================= -->
+    <!-- =====================================================
+         DASHBOARD CONTENT
+    ====================================================== -->
 
     <div class="fleet-dashboard-page">
 
+        <section class="fleet-welcome-card">
 
-        <!-- Welcome -->
+            <div class="fleet-welcome-content">
 
-        <section class="fleet-welcome">
-
-            <div>
-
-                <p class="welcome-label">
-                    Welcome back
-                </p>
-
-                <h1 id="welcomeUsername">
-                    Fleet Manager
-                </h1>
-
-                <p>
-                    Manage vehicles, rentals and fleet operations
-                    from one place.
-                </p>
+                <span class="fleet-welcome-label"> Welcome back</span>
+                <h1 id="welcomeUsername">  Fleet Manager </h1>
+                <p> Monitor your fleet, rentals and daily operations from one place.</p>
 
             </div>
 
-            <div class="welcome-icon">
+            <div class="fleet-welcome-visual">
 
+                <div class="fleet-circle circle-one"></div>
+                <div class="fleet-circle circle-two"></div>
                 <i class="bi bi-car-front-fill"></i>
 
             </div>
@@ -276,299 +216,498 @@
 
 
         <!-- =================================================
-             STAT CARDS
-        ================================================= -->
+             STATISTICS
+        ================================================== -->
 
-        <section class="fleet-stats">
+        <section class="fleet-stat-grid">
 
+
+            <!-- TOTAL VEHICLES -->
 
             <div class="fleet-stat-card">
 
-                <div class="fleet-stat-icon vehicles">
+                <div class="fleet-stat-icon vehicle-icon">
+
                     <i class="bi bi-car-front-fill"></i>
+
                 </div>
 
-                <div>
+                <div class="fleet-stat-content">
 
                     <span>Total Vehicles</span>
 
-                    <h3 id="totalVehicles">
-                        0
-                    </h3>
+                    <h3 id="totalVehicles">0</h3>
+
+                    <small>
+                        Registered vehicles
+                    </small>
 
                 </div>
 
             </div>
 
 
+            <!-- AVAILABLE -->
+
             <div class="fleet-stat-card">
 
-                <div class="fleet-stat-icon rentals">
+                <div class="fleet-stat-icon available-icon">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                </div>
+
+                <div class="fleet-stat-content">
+
+                    <span>Available</span>
+
+                    <h3 id="availableVehicles">0</h3>
+
+                    <small>
+                        Ready for rental
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- RENTED -->
+
+            <div class="fleet-stat-card">
+
+                <div class="fleet-stat-icon rented-icon">
+
+                    <i class="bi bi-key-fill"></i>
+
+                </div>
+
+                <div class="fleet-stat-content">
+
+                    <span>Rented</span>
+
+                    <h3 id="rentedVehicles">0</h3>
+
+                    <small>
+                        Currently rented
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- MAINTENANCE -->
+
+            <div class="fleet-stat-card">
+
+                <div class="fleet-stat-icon maintenance-icon">
+
+                    <i class="bi bi-tools"></i>
+
+                </div>
+
+                <div class="fleet-stat-content">
+
+                    <span>Maintenance</span>
+
+                    <h3 id="maintenanceVehicles">0</h3>
+
+                    <small>
+                        Under maintenance
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECONDARY STATS
+        ================================================== -->
+
+        <section class="fleet-secondary-grid">
+
+
+            <div class="fleet-mini-card">
+
+                <div class="fleet-mini-icon">
+
                     <i class="bi bi-calendar-check-fill"></i>
+
                 </div>
 
                 <div>
 
                     <span>Active Rentals</span>
 
-                    <h3 id="activeRentals">
+                    <h4 id="activeRentals">
                         0
-                    </h3>
+                    </h4>
 
                 </div>
 
             </div>
 
 
-            <div class="fleet-stat-card">
+            <div class="fleet-mini-card">
 
-                <div class="fleet-stat-icon customers">
+                <div class="fleet-mini-icon">
+
                     <i class="bi bi-people-fill"></i>
+
                 </div>
 
                 <div>
 
-                    <span>Customers</span>
+                    <span>Total Customers</span>
 
-                    <h3 id="totalCustomers">
+                    <h4 id="totalCustomers">
                         0
-                    </h3>
+                    </h4>
 
                 </div>
 
             </div>
 
 
-            <div class="fleet-stat-card">
+            <div class="fleet-mini-card">
 
-                <div class="fleet-stat-icon maintenance">
-                    <i class="bi bi-tools"></i>
+                <div class="fleet-mini-icon">
+
+                    <i class="bi bi-wrench-adjustable-circle-fill"></i>
+
                 </div>
 
                 <div>
 
-                    <span>Maintenance</span>
+                    <span>Maintenance Records</span>
 
-                    <h3 id="maintenanceCount">
+                    <h4 id="maintenanceRecords">
                         0
-                    </h3>
+                    </h4>
 
                 </div>
 
             </div>
 
+
+            <div class="fleet-mini-card">
+
+                <div class="fleet-mini-icon">
+
+                    <i class="bi bi-file-earmark-check-fill"></i>
+
+                </div>
+
+                <div>
+
+                    <span>Documents</span>
+
+                    <h4 id="totalDocuments">
+                        0
+                    </h4>
+
+                </div>
+
+            </div>
 
         </section>
 
 
         <!-- =================================================
-             MANAGEMENT GRID
-        ================================================= -->
+             CHART SECTION
+        ================================================== -->
 
-        <section class="fleet-management-grid">
-
-
-            <a href="vehicles.html"
-               class="management-card">
-
-                <div class="management-card-icon">
-                    <i class="bi bi-car-front-fill"></i>
-                </div>
-
-                <div>
-
-                    <h3>Vehicle Management</h3>
-
-                    <p>
-                        Manage vehicles, brands, models
-                        and categories.
-                    </p>
-
-                </div>
-
-                <i class="bi bi-arrow-right card-arrow"></i>
-
-            </a>
+        <section class="row g-4 mb-4">
 
 
-            <a href="rentals.html"
-               class="management-card">
+            <!-- VEHICLE STATUS -->
 
-                <div class="management-card-icon">
-                    <i class="bi bi-calendar-check-fill"></i>
-                </div>
+            <div class="col-12 col-xl-5">
 
-                <div>
-
-                    <h3>Rental Management</h3>
-
-                    <p>
-                        Manage customer rentals
-                        and vehicle assignments.
-                    </p>
-
-                </div>
-
-                <i class="bi bi-arrow-right card-arrow"></i>
-
-            </a>
+                <div class="fleet-chart-card">
 
 
-            <a href="customers.html"
-               class="management-card">
+                    <div class="fleet-card-header">
 
-                <div class="management-card-icon">
-                    <i class="bi bi-people-fill"></i>
-                </div>
+                        <div>
 
-                <div>
+                            <h3>
+                                Vehicle Status
+                            </h3>
 
-                    <h3>Customer Management</h3>
+                            <p>
+                                Current fleet availability
+                            </p>
 
-                    <p>
-                        View and manage customer
-                        information.
-                    </p>
+                        </div>
+
+
+                        <div class="fleet-card-header-icon">
+
+                            <i class="bi bi-pie-chart-fill"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="fleet-donut-wrapper">
+
+                        <canvas
+                                id="vehicleStatusChart">
+                        </canvas>
+
+                    </div>
+
+
+                    <div
+                            id="vehicleLegend"
+                            class="fleet-chart-legend">
+                    </div>
 
                 </div>
 
-                <i class="bi bi-arrow-right card-arrow"></i>
+            </div>
 
-            </a>
+            <!-- RENTAL STATUS -->
+            <div class="col-12 col-xl-7">
+                <div class="fleet-chart-card">
+                    <div class="fleet-card-header"><div>
+                            <h3> Rental Overview</h3>
+                            <p> Current rental status</p>
+                        </div>
 
+                        <div class="fleet-card-header-icon">
 
-            <a href="drivers.html"
-               class="management-card">
+                            <i class="bi bi-bar-chart-fill"></i>
 
-                <div class="management-card-icon">
-                    <i class="bi bi-person-badge-fill"></i>
-                </div>
+                        </div>
 
-                <div>
+                    </div>
 
-                    <h3>Driver Management</h3>
+                    <div class="fleet-bar-wrapper">
 
-                    <p>
-                        Manage drivers and
-                        driver assignments.
-                    </p>
+                        <canvas
+                                id="rentalStatusChart">
+                        </canvas>
 
-                </div>
-
-                <i class="bi bi-arrow-right card-arrow"></i>
-
-            </a>
-
-
-            <a href="maintenance.html"
-               class="management-card">
-
-                <div class="management-card-icon">
-                    <i class="bi bi-tools"></i>
-                </div>
-
-                <div>
-
-                    <h3>Maintenance</h3>
-
-                    <p>
-                        Monitor vehicle maintenance
-                        records and services.
-                    </p>
+                    </div>
 
                 </div>
 
-                <i class="bi bi-arrow-right card-arrow"></i>
-
-            </a>
-
-
-            <a href="vehicle-inspections.html"
-               class="management-card">
-
-                <div class="management-card-icon">
-                    <i class="bi bi-clipboard2-check-fill"></i>
-                </div>
-
-                <div>
-
-                    <h3>Vehicle Inspections</h3>
-
-                    <p>
-                        Manage pickup and return
-                        inspections.
-                    </p>
-
-                </div>
-
-                <i class="bi bi-arrow-right card-arrow"></i>
-
-            </a>
-
-
-            <a href="documents.html"
-               class="management-card">
-
-                <div class="management-card-icon">
-                    <i class="bi bi-file-earmark-text-fill"></i>
-                </div>
-
-                <div>
-
-                    <h3>Vehicle Documents</h3>
-
-                    <p>
-                        Monitor insurance,
-                        licenses and documents.
-                    </p>
-
-                </div>
-
-                <i class="bi bi-arrow-right card-arrow"></i>
-
-            </a>
-
-
-            <a href="payments.html"
-               class="management-card">
-
-                <div class="management-card-icon">
-                    <i class="bi bi-credit-card-fill"></i>
-                </div>
-
-                <div>
-
-                    <h3>Payments</h3>
-
-                    <p>
-                        Manage rental payments
-                        and payment records.
-                    </p>
-
-                </div>
-
-                <i class="bi bi-arrow-right card-arrow"></i>
-
-            </a>
-
+            </div>
 
         </section>
+
+
+        <!-- =================================================
+             RECENT RENTALS + QUICK ACTIONS
+        ================================================== -->
+
+        <section class="row g-4">
+
+
+            <!-- RECENT RENTALS -->
+
+            <div class="col-12 col-xl-8">
+
+                <div class="fleet-table-card">
+
+
+                    <div class="fleet-card-header">
+
+                        <div>
+
+                            <h3>
+                                Recent Rentals
+                            </h3>
+
+                            <p>
+                                Latest rental activities
+                            </p>
+
+                        </div>
+
+                        <a href="rentals.html" class="fleet-view-all">
+                            View All
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+
+
+                    <div class="table-responsive">
+                        <table class="table fleet-rental-table">
+                            <thead>
+                            <tr>
+                                <th>Rental</th>
+                                <th>Vehicle</th>
+                                <th>Customer</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="recentRentalsBody">
+
+                            <tr>
+
+                                <td
+                                        colspan="4"
+                                        class="fleet-table-loading">
+
+                                    <div
+                                            class="spinner-border spinner-border-sm">
+                                    </div>
+
+                                    Loading rentals...
+
+                                </td>
+
+                            </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="col-12 col-xl-4">
+
+                <div class="fleet-quick-card">
+
+
+                    <div class="fleet-card-header">
+
+                        <div>
+
+                            <h3>
+                                Quick Management
+                            </h3>
+
+                            <p>
+                                Frequently used modules
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="fleet-quick-list">
+                        <a href="vehicles.html" class="fleet-quick-item">
+                            <span>
+                                <i class="bi bi-car-front-fill"></i>
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Manage Vehicles
+                                </strong>
+
+                                <small>
+                                    Vehicles & fleet
+                                </small>
+
+                            </div>
+
+                            <i class="bi bi-chevron-right"></i>
+
+                        </a>
+
+
+                        <a href="rentals.html" class="fleet-quick-item">
+                            <span>
+                                <i class="bi bi-calendar-check-fill"></i>
+                            </span>
+                            <div>
+                                <strong>
+                                    Manage Rentals
+                                </strong>
+
+                                <small>
+                                    Rental operations
+                                </small>
+
+                            </div>
+
+                            <i class="bi bi-chevron-right"></i>
+
+                        </a>
+
+
+                        <a href="maintenance.html" class="fleet-quick-item">
+                            <span>
+                                <i class="bi bi-tools"></i>
+                            </span>
+                            <div>
+                                <strong>
+                                    Maintenance
+                                </strong>
+
+                                <small>
+                                    Service records
+                                </small>
+
+                            </div>
+
+                            <i class="bi bi-chevron-right"></i>
+
+                        </a>
+
+                        <a href="fleet-manager-dashboard.html" class="fleet-quick-item">
+                            <span>
+                                <i class="bi bi-file-earmark-text-fill"></i>
+                            </span>
+
+                            <div>
+                                <strong>
+                                    Documents
+                                </strong>
+
+                                <small>
+                                    Vehicle documents
+                                </small>
+
+                            </div>
+
+                            <i class="bi bi-chevron-right"></i>
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
 
     </div>
 
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="../js/config.js"></script>
 <script src="../js/auth.js"></script>
-
-<script>
-
-    checkRoleAccess(["FLEET_MANAGER"]);
-
-</script>
-
+<script>checkRoleAccess(["FLEET_MANAGER"]);</script>
 <script src="../js/fleet-manager-dashboard.js"></script>
+
 
 </body>
 
