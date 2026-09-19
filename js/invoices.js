@@ -31,6 +31,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         .getElementById("invoiceForm")
         .addEventListener("submit", handleInvoiceSubmit);
 
+    const logoutButton = document.getElementById("invoiceLogoutBtn");
+
+    if (logoutButton) {
+        logoutButton.addEventListener("click", function () {
+            logout();
+        });
+    }
+
 
     await loadInvoices();
 

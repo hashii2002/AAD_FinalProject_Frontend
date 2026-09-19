@@ -30,6 +30,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             handleMaintenanceSubmit
         );
 
+    const logoutButton = document.getElementById("maintenanceLogoutBtn");
+
+    if (logoutButton) {
+        logoutButton.addEventListener("click", function () {
+            logout();
+        });
+    }
+
 
     await loadMaintenanceRecords();
 

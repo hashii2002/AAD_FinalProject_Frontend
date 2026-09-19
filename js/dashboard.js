@@ -1238,62 +1238,49 @@ function renderDocumentExpiryNotifications(
    NOTIFICATION DROPDOWN
 ========================================================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+document.addEventListener("DOMContentLoaded",function () {
 
-        const notificationButton =
-            document.getElementById(
-                "notificationButton"
-            );
+        const notificationButton =document.getElementById( "notificationButton");
+        const notificationDropdown =document.getElementById("notificationDropdown" );
 
-
-        const notificationDropdown =
-            document.getElementById(
-                "notificationDropdown"
-            );
-
-
-        if (!notificationButton ||
-            !notificationDropdown) {
-
+        if (!notificationButton || !notificationDropdown) {
             return;
 
         }
 
 
-        notificationButton.addEventListener(
-            "click",
+        notificationButton.addEventListener( "click",
             function (event) {
-
                 event.stopPropagation();
-
-
-                notificationDropdown.classList.toggle(
-                    "show"
-                );
-
+                notificationDropdown.classList.toggle("show");
             }
         );
 
 
-        document.addEventListener(
-            "click",
+        document.addEventListener("click",
             function (event) {
-
                 if (
                     !notificationDropdown.contains(event.target) &&
-                    !notificationButton.contains(event.target)
-                ) {
+                    !notificationButton.contains(event.target)) {
 
-                    notificationDropdown.classList.remove(
-                        "show"
-                    );
+                    notificationDropdown.classList.remove( "show");
 
                 }
 
             }
         );
+
+        const logoutButton = document.getElementById("logoutButton");
+
+        if (logoutButton) {
+
+            logoutButton.addEventListener("click",function () {
+                    logout();
+
+                }
+            );
+
+        }
 
     }
 );

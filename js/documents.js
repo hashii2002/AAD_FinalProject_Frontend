@@ -35,6 +35,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             handleDocumentSubmit
         );
 
+    const logoutButton = document.getElementById("documentsLogoutBtn");
+
+    if (logoutButton) {
+        logoutButton.addEventListener("click", function () {
+            logout();
+        });
+    }
+
 
     await loadDocuments();
 
