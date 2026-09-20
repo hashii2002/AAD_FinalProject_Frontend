@@ -172,7 +172,7 @@ if (loginForm) {
 
 
                 case "FLEET_MANAGER":
-                    window.location.href = "pages/fleet-manager-dashboard.html";
+                    window.location.href = "pages/manager/fleet-manager-dashboard.html";
                     break;
 
 
@@ -236,16 +236,29 @@ function showError(message) {
     }
 }
 
+// =====================================================
 // LOGOUT FUNCTION
+// =====================================================
 
 function logout() {
 
-    localStorage.removeItem( "accessToken");
+    localStorage.removeItem("accessToken");
     localStorage.removeItem("userId");
     localStorage.removeItem("username");
     localStorage.removeItem("role");
 
-    window.location.href = "../index.html";
+    const currentPath = window.location.pathname;
+
+    if (currentPath.includes("/manager/")) {
+
+        window.location.href = "../../index.html";
+
+    } else {
+
+        window.location.href = "../index.html";
+
+    }
+
 }
 
 // MOBILE SIDEBAR
@@ -508,7 +521,7 @@ function redirectByRole(role) {
             break;
 
         case "FLEET_MANAGER":
-            window.location.href ="fleet-manager-dashboard.html";
+            window.location.href ="manager/fleet-manager-dashboard.html";
             break;
 
         case "CUSTOMER":

@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>DriveGo - Vehicle Documents</title>
+
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+            rel="stylesheet">
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <!-- Vehicle Document CSS -->
+    <link rel="stylesheet" href="../../css/documents.css">
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard-wrapper">
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+<aside class="sidebar">
+
+    <div class="sidebar-brand">
+
+        <div class="brand-icon">
+            <i class="bi bi-car-front-fill"></i>
+        </div>
+
+        <div>
+            <h4>DriveGo</h4>
+            <small>Fleet Management</small>
+        </div>
+
+    </div>
+
+
+    <div class="sidebar-menu">
+
+        <p class="menu-title">MAIN</p>
+
+        <a href="fleet-manager-dashboard.html" class="menu-item">
+            <i class="bi bi-grid-1x2-fill"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <p class="menu-title">MANAGEMENT</p>
+
+        <a href="vehicles.html" class="menu-item">
+            <i class="bi bi-car-front-fill"></i>
+            <span>Vehicles</span>
+        </a>
+
+        <a href="customers.html" class="menu-item">
+            <i class="bi bi-people-fill"></i>
+            <span>Customers</span>
+        </a>
+
+        <a href="drivers.html" class="menu-item">
+            <i class="bi bi-person-badge-fill"></i>
+            <span>Drivers</span>
+        </a>
+
+        <a href="rentals.html" class="menu-item">
+            <i class="bi bi-calendar-check-fill"></i>
+            <span>Rentals</span>
+        </a>
+
+        <a href="payments.html" class="menu-item">
+            <i class="bi bi-credit-card-fill"></i>
+            <span>Payments</span>
+        </a>
+
+        <a href="invoices.html" class="menu-item">
+            <i class="bi bi-receipt-cutoff"></i>
+            <span>Invoices</span>
+        </a>
+
+
+        <p class="menu-title">FLEET</p>
+
+        <a href="maintenance.html" class="menu-item">
+            <i class="bi bi-tools"></i>
+            <span>Maintenance</span>
+        </a>
+
+        <a href="vehicle-inspections.html" class="menu-item">
+            <i class="bi bi-clipboard2-check-fill"></i>
+            <span>Inspections</span>
+        </a>
+
+        <a href="documents.html" class="menu-item active">
+            <i class="bi bi-file-earmark-text-fill"></i>
+            <span>Documents</span>
+        </a>
+
+        <a href="reviews.html" class="menu-item">
+            <i class="bi bi-star-fill"></i>
+            <span>Reviews</span>
+        </a>
+
+    </div>
+
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+
+        <div class="user-mini">
+
+            <div class="user-avatar" id="sidebarAvatar">
+                A
+            </div>
+
+            <div class="user-info">
+                <strong id="sidebarUsername">Admin</strong>
+                <small id="sidebarRole">Administrator</small>
+            </div>
+
+            <button
+                    class="logout-btn"
+                    onclick="logout()"
+                    title="Logout">
+
+                <i class="bi bi-box-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</aside>
+
+<div class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="dashboard-main">
+
+
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
+
+    <header class="document-topbar">
+
+        <div class="document-topbar-left">
+
+            <button
+                    class="mobile-menu-btn document-mobile-menu"
+                    type="button"
+                    onclick="toggleSidebar()">
+
+                <i class="bi bi-list"></i>
+
+            </button>
+
+
+            <div class="document-page-title">
+
+                <div class="document-title-icon">
+                    <i class="bi bi-file-earmark-text-fill"></i>
+                </div>
+
+                <div>
+
+                    <h2>Vehicle Documents</h2>
+
+                    <p>
+                        Manage vehicle documents and expiry dates
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="document-topbar-right">
+
+            <!-- Notification -->
+
+            <button
+                    type="button"
+                    class="document-notification-btn"
+                    onclick="openExpiryAlerts()">
+
+                <i class="bi bi-bell"></i>
+
+                <span
+                        id="documentNotificationBadge"
+                        class="document-notification-badge">
+                    0
+                </span>
+
+            </button>
+
+
+            <!-- User -->
+
+            <div class="document-user">
+
+                <div class="document-user-icon">
+
+                    <i class="bi bi-person-fill"></i>
+
+                </div>
+
+                <div>
+
+                    <strong id="documentUsername">
+                        Admin
+                    </strong>
+
+                    <span id="documentUserRole">
+                        Administrator
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         PAGE
+    ====================================================== -->
+
+    <section class="document-page-container">
+
+
+        <!-- PAGE INTRO -->
+
+        <div class="document-heading-card">
+
+            <div>
+
+                <span class="document-section-label">
+
+                    <i class="bi bi-shield-check"></i>
+
+                    DOCUMENT MANAGEMENT
+
+                </span>
+
+
+                <h1>
+                    Vehicle Documents
+                </h1>
+
+
+                <p>
+                    Keep insurance, revenue licenses and vehicle
+                    certificates organized and up to date.
+                </p>
+
+            </div>
+
+
+            <button
+                    type="button"
+                    class="document-primary-btn"
+                    onclick="openDocumentModal()">
+
+                <i class="bi bi-plus-lg"></i>
+
+                Add Document
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             EXPIRY ALERT
+        ================================================== -->
+
+        <div
+                id="expiryAlertBanner"
+                class="document-expiry-banner"
+                style="display:none;">
+
+            <div class="document-expiry-banner-icon">
+
+                <i class="bi bi-exclamation-triangle-fill"></i>
+
+            </div>
+
+
+            <div class="document-expiry-banner-content">
+
+                <strong id="expiryAlertTitle">
+                    Documents Expiring Soon
+                </strong>
+
+                <p id="expiryAlertText">
+                    Some vehicle documents will expire within 7 days.
+                </p>
+
+            </div>
+
+
+            <button
+                    type="button"
+                    onclick="openExpiryAlerts()"
+                    class="document-alert-btn">
+
+                View Alerts
+
+                <i class="bi bi-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <div class="document-stat-grid">
+
+
+            <div class="document-stat-card">
+
+                <div class="document-stat-icon total">
+
+                    <i class="bi bi-files"></i>
+
+                </div>
+
+                <div>
+
+                    <span>Total Documents</span>
+
+                    <strong id="totalDocumentCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="document-stat-card">
+
+                <div class="document-stat-icon valid">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                </div>
+
+                <div>
+
+                    <span>Valid</span>
+
+                    <strong id="validDocumentCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="document-stat-card">
+
+                <div class="document-stat-icon warning">
+
+                    <i class="bi bi-clock-history"></i>
+
+                </div>
+
+                <div>
+
+                    <span>Expiring Soon</span>
+
+                    <strong id="expiringDocumentCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="document-stat-card">
+
+                <div class="document-stat-icon expired">
+
+                    <i class="bi bi-x-circle-fill"></i>
+
+                </div>
+
+                <div>
+
+                    <span>Expired</span>
+
+                    <strong id="expiredDocumentCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             DOCUMENT TABLE
+        ================================================== -->
+
+        <div class="document-table-card">
+
+
+            <div class="document-table-header">
+
+                <div>
+
+                    <h3>
+
+                        <i class="bi bi-folder2-open"></i>
+
+                        Vehicle Document Records
+
+                    </h3>
+
+                    <p>
+                        Manage registration, insurance and certificates
+                    </p>
+
+                </div>
+
+
+                <div class="document-toolbar">
+
+
+                    <div class="document-search">
+
+                        <i class="bi bi-search"></i>
+
+                        <input
+                                type="text"
+                                id="documentSearch"
+                                placeholder="Search by document name..."
+                                oninput="searchDocuments()">
+
+                    </div>
+
+
+                    <select
+                            id="documentTypeFilter"
+                            class="document-filter"
+                            onchange="filterDocuments()">
+
+                        <option value="ALL">
+                            All Types
+                        </option>
+
+                        <option value="INSURANCE_POLICY">
+                            Insurance
+                        </option>
+
+                        <option value="REVENUE_LICENSE">
+                            Revenue License
+                        </option>
+
+                        <option value="ECO_TEST">
+                            Eco Test
+                        </option>
+
+                        <option value="REGISTRATION_POLICY">
+                            Registration
+                        </option>
+
+                        <option value="FITNESS_CERTIFICATE">
+                            Fitness Certificate
+                        </option>
+
+                    </select>
+
+
+                    <select
+                            id="documentStatusFilter"
+                            class="document-filter"
+                            onchange="filterDocuments()">
+
+                        <option value="ALL">
+                            All Status
+                        </option>
+
+                        <option value="VALID">
+                            Valid
+                        </option>
+
+                        <option value="PENDING">
+                            Pending
+                        </option>
+
+                        <option value="EXPIRED">
+                            Expired
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TABLE -->
+
+            <div class="document-table-wrapper">
+
+                <table class="document-table">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>Document</th>
+
+                        <th>Vehicle</th>
+
+                        <th>Document Number</th>
+
+                        <th>Issue Date</th>
+
+                        <th>Expiry Date</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="documentTableBody">
+
+                    </tbody>
+
+                </table>
+
+
+                <div
+                        id="documentEmptyState"
+                        class="document-empty-state">
+
+                    <div class="document-empty-icon">
+
+                        <i class="bi bi-file-earmark-x"></i>
+
+                    </div>
+
+                    <h4>
+                        No documents found
+                    </h4>
+
+                    <p>
+                        Vehicle document records will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     ADD / UPDATE MODAL
+========================================================= -->
+
+<div
+        class="modal fade"
+        id="documentModal"
+        tabindex="-1"
+        aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content document-form-modal">
+
+
+            <div class="document-modal-header">
+
+                <div>
+
+                    <span>
+                        <i class="bi bi-file-earmark-text"></i>
+                        VEHICLE DOCUMENT
+                    </span>
+
+                    <h4 id="documentModalTitle">
+                        Add Document
+                    </h4>
+
+                </div>
+
+
+                <button
+                        type="button"
+                        class="document-close-btn"
+                        data-bs-dismiss="modal">
+
+                    <i class="bi bi-x-lg"></i>
+
+                </button>
+
+            </div>
+
+
+
+            <form id="documentForm">
+
+
+                <div class="document-modal-body">
+
+                    <input
+                            type="hidden"
+                            id="documentId">
+
+
+
+                    <!-- Vehicle -->
+
+                    <div class="document-form-group">
+
+                        <label for="vehicleId">
+                            Vehicle ID
+                            <span>*</span>
+                        </label>
+
+                        <div class="document-input-wrapper">
+
+                            <i class="bi bi-car-front"></i>
+
+                            <input
+                                    type="number"
+                                    id="vehicleId"
+                                    placeholder="Enter vehicle ID"
+                                    required>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Type -->
+
+                    <div class="document-form-group">
+
+                        <label for="documentType">
+                            Document Type
+                            <span>*</span>
+                        </label>
+
+                        <div class="document-input-wrapper">
+
+                            <i class="bi bi-file-earmark-text"></i>
+
+                            <select
+                                    id="documentType"
+                                    required>
+
+                                <option value="">
+                                    Select document type
+                                </option>
+
+                                <option value="INSURANCE_POLICY">
+                                    Insurance Policy
+                                </option>
+
+                                <option value="REVENUE_LICENSE">
+                                    Revenue License
+                                </option>
+
+                                <option value="ECO_TEST">
+                                    Eco Test
+                                </option>
+
+                                <option value="REGISTRATION_POLICY">
+                                    Registration Policy
+                                </option>
+
+                                <option value="FITNESS_CERTIFICATE">
+                                    Fitness Certificate
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Number -->
+
+                    <div class="document-form-group">
+
+                        <label for="documentNumber">
+                            Document Number
+                            <span>*</span>
+                        </label>
+
+                        <div class="document-input-wrapper">
+
+                            <i class="bi bi-hash"></i>
+
+                            <input
+                                    type="text"
+                                    id="documentNumber"
+                                    placeholder="Enter document number"
+                                    required>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="document-date-grid">
+
+
+                        <!-- Issue Date -->
+
+                        <div class="document-form-group">
+
+                            <label for="issueDate">
+                                Issue Date
+                                <span>*</span>
+                            </label>
+
+                            <div class="document-input-wrapper">
+
+                                <i class="bi bi-calendar-event"></i>
+
+                                <input
+                                        type="date"
+                                        id="issueDate"
+                                        required>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Expiry Date -->
+
+                        <div class="document-form-group">
+
+                            <label for="expiryDate">
+                                Expiry Date
+                                <span>*</span>
+                            </label>
+
+                            <div class="document-input-wrapper">
+
+                                <i class="bi bi-calendar-x"></i>
+
+                                <input
+                                        type="date"
+                                        id="expiryDate"
+                                        required>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Status -->
+
+                    <div class="document-form-group">
+
+                        <label for="documentStatus">
+                            Status
+                            <span>*</span>
+                        </label>
+
+                        <div class="document-input-wrapper">
+
+                            <i class="bi bi-shield-check"></i>
+
+                            <select
+                                    id="documentStatus"
+                                    required>
+
+                                <option value="VALID">
+                                    Valid
+                                </option>
+
+                                <option value="PENDING">
+                                    Pending
+                                </option>
+
+                                <option value="EXPIRED">
+                                    Expired
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="document-modal-footer">
+
+                    <button
+                            type="button"
+                            class="document-secondary-btn"
+                            data-bs-dismiss="modal">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button
+                            type="submit"
+                            id="documentSubmitBtn"
+                            class="document-primary-btn">
+
+                        <i class="bi bi-check2-circle"></i>
+
+                        Save Document
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     EXPIRY ALERT MODAL
+========================================================= -->
+
+<div
+        class="modal fade"
+        id="expiryAlertModal"
+        tabindex="-1"
+        aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+        <div class="modal-content expiry-alert-modal">
+
+
+            <div class="expiry-modal-header">
+
+                <div class="expiry-modal-title">
+
+                    <div class="expiry-modal-icon">
+
+                        <i class="bi bi-bell-fill"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            ADMIN NOTIFICATIONS
+                        </span>
+
+                        <h4>
+                            Document Expiry Alerts
+                        </h4>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                        type="button"
+                        class="document-close-btn"
+                        data-bs-dismiss="modal">
+
+                    <i class="bi bi-x-lg"></i>
+
+                </button>
+
+            </div>
+
+
+
+            <div class="expiry-modal-body">
+
+                <div class="expiry-modal-info">
+
+                    <i class="bi bi-info-circle"></i>
+
+                    <span>
+                        These vehicle documents are scheduled to expire
+                        within the next 7 days.
+                    </span>
+
+                </div>
+
+
+                <div id="expiryAlertList"
+                     class="expiry-alert-list">
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/documents.js"></script>
+
+</body>
+
+</html>

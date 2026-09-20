@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DriveGo - Vehicle Inspections</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Main Dashboard CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <!-- Vehicle Inspection CSS -->
+    <link rel="stylesheet" href="../../css/manager/vehicle-inspections.css">
+</head>
+
+<body>
+
+<div class="dashboard-wrapper">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">
+                <i class="bi bi-car-front-fill"></i>
+            </div>
+
+            <div>
+                <h4>DriveGo</h4>
+                <small>Fleet Management</small>
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-menu">
+
+            <p class="menu-title">MAIN</p>
+
+            <a href="fleet-manager-dashboard.html"
+               class="menu-item">
+
+                <i class="bi bi-grid-1x2-fill"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <p class="menu-title">OPERATIONS</p>
+
+            <a href="vehicles.html"
+               class="menu-item">
+
+                <i class="bi bi-car-front-fill"></i>
+
+                <span>Vehicles</span>
+
+            </a>
+
+
+            <a href="customers.html"
+               class="menu-item">
+
+                <i class="bi bi-people-fill"></i>
+
+                <span>Customers</span>
+
+            </a>
+
+
+            <a href="drivers.html"
+               class="menu-item">
+
+                <i class="bi bi-person-badge-fill"></i>
+
+                <span>Drivers</span>
+
+            </a>
+
+
+            <a href="rentals.html"
+               class="menu-item">
+
+                <i class="bi bi-calendar-check-fill"></i>
+
+                <span>Rentals</span>
+
+            </a>
+
+
+            <a href="payments.html"
+               class="menu-item">
+
+                <i class="bi bi-credit-card-fill"></i>
+
+                <span>Payments</span>
+
+            </a>
+
+
+            <a href="invoices.html"
+               class="menu-item">
+
+                <i class="bi bi-receipt-cutoff"></i>
+
+                <span>Invoices</span>
+
+            </a>
+
+
+            <p class="menu-title">FLEET</p>
+
+
+            <a href="maintenance.html"
+               class="menu-item">
+
+                <i class="bi bi-tools"></i>
+
+                <span>Maintenance</span>
+
+            </a>
+
+
+            <a href="vehicle-inspections.html"
+               class="menu-item active">
+
+                <i class="bi bi-clipboard2-check-fill"></i>
+
+                <span>Inspections</span>
+
+            </a>
+
+
+            <a href="documents.html"
+               class="menu-item">
+
+                <i class="bi bi-file-earmark-text-fill"></i>
+
+                <span>Documents</span>
+
+            </a>
+
+
+            <a href="reviews.html"
+               class="menu-item">
+
+                <i class="bi bi-star-fill"></i>
+
+                <span>Reviews</span>
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             SIDEBAR FOOTER
+        ================================================== -->
+
+        <div class="sidebar-footer">
+
+            <div class="user-mini">
+
+                <div class="user-avatar"
+                     id="sidebarAvatar">
+
+                    F
+
+                </div>
+
+
+                <div class="user-info">
+
+                    <strong id="sidebarUsername">
+                        Fleet Manager
+                    </strong>
+
+                    <small id="sidebarRole">
+                        Fleet Manager
+                    </small>
+
+                </div>
+
+
+                <button
+                        class="logout-btn"
+                        onclick="logout()"
+                        title="Logout">
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MOBILE OVERLAY
+    ====================================================== -->
+
+    <div
+            class="sidebar-overlay"
+            id="sidebarOverlay">
+    </div>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                        type="button"
+                        class="mobile-menu-btn"
+                        id="mobileMenuBtn"
+                        onclick="toggleSidebar()">
+
+                    <i class="bi bi-list"></i>
+
+                </button>
+
+
+                <div class="topbar-title">
+
+                    <i class="bi bi-clipboard2-check-fill"></i>
+
+                    <span>Vehicle Inspections</span>
+
+                    <p>
+                        Manage vehicle condition during pickup
+                        and return.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOPBAR USER -->
+
+            <div class="topbar-user">
+
+                <div class="topbar-avatar"
+                     id="topbarAvatar">
+
+                    F
+
+                </div>
+
+
+                <div class="topbar-user-info">
+
+                    <strong id="topbarUsername">
+                        Fleet Manager
+                    </strong>
+
+                    <small id="topbarRole">
+                        Fleet Manager
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+
+        <section class="inspection-page-container">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="inspection-page-header">
+
+                <div>
+
+                    <div class="inspection-section-label">
+
+                        <i class="bi bi-clipboard2-check"></i>
+
+                        FLEET INSPECTION MANAGEMENT
+
+                    </div>
+
+                    <h2 class="inspection-page-title">
+                        Vehicle Inspections
+                    </h2>
+
+                    <p class="inspection-page-description">
+                        Record and monitor vehicle condition
+                        before pickup and after return.
+                    </p>
+
+                </div>
+
+
+                <button
+                        type="button"
+                        class="btn-add-inspection"
+                        id="addInspectionBtn">
+
+                    <i class="bi bi-plus-lg"></i>
+
+                    New Inspection
+
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 SUMMARY
+            ================================================== -->
+
+            <div class="inspection-summary-grid">
+
+
+                <!-- TOTAL -->
+
+                <div class="inspection-stat-card">
+
+                    <div class="inspection-stat-icon total-icon">
+
+                        <i class="bi bi-clipboard2-data-fill"></i>
+
+                    </div>
+
+
+                    <div class="inspection-stat-content">
+
+                        <span>Total Inspections</span>
+
+                        <h3 id="totalInspections">
+                            0
+                        </h3>
+
+                        <small>
+                            All recorded inspections
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PICKUP -->
+
+                <div class="inspection-stat-card">
+
+                    <div class="inspection-stat-icon pickup-icon">
+
+                        <i class="bi bi-box-arrow-in-right"></i>
+
+                    </div>
+
+
+                    <div class="inspection-stat-content">
+
+                        <span>Pickup Inspections</span>
+
+                        <h3 id="pickupInspections">
+                            0
+                        </h3>
+
+                        <small>
+                            Before vehicle handover
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RETURN -->
+
+                <div class="inspection-stat-card">
+
+                    <div class="inspection-stat-icon return-icon">
+
+                        <i class="bi bi-box-arrow-left"></i>
+
+                    </div>
+
+
+                    <div class="inspection-stat-content">
+
+                        <span>Return Inspections</span>
+
+                        <h3 id="returnInspections">
+                            0
+                        </h3>
+
+                        <small>
+                            After vehicle return
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TODAY -->
+
+                <div class="inspection-stat-card">
+
+                    <div class="inspection-stat-icon today-icon">
+
+                        <i class="bi bi-calendar-check-fill"></i>
+
+                    </div>
+
+
+                    <div class="inspection-stat-content">
+
+                        <span>Today's Inspections</span>
+
+                        <h3 id="todayInspections">
+                            0
+                        </h3>
+
+                        <small>
+                            Recorded today
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FILTER TOOLBAR
+            ================================================== -->
+
+            <div class="inspection-toolbar">
+
+
+                <div class="inspection-search">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                            type="text"
+                            id="searchInspection"
+                            placeholder="Search inspection, rental or vehicle...">
+
+                </div>
+
+
+                <div class="inspection-filters">
+
+
+                    <select
+                            id="inspectionTypeFilter"
+                            class="inspection-filter">
+
+                        <option value="">
+                            All Types
+                        </option>
+
+                        <option value="PICKUP">
+                            Pickup
+                        </option>
+
+                        <option value="RETURN">
+                            Return
+                        </option>
+
+                    </select>
+
+
+                    <select
+                            id="vehicleFilter"
+                            class="inspection-filter">
+
+                        <option value="">
+                            All Vehicles
+                        </option>
+
+                    </select>
+
+
+                    <button
+                            type="button"
+                            id="clearFiltersBtn"
+                            class="btn-clear-filter">
+
+                        <i class="bi bi-arrow-clockwise"></i>
+
+                        Reset
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 INSPECTION CONTENT
+            ================================================== -->
+
+            <div class="inspection-content-card">
+
+
+                <div class="inspection-content-header">
+
+                    <div>
+
+                        <h5>
+                            Inspection Records
+                        </h5>
+
+                        <span id="inspectionCountText">
+                            0 records
+                        </span>
+
+                    </div>
+
+
+                    <div class="inspection-header-icon">
+
+                        <i class="bi bi-list-check"></i>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LOADING -->
+
+                <div
+                        id="inspectionLoading"
+                        class="inspection-loading">
+
+                    <div
+                            class="spinner-border"
+                            role="status">
+                    </div>
+
+                    <span>
+                        Loading inspection records...
+                    </span>
+
+                </div>
+
+
+                <!-- EMPTY -->
+
+                <div
+                        id="inspectionEmpty"
+                        class="inspection-empty d-none">
+
+                    <div class="empty-icon">
+
+                        <i class="bi bi-clipboard-x"></i>
+
+                    </div>
+
+
+                    <h5>
+                        No Inspection Records
+                    </h5>
+
+
+                    <p>
+                        No vehicle inspection records
+                        match your search.
+                    </p>
+
+
+                    <button
+                            type="button"
+                            class="btn-add-inspection"
+                            onclick="openInspectionModal()">
+
+                        <i class="bi bi-plus-lg"></i>
+
+                        Add Inspection
+
+                    </button>
+
+                </div>
+
+
+                <!-- GRID -->
+
+                <div
+                        id="inspectionGrid"
+                        class="inspection-grid">
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     NEW / EDIT INSPECTION MODAL
+========================================================= -->
+
+<div
+        class="modal fade"
+        id="inspectionModal"
+        tabindex="-1"
+        aria-hidden="true">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content inspection-modal-content">
+
+
+            <!-- HEADER -->
+
+            <div class="modal-header inspection-modal-header">
+
+                <div class="modal-title-wrapper">
+
+                    <div class="modal-icon">
+
+                        <i class="bi bi-clipboard2-check-fill"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h5
+                                class="modal-title"
+                                id="inspectionModalTitle">
+
+                            New Vehicle Inspection
+
+                        </h5>
+
+                        <p>
+                            Record vehicle condition details
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+            <!-- BODY -->
+
+            <div class="modal-body">
+
+                <form
+                        id="inspectionForm"
+                        novalidate>
+
+
+                    <input
+                            type="hidden"
+                            id="inspectionId">
+
+
+                    <!-- INSPECTION DETAILS -->
+
+                    <div class="form-section-title">
+
+                        <i class="bi bi-clipboard2"></i>
+
+                        Inspection Details
+
+                    </div>
+
+
+                    <div class="row g-3">
+
+
+                        <!-- TYPE -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                    class="form-label"
+                                    for="inspectionType">
+
+                                Inspection Type
+                                <span>*</span>
+
+                            </label>
+
+
+                            <select
+                                    id="inspectionType"
+                                    class="form-select"
+                                    required>
+
+                                <option value="">
+                                    Select inspection type
+                                </option>
+
+                                <option value="PICKUP">
+                                    Pickup Inspection
+                                </option>
+
+                                <option value="RETURN">
+                                    Return Inspection
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- DATE -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                    class="form-label"
+                                    for="inspectionDate">
+
+                                Inspection Date
+
+                            </label>
+
+
+                            <input
+                                    type="datetime-local"
+                                    id="inspectionDate"
+                                    class="form-control">
+
+                        </div>
+
+
+                        <!-- VEHICLE -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                    class="form-label"
+                                    for="vehicleId">
+
+                                Vehicle
+                                <span>*</span>
+
+                            </label>
+
+
+                            <select
+                                    id="vehicleId"
+                                    class="form-select"
+                                    required>
+
+                                <option value="">
+                                    Select vehicle
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- RENTAL -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                    class="form-label"
+                                    for="rentalId">
+
+                                Rental
+                                <span>*</span>
+
+                            </label>
+
+
+                            <select
+                                    id="rentalId"
+                                    class="form-select"
+                                    required>
+
+                                <option value="">
+                                    Select rental
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONDITION -->
+
+                    <div class="form-section-title mt-4">
+
+                        <i class="bi bi-speedometer2"></i>
+
+                        Vehicle Condition
+
+                    </div>
+
+
+                    <div class="row g-3">
+
+
+                        <!-- FUEL -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                    class="form-label"
+                                    for="fuelLevel">
+
+                                Fuel Level
+                                <span>*</span>
+
+                            </label>
+
+
+                            <div class="input-with-icon">
+
+                                <i class="bi bi-fuel-pump-fill"></i>
+
+                                <input
+                                        type="text"
+                                        id="fuelLevel"
+                                        class="form-control"
+                                        placeholder="e.g. 80%"
+                                        required>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- MILEAGE -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                    class="form-label"
+                                    for="mileage">
+
+                                Mileage
+                                <span>*</span>
+
+                            </label>
+
+
+                            <div class="input-with-icon">
+
+                                <i class="bi bi-speedometer"></i>
+
+                                <input
+                                        type="number"
+                                        id="mileage"
+                                        class="form-control"
+                                        min="0"
+                                        step="0.01"
+                                        placeholder="e.g. 24850"
+                                        required>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- INSPECTOR -->
+
+                        <div class="col-md-12">
+
+                            <label
+                                    class="form-label">
+
+                                Inspected By
+
+                            </label>
+
+
+                            <div class="inspector-display">
+
+                                <div class="inspector-icon">
+
+                                    <i class="bi bi-person-check-fill"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong id="currentInspectorName">
+                                        Fleet Manager
+                                    </strong>
+
+                                    <span>
+                                        Logged-in Fleet Manager
+                                    </span>
+
+                                </div>
+
+                                <i class="bi bi-shield-check inspector-verified"></i>
+
+                            </div>
+
+
+                            <input
+                                    type="hidden"
+                                    id="inspectedById">
+
+
+                            <div class="form-help-text">
+
+                                <i class="bi bi-info-circle"></i>
+
+                                The logged-in Fleet Manager is
+                                automatically assigned as the inspector.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- NOTES -->
+
+                        <div class="col-md-12">
+
+                            <label
+                                    class="form-label"
+                                    for="notes">
+
+                                Inspection Notes
+
+                            </label>
+
+
+                            <textarea
+                                    id="notes"
+                                    class="form-control"
+                                    rows="4"
+                                    maxlength="1000"
+                                    placeholder="Enter vehicle condition, damage or other inspection notes..."></textarea>
+
+
+                            <div class="textarea-counter">
+
+                                <span id="notesCounter">
+                                    0
+                                </span>/1000
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <div class="modal-footer inspection-modal-footer">
+
+                <button
+                        type="button"
+                        class="btn-modal-cancel"
+                        data-bs-dismiss="modal">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                        type="button"
+                        id="saveInspectionBtn"
+                        class="btn-modal-save">
+
+                    <i class="bi bi-check2-circle"></i>
+
+                    <span id="saveInspectionText">
+                        Save Inspection
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     VIEW MODAL
+========================================================= -->
+
+<div
+        class="modal fade"
+        id="viewInspectionModal"
+        tabindex="-1"
+        aria-hidden="true">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content inspection-modal-content">
+
+
+            <div class="modal-header inspection-modal-header">
+
+                <div class="modal-title-wrapper">
+
+                    <div class="modal-icon">
+
+                        <i class="bi bi-eye-fill"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h5 class="modal-title">
+                            Inspection Details
+                        </h5>
+
+                        <p>
+                            Vehicle condition inspection record
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+            <div
+                    class="modal-body"
+                    id="inspectionDetails">
+            </div>
+
+
+            <div class="modal-footer inspection-modal-footer">
+
+                <button
+                        type="button"
+                        class="btn-modal-cancel"
+                        data-bs-dismiss="modal">
+
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     SCRIPTS
+========================================================= -->
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/manager/vehicle-inspections.js"></script>
+
+</body>
+
+</html>

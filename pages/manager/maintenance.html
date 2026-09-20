@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DriveGo - Maintenance Management</title>
+
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+            rel="stylesheet">
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <!-- Maintenance CSS -->
+    <link rel="stylesheet" href="../../css/maintenance.css">
+
+</head>
+
+
+<body>
+
+<div class="dashboard-wrapper">
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+<aside class="sidebar">
+
+    <div class="sidebar-brand">
+
+        <div class="brand-icon">
+            <i class="bi bi-car-front-fill"></i>
+        </div>
+
+        <div>
+            <h4>DriveGo</h4>
+            <small>Fleet Management</small>
+        </div>
+
+    </div>
+
+
+    <div class="sidebar-menu">
+
+        <p class="menu-title">MAIN</p>
+
+        <a href="fleet-manager-dashboard.html" class="menu-item">
+            <i class="bi bi-grid-1x2-fill"></i>
+            <span>Dashboard</span>
+        </a>
+
+
+        <p class="menu-title">MANAGEMENT</p>
+
+        <a href="users.html" class="menu-item">
+            <i class="bi bi-person-gear"></i>
+            <span>Users</span>
+        </a>
+
+
+        <a href="vehicles.html" class="menu-item">
+            <i class="bi bi-car-front-fill"></i>
+            <span>Vehicles</span>
+        </a>
+
+        <a href="customers.html" class="menu-item">
+            <i class="bi bi-people-fill"></i>
+            <span>Customers</span>
+        </a>
+
+        <a href="drivers.html" class="menu-item">
+            <i class="bi bi-person-badge-fill"></i>
+            <span>Drivers</span>
+        </a>
+
+        <a href="rentals.html" class="menu-item">
+            <i class="bi bi-calendar-check-fill"></i>
+            <span>Rentals</span>
+        </a>
+
+        <a href="payments.html" class="menu-item">
+            <i class="bi bi-credit-card-fill"></i>
+            <span>Payments</span>
+        </a>
+
+        <a href="invoices.html" class="menu-item">
+            <i class="bi bi-receipt-cutoff"></i>
+            <span>Invoices</span>
+        </a>
+
+        <p class="menu-title">FLEET</p>
+
+        <a href="maintenance.html" class="menu-item active">
+            <i class="bi bi-tools"></i>
+            <span>Maintenance</span>
+        </a>
+
+        <a href="vehicle-inspections.html" class="menu-item">
+            <i class="bi bi-clipboard2-check-fill"></i>
+            <span>Inspections</span>
+        </a>
+
+        <a href="documents.html" class="menu-item">
+            <i class="bi bi-file-earmark-text-fill"></i>
+            <span>Documents</span>
+        </a>
+
+        <a href="reviews.html" class="menu-item">
+            <i class="bi bi-star-fill"></i>
+            <span>Reviews</span>
+        </a>
+
+    </div>
+
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+
+        <div class="user-mini">
+
+            <div class="user-avatar" id="sidebarAvatar">
+                A
+            </div>
+
+            <div class="user-info">
+                <strong id="sidebarUsername">Admin</strong>
+                <small id="sidebarRole">Administrator</small>
+            </div>
+
+            <button
+                    class="logout-btn"
+                    onclick="logout()"
+                    title="Logout">
+
+                <i class="bi bi-box-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</aside>
+
+<div class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="dashboard-main">
+
+
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
+
+    <header class="maintenance-topbar">
+
+        <div class="maintenance-topbar-left">
+
+            <button
+                    class="mobile-menu-btn document-mobile-menu"
+                    type="button"
+                    onclick="toggleSidebar()">
+
+                <i class="bi bi-list"></i>
+
+            </button>
+
+
+            <div class="maintenance-page-title">
+
+                <div class="maintenance-title-icon">
+                    <i class="bi bi-tools"></i>
+                </div>
+
+                <div>
+
+                    <h2>Maintenance Management</h2>
+
+                    <p>
+                        Manage vehicle service and maintenance records
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="maintenance-topbar-user">
+
+            <div class="maintenance-user-icon" id="maintenanceAvatar">
+                A
+            </div>
+
+            <div>
+                <strong id="maintenanceUsername"> </strong>
+                <span id="maintenanceUserRole"></span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         PAGE CONTENT
+    ====================================================== -->
+
+    <section class="maintenance-page-container">
+
+
+        <!-- =================================================
+             PAGE INTRO
+        ================================================== -->
+
+        <div class="maintenance-heading-card">
+
+            <div>
+
+                <span class="maintenance-section-label">
+
+                    <i class="bi bi-wrench-adjustable-circle"></i>
+
+                    VEHICLE MAINTENANCE
+
+                </span>
+
+
+                <h1>
+                    Maintenance Records
+                </h1>
+
+
+                <p>
+                    Schedule, monitor and manage vehicle maintenance activities.
+                </p>
+
+            </div>
+
+
+            <button
+                    type="button"
+                    class="maintenance-primary-btn"
+                    onclick="openMaintenanceModal()">
+
+                <i class="bi bi-plus-lg"></i>
+
+                Add Maintenance
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <div class="maintenance-stat-grid">
+
+
+            <div class="maintenance-stat-card">
+
+                <div class="maintenance-stat-icon total">
+                    <i class="bi bi-tools"></i>
+                </div>
+
+                <div>
+
+                    <span>Total Records</span>
+
+                    <strong id="totalMaintenanceCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="maintenance-stat-card">
+
+                <div class="maintenance-stat-icon scheduled">
+                    <i class="bi bi-calendar-event"></i>
+                </div>
+
+                <div>
+
+                    <span>Scheduled</span>
+
+                    <strong id="scheduledMaintenanceCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="maintenance-stat-card">
+
+                <div class="maintenance-stat-icon progress">
+                    <i class="bi bi-arrow-repeat"></i>
+                </div>
+
+                <div>
+
+                    <span>In Progress</span>
+
+                    <strong id="progressMaintenanceCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="maintenance-stat-card">
+
+                <div class="maintenance-stat-icon completed">
+                    <i class="bi bi-check-circle"></i>
+                </div>
+
+                <div>
+
+                    <span>Completed</span>
+
+                    <strong id="completedMaintenanceCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             TABLE CARD
+        ================================================== -->
+
+        <div class="maintenance-table-card">
+
+
+            <div class="maintenance-table-header">
+
+                <div>
+
+                    <h3>
+
+                        <i class="bi bi-list-check"></i>
+
+                        Maintenance Records
+
+                    </h3>
+
+
+                    <p>
+                        View and manage all vehicle maintenance activities
+                    </p>
+
+                </div>
+
+
+                <div class="maintenance-toolbar">
+
+
+                    <div class="maintenance-search">
+
+                        <i class="bi bi-search"></i>
+
+                        <input
+                                type="text"
+                                id="maintenanceSearch"
+                                placeholder="Search by Record ID or Vehicle ID..."
+                                oninput="searchMaintenance()">
+
+                    </div>
+
+
+                    <select
+                            id="maintenanceStatusFilter"
+                            class="maintenance-filter"
+                            onchange="filterMaintenance()">
+
+                        <option value="ALL">
+                            All Status
+                        </option>
+
+                        <option value="SCHEDULED">
+                            Scheduled
+                        </option>
+
+                        <option value="IN_PROGRESS">
+                            In Progress
+                        </option>
+
+                        <option value="COMPLETED">
+                            Completed
+                        </option>
+
+                        <option value="CANCELLED">
+                            Cancelled
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TABLE
+            ================================================== -->
+
+            <div class="maintenance-table-wrapper">
+
+                <table class="maintenance-table">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>
+                            Record
+                        </th>
+
+                        <th>
+                            Vehicle
+                        </th>
+
+                        <th>
+                            Maintenance
+                        </th>
+
+                        <th>
+                            Service Date
+                        </th>
+
+                        <th>
+                            Next Service
+                        </th>
+
+                        <th>
+                            Mileage
+                        </th>
+
+                        <th>
+                            Cost
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="maintenanceTableBody">
+
+                    </tbody>
+
+                </table>
+
+
+
+                <div
+                        id="maintenanceEmptyState"
+                        class="maintenance-empty-state">
+
+                    <div class="maintenance-empty-icon">
+
+                        <i class="bi bi-tools"></i>
+
+                    </div>
+
+
+                    <h4>
+                        No maintenance records found
+                    </h4>
+
+
+                    <p>
+                        Maintenance records will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     ADD / UPDATE MODAL
+========================================================= -->
+
+<div
+        class="modal fade"
+        id="maintenanceModal"
+        tabindex="-1"
+        aria-hidden="true">
+
+
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+
+        <div class="modal-content maintenance-form-modal">
+
+
+            <!-- MODAL HEADER -->
+
+            <div class="maintenance-modal-header">
+
+                <div>
+
+                    <span>
+                        <i class="bi bi-tools"></i>
+                        MAINTENANCE
+                    </span>
+
+
+                    <h4 id="maintenanceModalTitle">
+                        Add Maintenance Record
+                    </h4>
+
+                </div>
+
+
+                <button
+                        type="button"
+                        class="maintenance-close-btn"
+                        data-bs-dismiss="modal">
+
+                    <i class="bi bi-x-lg"></i>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- FORM -->
+
+            <form id="maintenanceForm">
+
+
+                <div class="maintenance-modal-body">
+
+
+                    <input
+                            type="hidden"
+                            id="maintenanceId">
+
+
+
+                    <!-- ROW 1 -->
+
+                    <div class="maintenance-form-grid">
+
+
+                        <div class="maintenance-form-group">
+
+                            <label for="maintenanceVehicleId">
+
+                                Vehicle ID
+
+                                <span>*</span>
+
+                            </label>
+
+
+                            <div class="maintenance-input-wrapper">
+
+                                <i class="bi bi-car-front"></i>
+
+                                <input
+                                        type="number"
+                                        id="maintenanceVehicleId"
+                                        min="1"
+                                        placeholder="Enter vehicle ID"
+                                        required>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="maintenance-form-group">
+
+                            <label for="maintenanceType">
+
+                                Maintenance Type
+
+                                <span>*</span>
+
+                            </label>
+
+
+                            <div class="maintenance-input-wrapper">
+
+                                <i class="bi bi-wrench-adjustable"></i>
+
+
+                                <select
+                                        id="maintenanceType"
+                                        required>
+
+                                    <option value="">
+                                        Select maintenance type
+                                    </option>
+
+                                    <option value="FULL_SERVICE">
+                                        Full Service
+                                    </option>
+
+                                    <option value="REPAIR">
+                                        Repair
+                                    </option>
+
+                                    <option value="TIRE_REPLACEMENT">
+                                        Tire Replacement
+                                    </option>
+
+                                    <option value="OIL_CHANGE">
+                                        Oil Change
+                                    </option>
+
+                                    <option value="BODY_WORK">
+                                        Body Work
+                                    </option>
+
+                                    <option value="INSPECTION">
+                                        Inspection
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="maintenance-form-group">
+
+                        <label for="maintenanceDescription">
+
+                            Description
+
+                            <span>*</span>
+
+                        </label>
+
+
+                        <div class="maintenance-textarea-wrapper">
+
+                            <i class="bi bi-card-text"></i>
+
+                            <textarea
+                                    id="maintenanceDescription"
+                                    rows="4"
+                                    maxlength="1000"
+                                    placeholder="Describe the maintenance work..."
+                                    required></textarea>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ROW 2 -->
+
+                    <div class="maintenance-form-grid">
+
+
+                        <div class="maintenance-form-group">
+
+                            <label for="maintenanceServiceDate">
+
+                                Service Date
+
+                                <span>*</span>
+
+                            </label>
+
+
+                            <div class="maintenance-input-wrapper">
+
+                                <i class="bi bi-calendar-event"></i>
+
+                                <input
+                                        type="date"
+                                        id="maintenanceServiceDate"
+                                        required>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="maintenance-form-group">
+
+                            <label for="maintenanceNextServiceDate">
+
+                                Next Service Date
+
+                            </label>
+
+
+                            <div class="maintenance-input-wrapper">
+
+                                <i class="bi bi-calendar2-plus"></i>
+
+                                <input
+                                        type="date"
+                                        id="maintenanceNextServiceDate">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ROW 3 -->
+
+                    <div class="maintenance-form-grid">
+
+
+                        <div class="maintenance-form-group">
+
+                            <label for="maintenanceCost">
+
+                                Maintenance Cost
+
+                                <span>*</span>
+
+                            </label>
+
+
+                            <div class="maintenance-input-wrapper">
+
+                                <span class="maintenance-currency">
+                                    Rs.
+                                </span>
+
+                                <input
+                                        type="number"
+                                        id="maintenanceCost"
+                                        min="0"
+                                        step="0.01"
+                                        placeholder="0.00"
+                                        required>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="maintenance-form-group">
+
+                            <label for="maintenanceMileage">
+
+                                Mileage at Service
+
+                                <span>*</span>
+
+                            </label>
+
+
+                            <div class="maintenance-input-wrapper">
+
+                                <i class="bi bi-speedometer2"></i>
+
+                                <input
+                                        type="number"
+                                        id="maintenanceMileage"
+                                        min="0"
+                                        step="0.01"
+                                        placeholder="e.g. 45000"
+                                        required>
+
+                                <small>
+                                    km
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STATUS -->
+
+                    <div class="maintenance-form-group">
+
+                        <label for="maintenanceStatus">
+
+                            Maintenance Status
+
+                            <span>*</span>
+
+                        </label>
+
+
+                        <div class="maintenance-input-wrapper">
+
+                            <i class="bi bi-activity"></i>
+
+
+                            <select
+                                    id="maintenanceStatus"
+                                    required>
+
+                                <option value="">
+                                    Select status
+                                </option>
+
+                                <option value="SCHEDULED">
+                                    Scheduled
+                                </option>
+
+                                <option value="IN_PROGRESS">
+                                    In Progress
+                                </option>
+
+                                <option value="COMPLETED">
+                                    Completed
+                                </option>
+
+                                <option value="CANCELLED">
+                                    Cancelled
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- INFO -->
+
+                    <div class="maintenance-form-note">
+
+                        <i class="bi bi-info-circle"></i>
+
+                        <span>
+                            Use the current vehicle mileage when recording
+                            a completed maintenance service. The next service
+                            date is optional.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FOOTER -->
+
+                <div class="maintenance-modal-footer">
+
+                    <button
+                            type="button"
+                            class="maintenance-secondary-btn"
+                            data-bs-dismiss="modal">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button
+                            type="submit"
+                            id="maintenanceSubmitBtn"
+                            class="maintenance-primary-btn">
+
+                        <i class="bi bi-check2-circle"></i>
+
+                        Save Maintenance
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- Bootstrap -->
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- Config -->
+
+<script src="../../js/config.js"></script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/maintenance.js"></script>
+
+
+</body>
+
+</html>

@@ -4,134 +4,147 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>DriveGo - Fleet Manager Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/fleet-manager-dashboard.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/fleet-manager-dashboard.css">
 
 </head>
 
 <body>
 
+<div class="dashboard-wrapper">
 
-<!-- =========================================================
+<!-- =====================================================
      SIDEBAR
-========================================================= -->
-
+====================================================== -->
 <aside class="sidebar">
 
-    <!-- LOGO -->
+    <!-- Brand -->
+    <div class="sidebar-brand">
 
-    <div class="sidebar-logo">
-
-        <div class="logo-icon">
+        <div class="brand-icon">
             <i class="bi bi-car-front-fill"></i>
         </div>
 
-        <div class="sidebar-brand">
-
-            <h4>DriveGo</h4>
-
-            <span>Fleet Management</span>
-
+        <div>
+            <h4>DriveRent</h4>
+            <small>Fleet Management</small>
         </div>
 
     </div>
 
 
-    <!-- NAVIGATION -->
+    <!-- Navigation -->
+    <div class="sidebar-menu">
 
-    <nav class="sidebar-nav">
+        <p class="menu-title">MAIN</p>
 
         <a href="fleet-manager-dashboard.html" class="menu-item active">
             <i class="bi bi-grid-1x2-fill"></i>
             <span>Dashboard</span>
         </a>
 
+        <p class="menu-title management-title">MANAGEMENT</p>
+
         <a href="vehicles.html" class="menu-item">
-            <i class="bi bi-car-front"></i>
+            <i class="bi bi-car-front-fill"></i>
             <span>Vehicles</span>
         </a>
 
         <a href="customers.html" class="menu-item">
-            <i class="bi bi-people"></i>
+            <i class="bi bi-people-fill"></i>
             <span>Customers</span>
-
         </a>
 
         <a href="drivers.html" class="menu-item">
-             <i class="bi bi-person-badge"></i>
+            <i class="bi bi-person-badge-fill"></i>
             <span>Drivers</span>
-
         </a>
 
         <a href="rentals.html" class="menu-item">
-            <i class="bi bi-calendar-check"></i>
+            <i class="bi bi-calendar-check-fill"></i>
             <span>Rentals</span>
         </a>
 
         <a href="payments.html" class="menu-item">
-            <i class="bi bi-credit-card"></i>
+            <i class="bi bi-credit-card-fill"></i>
             <span>Payments</span>
         </a>
 
         <a href="invoices.html" class="menu-item">
-            <i class="bi bi-receipt"></i>
+            <i class="bi bi-receipt-cutoff"></i>
             <span>Invoices</span>
         </a>
 
+        <p class="menu-title">FLEET</p>
         <a href="maintenance.html" class="menu-item">
             <i class="bi bi-tools"></i>
             <span>Maintenance</span>
         </a>
 
-        <a href="documents.html" class="menu-item">
-            <i class="bi bi-file-earmark-text"></i>
-            <span>Documents</span>
-        </a>
-
-        <a href="vehicle-inspections.html"  class="menu-item">
-            <i class="bi bi-clipboard2-check"></i>
+        <a href="vehicle-inspections.html" class="menu-item">
+            <i class="bi bi-clipboard2-check-fill"></i>
             <span>Inspections</span>
         </a>
 
-        <a  href="rental-rates.html"  class="menu-item">
-            <i class="bi bi-tags"></i>
-            <span>Rental Rates</span>
+        <a href="documents.html" class="menu-item">
+            <i class="bi bi-file-earmark-text-fill"></i>
+            <span>Documents</span>
         </a>
 
-
-        <a  href="reviews.html"  class="menu-item">
-            <i class="bi bi-star"></i>
+        <a href="reviews.html" class="menu-item">
+            <i class="bi bi-star-fill"></i>
             <span>Reviews</span>
         </a>
 
-    </nav>
+    </div>
 
 
-    <!-- LOGOUT -->
+   <!-- Sidebar Footer -->
 
-    <div class="sidebar-footer">
+<div class="sidebar-bottom">
 
-        <button
-                type="button"
-                class="logout-btn"
-                onclick="logout()">
+    <div class="sidebar-user">
 
-            <i class="bi bi-box-arrow-left"></i>
+        <div class="user-avatar" id="sidebarAvatar">
 
-            <span>Logout</span>
+            <span id="sidebarAvatarText">F</span>
 
-        </button>
+        </div>
+
+        <div class="user-info">
+
+            <strong id="sidebarUsername">
+                Fleet Manager
+            </strong>
+
+            <small id="sidebarRole">
+                Fleet Manager
+            </small>
+
+        </div>
 
     </div>
 
+
+    <button
+            class="logout-btn"
+            id="logoutButton"
+            onclick="logout()"
+            title="Logout">
+
+        <i class="bi bi-box-arrow-right"></i>
+
+    </button>
+
+</div>
+
 </aside>
+
 
 <div class="sidebar-overlay"></div>
 
@@ -703,10 +716,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="../js/config.js"></script>
-<script src="../js/auth.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/auth.js"></script>
 <script>checkRoleAccess(["FLEET_MANAGER"]);</script>
-<script src="../js/fleet-manager-dashboard.js"></script>
+<script src="../../js/fleet-manager-dashboard.js"></script>
 
 
 </body>

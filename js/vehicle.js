@@ -1677,14 +1677,3 @@ function showToast(message, type = "success") {
     }).show();
 
 }
-
-function logout() {
-
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("username");
-    localStorage.removeItem("role");
-
-    window.location.href = "../index.html";
-
-}
