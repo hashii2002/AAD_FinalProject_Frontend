@@ -177,7 +177,7 @@ if (loginForm) {
 
 
                 case "CUSTOMER":
-                    window.location.href ="pages/customer-dashboard.html";
+                    window.location.href ="pages/customer/customer-dashboard.html";
                     break;
 
 
@@ -525,7 +525,7 @@ function redirectByRole(role) {
             break;
 
         case "CUSTOMER":
-            window.location.href ="customer-dashboard.html";
+            window.location.href ="customer/customer-dashboard.html";
             break;
 
         case "DRIVER":
