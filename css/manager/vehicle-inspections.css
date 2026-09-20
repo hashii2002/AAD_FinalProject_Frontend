@@ -27,7 +27,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 11px;
+    font-size: 18px;
     font-weight: 800;
     letter-spacing: 1px;
     color: #7c3aed;
@@ -46,6 +46,60 @@
     font-size: 13px;
     color: #6b7280;
 }
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
+
+.page-title-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.page-title-content h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #111827;
+}
+
+.page-title-content p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6b7280;
+}
+
+
+/* =========================================================
+   RESPONSIVE PAGE TITLE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .page-title-content h1 {
+        font-size: 24px;
+    }
+
+    .page-title-content p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .page-title-content h1 {
+        font-size: 21px;
+    }
+
+    .page-title-content p {
+        font-size: 12px;
+    }
+}
+
 
 
 /* =========================================================
@@ -168,6 +222,421 @@
     font-size: 10px;
 }
 
+/* =========================================================
+   VEHICLE INSPECTION PAGE
+========================================================= */
+
+.vehicle-inspection-page {
+    width: 100%;
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+    width: 100%;
+    min-height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 0;
+
+    background: #ffffff;
+
+    position: relative;
+    z-index: 10;
+}
+
+
+/* =========================================================
+   TOPBAR LEFT
+========================================================= */
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
+
+.topbar-title {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   PAGE TITLE ICON
+========================================================= */
+
+.page-title-icon {
+    width: 52px;
+    height: 52px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: linear-gradient(
+        135deg,
+        #7d2ae8,
+        #904ce9
+    );
+
+    box-shadow:
+        0 8px 18px rgba(125, 42, 232, 0.25),
+        0 0 14px rgba(144, 76, 233, 0.28);
+
+    position: relative;
+}
+
+
+/* White shine around icon */
+
+.page-title-icon::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 3px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.30);
+
+    box-shadow:
+        inset 0 0 8px rgba(255, 255, 255, 0.18);
+}
+
+
+.page-title-icon i {
+    position: relative;
+
+    color: #ffffff;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    filter:
+        drop-shadow(0 0 4px rgba(255, 255, 255, 0.65))
+        drop-shadow(0 0 8px rgba(255, 255, 255, 0.25));
+}
+
+
+/* =========================================================
+   PAGE TITLE CONTENT
+========================================================= */
+
+.page-title-content {
+    min-width: 0;
+}
+
+
+.page-title-content h1 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 28px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.3px;
+}
+
+
+.page-title-content p {
+    margin: 5px 0 0;
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   TOPBAR USER
+========================================================= */
+
+.topbar-user {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+
+    padding-left: 20px;
+}
+
+
+/* =========================================================
+   TOPBAR AVATAR
+========================================================= */
+
+.topbar-avatar {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #7d2ae8,
+        #904ce9
+    );
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+
+    box-shadow:
+        0 5px 14px rgba(125, 42, 232, 0.25),
+        0 0 10px rgba(144, 76, 233, 0.18);
+}
+
+
+/* =========================================================
+   TOPBAR USER INFO
+========================================================= */
+
+.topbar-user-info {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-width: 0;
+}
+
+
+.topbar-user-info strong {
+    color: #111827;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    max-width: 160px;
+}
+
+
+.topbar-user-info small {
+    margin-top: 2px;
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+    font-weight: 400;
+
+    line-height: 1.3;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   SIDEBAR USER AVATAR
+========================================================= */
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #7d2ae8,
+        #904ce9
+    );
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-align: center;
+
+    text-transform: uppercase;
+
+    box-shadow:
+        0 5px 12px rgba(125, 42, 232, 0.25),
+        0 0 9px rgba(144, 76, 233, 0.18);
+}
+
+
+/* =========================================================
+   SIDEBAR USER INFO
+========================================================= */
+
+.user-info {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+.user-info strong {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.user-info small {
+    margin-top: 2px;
+
+    color: rgba(255, 255, 255, 0.60);
+
+    font-size: 11px;
+
+    font-weight: 400;
+
+    line-height: 1.3;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   SIDEBAR FOOTER USER MINI
+========================================================= */
+
+.user-mini {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* =========================================================
+   LOGOUT BUTTON
+========================================================= */
+
+.logout-btn {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.10);
+
+    color: #ffffff;
+}
+
+/* ================================
+   TOPBAR TITLE ICON
+================================ */
+
+.topbar-title > i {
+    color: #ffffff;
+    font-size: 30px;
+
+    /* Purple glow / shine */
+    filter:
+        drop-shadow(0 0 4px rgba(144, 76, 233, 0.9))
+        drop-shadow(0 0 9px rgba(125, 42, 226, 0.8))
+        drop-shadow(0 0 16px rgba(125, 42, 226, 0.55));
+
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.9),
+        0 0 10px rgba(144, 76, 233, 0.9),
+        0 0 18px rgba(125, 42, 226, 0.7);
+}
 
 /* =========================================================
    TOOLBAR
@@ -917,6 +1386,115 @@ textarea.form-control {
     line-height: 1.5;
 }
 
+/* =========================================================
+   SIDEBAR USER FOOTER
+========================================================= */
+
+.sidebar-footer {
+    padding: 14px 16px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    flex-shrink: 0;
+}
+
+.user-mini {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #7d2ae8;
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    flex: 1;
+}
+
+.user-info strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-info small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #8d98ad;
+
+    font-size: 10px;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.logout-btn {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #d8deea;
+
+    font-size: 17px;
+
+    cursor: pointer;     
+
+    transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
 
 /* =========================================================
    RESPONSIVE - 1200px
@@ -1129,3 +1707,4 @@ textarea.form-control {
     }
 
 }
+
