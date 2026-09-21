@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DriveGo - My Invoices</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <link rel="stylesheet" href="../../css/customer/invoices.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     CUSTOMER SIDEBAR
+========================================================= -->
+
+<aside class="sidebar customer-sidebar" id="customerSidebar">
+
+    <div class="sidebar-brand">
+
+        <div class="brand-icon">
+            <i class="bi bi-car-front-fill"></i>
+        </div>
+
+        <div class="brand-text">
+
+            <h5>
+                Drive<span>Go</span>
+            </h5>
+
+            <small>
+                Customer Portal
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+        <a href="customer-dashboard.html"
+           class="sidebar-link">
+
+            <i class="bi bi-grid-1x2-fill"></i>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+        <a href="vehicles.html"
+           class="sidebar-link">
+
+            <i class="bi bi-car-front"></i>
+
+            <span>
+                Browse Vehicles
+            </span>
+
+        </a>
+
+
+        <a href="my-rentals.html"
+           class="sidebar-link">
+
+            <i class="bi bi-calendar2-check"></i>
+
+            <span>
+                My Rentals
+            </span>
+
+        </a>
+
+
+        <a href="payments.html"
+           class="sidebar-link">
+
+            <i class="bi bi-credit-card"></i>
+
+            <span>
+                Payments
+            </span>
+
+        </a>
+
+
+        <a href="invoices.html"
+           class="sidebar-link active">
+
+            <i class="bi bi-receipt"></i>
+
+            <span>
+                Invoices
+            </span>
+
+        </a>
+
+
+        <a href="reviews.html"
+           class="sidebar-link">
+
+            <i class="bi bi-star"></i>
+
+            <span>
+                My Reviews
+            </span>
+
+        </a>
+
+        <a href="../ai-chat.html"
+           class="sidebar-link">
+
+            <i class="bi bi-stars"></i>
+
+            <span>
+                AI Assistant
+            </span>
+
+        </a>
+
+        <a href="profile.html"
+            class="sidebar-link">
+            <i class="bi bi-person-circle"></i>
+            <span>My Profile</span>
+        </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         SIDEBAR FOOTER
+    ====================================================== -->
+
+    <div class="sidebar-footer">
+
+        <div class="customer-sidebar-user">
+
+            <div class="customer-user-avatar"
+                 id="sidebarAvatar">
+
+                N
+
+            </div>
+
+
+            <div class="customer-user-info">
+
+                <strong id="sidebarUsername">
+                    Customer
+                </strong>
+
+                <small>
+                    Customer
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="logout-btn"
+            onclick="logout()">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            <span>
+                Logout
+            </span>
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     MOBILE OVERLAY
+========================================================= -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+    onclick="closeSidebar()">
+</div>
+
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main class="dashboard-main">
+
+
+    <!-- =====================================================
+         TOP HEADER
+    ====================================================== -->
+
+    <header class="customer-invoice-topbar">
+
+        <div class="invoice-topbar-left">
+
+            <button
+                type="button"
+                class="mobile-menu-btn"
+                onclick="toggleSidebar()">
+
+                <i class="bi bi-list"></i>
+
+            </button>
+
+
+            <div>
+
+                <span class="invoice-topbar-label">
+                    CUSTOMER PORTAL
+                </span>
+
+                <h1>
+                    My Invoices
+                </h1>
+
+            </div>
+
+        </div>
+
+
+        <div class="invoice-profile">
+
+            <div class="invoice-profile-avatar"
+                 id="profileAvatar">
+
+                N
+
+            </div>
+
+
+            <div class="invoice-profile-info">
+
+                <strong id="profileUsername">
+                    Customer
+                </strong>
+
+                <small>
+                    Customer
+                </small>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         PAGE CONTENT
+    ====================================================== -->
+
+    <section class="customer-invoice-page">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <div class="invoice-hero">
+
+            <div class="invoice-hero-content">
+
+                <span class="invoice-hero-label">
+                    <i class="bi bi-file-earmark-text-fill"></i>
+                    PAYMENT DOCUMENTS
+                </span>
+
+
+                <h2>
+                    Your Rental Invoices
+                </h2>
+
+
+                <p>
+                    View your rental invoices, payment details
+                    and outstanding balances in one place.
+                </p>
+
+            </div>
+
+
+            <div class="invoice-hero-icon">
+
+                <i class="bi bi-receipt-cutoff"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <div class="invoice-stat-grid">
+
+
+            <!-- TOTAL -->
+
+            <div class="invoice-stat-card">
+
+                <div class="invoice-stat-icon total">
+
+                    <i class="bi bi-receipt"></i>
+
+                </div>
+
+
+                <div class="invoice-stat-content">
+
+                    <span>
+                        Total Invoices
+                    </span>
+
+                    <strong id="totalInvoiceCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ISSUED -->
+
+            <div class="invoice-stat-card">
+
+                <div class="invoice-stat-icon issued">
+
+                    <i class="bi bi-file-earmark-check"></i>
+
+                </div>
+
+
+                <div class="invoice-stat-content">
+
+                    <span>
+                        Issued
+                    </span>
+
+                    <strong id="issuedInvoiceCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PAID -->
+
+            <div class="invoice-stat-card">
+
+                <div class="invoice-stat-icon paid">
+
+                    <i class="bi bi-check-circle"></i>
+
+                </div>
+
+
+                <div class="invoice-stat-content">
+
+                    <span>
+                        Paid
+                    </span>
+
+                    <strong id="paidInvoiceCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- OUTSTANDING -->
+
+            <div class="invoice-stat-card">
+
+                <div class="invoice-stat-icon outstanding">
+
+                    <i class="bi bi-clock-history"></i>
+
+                </div>
+
+
+                <div class="invoice-stat-content">
+
+                    <span>
+                        Outstanding
+                    </span>
+
+                    <strong id="outstandingAmount">
+                        Rs. 0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             INVOICE RECORDS
+        ================================================== -->
+
+        <div class="invoice-record-card">
+
+
+            <!-- HEADER -->
+
+            <div class="invoice-record-header">
+
+                <div>
+
+                    <span class="invoice-section-label">
+                        <i class="bi bi-list-ul"></i>
+                        INVOICE HISTORY
+                    </span>
+
+                    <h3>
+                        My Invoice Records
+                    </h3>
+
+                    <p>
+                        View and access your rental invoices.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SEARCH / FILTER
+            ================================================== -->
+
+            <div class="invoice-filter-area">
+
+
+                <div class="invoice-search-box">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        type="text"
+                        id="invoiceSearch"
+                        placeholder="Search invoice or rental..."
+                        oninput="applyFilters()">
+
+                </div>
+
+
+                <select
+                    id="invoiceStatusFilter"
+                    class="invoice-status-filter"
+                    onchange="applyFilters()">
+
+                    <option value="ALL">
+                        All Status
+                    </option>
+
+                    <option value="ISSUED">
+                        Issued
+                    </option>
+
+                    <option value="PARTIALLY_PAID">
+                        Partially Paid
+                    </option>
+
+                    <option value="PAID">
+                        Paid
+                    </option>
+
+                    <option value="CANCELLED">
+                        Cancelled
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="button"
+                    class="invoice-clear-btn"
+                    onclick="clearInvoiceFilters()">
+
+                    <i class="bi bi-arrow-counterclockwise"></i>
+
+                    Clear
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DESKTOP TABLE
+            ================================================== -->
+
+            <div class="invoice-table-wrapper">
+
+                <table class="invoice-table">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>
+                            Invoice
+                        </th>
+
+                        <th>
+                            Rental
+                        </th>
+
+                        <th>
+                            Issue Date
+                        </th>
+
+                        <th>
+                            Total
+                        </th>
+
+                        <th>
+                            Balance
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="invoiceTableBody">
+                    </tbody>
+
+                </table>
+
+
+                <!-- =================================================
+                     EMPTY STATE
+                ================================================== -->
+
+                <div
+                    id="invoiceEmptyState"
+                    class="invoice-empty-state">
+
+                    <div class="invoice-empty-icon">
+
+                        <i class="bi bi-receipt"></i>
+
+                    </div>
+
+
+                    <h4>
+                        No invoices found
+                    </h4>
+
+
+                    <p>
+                        Your rental invoices will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     INVOICE PREVIEW MODAL
+========================================================= -->
+
+<div
+    class="modal fade"
+    id="invoicePreviewModal"
+    tabindex="-1"
+    aria-hidden="true">
+
+
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+
+
+        <div class="modal-content customer-invoice-modal">
+
+
+            <!-- =================================================
+                 MODAL HEADER
+            ================================================== -->
+
+            <div class="customer-invoice-modal-header">
+
+                <div>
+
+                    <span>
+                        <i class="bi bi-eye"></i>
+                        INVOICE DETAILS
+                    </span>
+
+                    <h4 id="previewInvoiceTitle">
+                        #INV-0001
+                    </h4>
+
+                </div>
+
+
+                <div class="invoice-preview-actions">
+
+
+                    <button
+                        type="button"
+                        class="invoice-print-btn"
+                        onclick="printInvoice()">
+
+                        <i class="bi bi-printer"></i>
+
+                        Print
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="invoice-close-btn"
+                        data-bs-dismiss="modal">
+
+                        <i class="bi bi-x-lg"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 INVOICE PAPER
+            ================================================== -->
+
+            <div class="invoice-preview-scroll">
+
+                <div
+                    id="invoicePrintArea"
+                    class="customer-invoice-paper">
+
+
+                    <!-- HEADER -->
+
+                    <div class="customer-invoice-paper-header">
+
+
+                        <div class="customer-invoice-company">
+
+                            <div class="customer-invoice-company-logo">
+
+                                <i class="bi bi-car-front-fill"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <h1>
+                                    DriveGo
+                                </h1>
+
+                                <span>
+                                    Vehicle Rental & Fleet Management
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="customer-invoice-number">
+
+                            <span>
+                                INVOICE
+                            </span>
+
+                            <strong id="printInvoiceNumber">
+                                #INV-0001
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="customer-invoice-divider"></div>
+
+
+
+                    <!-- CUSTOMER / RENTAL INFO -->
+
+                    <div class="customer-invoice-info-grid">
+
+
+                        <div class="customer-invoice-info-block">
+
+                            <span>
+                                BILLED TO
+                            </span>
+
+                            <strong id="printCustomerName">
+                                Customer
+                            </strong>
+
+                            <small id="printCustomerId">
+                                Customer ID: -
+                            </small>
+
+                        </div>
+
+
+                        <div class="customer-invoice-info-block">
+
+                            <span>
+                                ISSUE DATE
+                            </span>
+
+                            <strong id="printIssueDate">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="customer-invoice-info-block">
+
+                            <span>
+                                RENTAL ID
+                            </span>
+
+                            <strong id="printRentalId">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="customer-invoice-info-block">
+
+                            <span>
+                                PAYMENT ID
+                            </span>
+
+                            <strong id="printPaymentId">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STATUS -->
+
+                    <div class="customer-invoice-status-row">
+
+                        <span>
+                            PAYMENT STATUS
+                        </span>
+
+                        <strong id="printInvoiceStatus">
+                            -
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- ITEMS -->
+
+                    <div class="customer-invoice-items">
+
+
+                        <div class="customer-invoice-item-header">
+
+                            <span>
+                                DESCRIPTION
+                            </span>
+
+                            <span>
+                                AMOUNT
+                            </span>
+
+                        </div>
+
+
+                        <div class="customer-invoice-item-row">
+
+                            <div>
+
+                                <strong>
+                                    Vehicle Rental Service
+                                </strong>
+
+                                <small>
+                                    Rental invoice
+                                </small>
+
+                            </div>
+
+
+                            <strong id="printSubTotal">
+                                Rs. 0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="customer-invoice-item-row">
+
+                            <div>
+
+                                <strong>
+                                    Discount
+                                </strong>
+
+                            </div>
+
+
+                            <strong id="printDiscount">
+                                - Rs. 0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TOTALS -->
+
+                    <div class="customer-invoice-total-section">
+
+
+                        <div class="customer-invoice-total-line">
+
+                            <span>
+                                Sub Total
+                            </span>
+
+                            <strong id="printSubTotalBottom">
+                                Rs. 0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="customer-invoice-total-line">
+
+                            <span>
+                                Discount
+                            </span>
+
+                            <strong id="printDiscountBottom">
+                                - Rs. 0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="customer-invoice-total-line grand-total">
+
+                            <span>
+                                TOTAL AMOUNT
+                            </span>
+
+                            <strong id="printTotalAmount">
+                                Rs. 0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="customer-invoice-total-line">
+
+                            <span>
+                                Paid Amount
+                            </span>
+
+                            <strong id="printPaidAmount">
+                                Rs. 0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="customer-invoice-total-line balance-line">
+
+                            <span>
+                                Balance Due
+                            </span>
+
+                            <strong id="printBalance">
+                                Rs. 0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FOOTER -->
+
+                    <div class="customer-invoice-paper-footer">
+
+                        <div>
+
+                            <strong>
+                                Thank you for choosing DriveGo!
+                            </strong>
+
+                            <p>
+                                We appreciate your business.
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Vehicle Rental & Fleet Management
+                            </span>
+
+                            <span>
+                                DriveGo
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- Config -->
+
+<script src="../../js/config.js"></script>
+
+
+<!-- Auth -->
+
+<script src="../../js/auth.js"></script>
+
+
+<!-- Customer Invoice JS -->
+
+<script src="../../js/customer/invoices.js"></script>
+
+
+</body>
+
+</html>
