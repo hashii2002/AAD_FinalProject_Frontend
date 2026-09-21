@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>DriveGo - Browse Vehicles</title>
+
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Customer Vehicles CSS -->
+    <link
+            rel="stylesheet"
+            href="../../css/customer/customer-vehicles.css">
+
+</head>
+
+
+<body>
+
+
+<div class="customer-layout">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside
+            class="customer-sidebar"
+            id="customerSidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">
+                <i class="bi bi-car-front-fill"></i>
+            </div>
+
+            <div>
+
+                <h4>DriveGo</h4>
+
+                <span>
+                    Customer Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-divider"></div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+
+            <a
+                    href="customer-dashboard.html"
+                    class="sidebar-link">
+
+                <i class="bi bi-grid-1x2-fill"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                    href="vehicles.html"
+                    class="sidebar-link active">
+
+                <i class="bi bi-car-front"></i>
+
+                <span>
+                    Browse Vehicles
+                </span>
+
+            </a>
+
+
+            <a
+                    href="my-rentals.html"
+                    class="sidebar-link">
+
+                <i class="bi bi-calendar-check"></i>
+
+                <span>
+                    My Rentals
+                </span>
+
+            </a>
+
+
+            <a
+                    href="payments.html"
+                    class="sidebar-link">
+
+                <i class="bi bi-credit-card"></i>
+
+                <span>
+                    Payments
+                </span>
+
+            </a>
+
+
+            <a
+                    href="invoices.html"
+                    class="sidebar-link">
+
+                <i class="bi bi-receipt"></i>
+
+                <span>
+                    Invoices
+                </span>
+
+            </a>
+
+
+            <a
+                    href="reviews.html"
+                    class="sidebar-link">
+
+                <i class="bi bi-star"></i>
+
+                <span>
+                    My Reviews
+                </span>
+
+            </a>
+
+
+            <a
+                    href="ai-chat.html"
+                    class="sidebar-link">
+
+                <i class="bi bi-stars"></i>
+
+                <span>
+                    AI Assistant
+                </span>
+
+            </a>
+
+
+            <a
+                    href="profile.html"
+                    class="sidebar-link">
+
+                <i class="bi bi-person-circle"></i>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+
+            <div class="customer-mini-profile">
+
+                <div
+                        class="mini-avatar"
+                        id="sidebarAvatar">
+
+                    C
+
+                </div>
+
+
+                <div class="mini-profile-info">
+
+                    <strong id="sidebarUsername">
+                        Customer
+                    </strong>
+
+                    <span>
+                        Customer
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                    type="button"
+                    class="logout-btn"
+                    id="logoutButton">
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MOBILE OVERLAY
+    ====================================================== -->
+
+    <div
+            class="sidebar-overlay"
+            id="sidebarOverlay">
+    </div>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="customer-main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="customer-topbar">
+
+
+            <div class="topbar-left">
+
+
+                <button
+                        class="mobile-menu-btn"
+                        id="mobileMenuButton">
+
+                    <i class="bi bi-list"></i>
+
+                </button>
+
+
+                <div>
+
+                    <span class="page-label">
+                        CUSTOMER PORTAL
+                    </span>
+
+                    <h1>
+                        Browse Vehicles
+                    </h1>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="topbar-right">
+
+
+                <button
+                        type="button"
+                        class="notification-btn">
+
+                    <i class="bi bi-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="topbar-profile">
+
+
+                    <div
+                            class="topbar-avatar"
+                            id="topbarAvatar">
+
+                        C
+
+                    </div>
+
+
+                    <div class="topbar-user">
+
+                        <strong id="topbarUsername">
+                            Customer
+                        </strong>
+
+                        <span>
+                            Customer
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+
+        <section class="vehicles-content">
+
+
+            <!-- =================================================
+                 HERO
+            ================================================== -->
+
+            <section class="vehicles-hero">
+
+
+                <div class="hero-content">
+
+
+                    <span class="hero-label">
+                        FIND YOUR PERFECT RIDE
+                    </span>
+
+
+                    <h2>
+                        Explore Our Vehicles
+                    </h2>
+
+
+                    <p>
+                        Browse our available vehicles and find
+                        the right one for your next journey.
+                    </p>
+
+
+                </div>
+
+
+                <div class="hero-icon">
+
+                    <i class="bi bi-car-front-fill"></i>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SUMMARY
+            ================================================== -->
+
+            <div class="vehicle-summary">
+
+
+                <div class="summary-item">
+
+                    <div class="summary-icon purple">
+
+                        <i class="bi bi-car-front-fill"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Available Vehicles
+                        </span>
+
+                        <strong id="availableCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <div class="summary-icon blue">
+
+                        <i class="bi bi-grid"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Categories
+                        </span>
+
+                        <strong id="categoryCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <div class="summary-icon green">
+
+                        <i class="bi bi-award"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Vehicle Models
+                        </span>
+
+                        <strong id="modelCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTER CARD
+            ================================================== -->
+
+            <section class="filter-card">
+
+
+                <div class="filter-header">
+
+
+                    <div>
+
+                        <span class="filter-kicker">
+                            VEHICLE SEARCH
+                        </span>
+
+                        <h3>
+                            Find a Vehicle
+                        </h3>
+
+                    </div>
+
+
+                    <button
+                            type="button"
+                            class="reset-btn"
+                            id="resetFilters">
+
+                        <i class="bi bi-arrow-counterclockwise"></i>
+
+                        Reset
+
+                    </button>
+
+
+                </div>
+
+
+
+                <div class="filter-grid">
+
+
+                    <!-- SEARCH -->
+
+                    <div class="filter-field search-field">
+
+                        <label>
+                            Search
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-search"></i>
+
+                            <input
+                                    type="text"
+                                    id="vehicleSearch"
+                                    placeholder="Search vehicle, model or number...">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- CATEGORY -->
+
+                    <div class="filter-field">
+
+                        <label>
+                            Category
+                        </label>
+
+
+                        <div class="select-wrapper">
+
+                            <i class="bi bi-grid"></i>
+
+                            <select id="categoryFilter">
+
+                                <option value="">
+                                    All Categories
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- BRAND -->
+
+                    <div class="filter-field">
+
+                        <label>
+                            Brand
+                        </label>
+
+
+                        <div class="select-wrapper">
+
+                            <i class="bi bi-award"></i>
+
+                            <select id="brandFilter">
+
+                                <option value="">
+                                    All Brands
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STATUS -->
+
+                    <div class="filter-field">
+
+                        <label>
+                            Status
+                        </label>
+
+
+                        <div class="select-wrapper">
+
+                            <i class="bi bi-circle-fill"></i>
+
+                            <select id="statusFilter">
+
+                                <option value="">
+                                    All Vehicles
+                                </option>
+
+                                <option value="AVAILABLE">
+                                    Available
+                                </option>
+
+                                <option value="RENTED">
+                                    Rented
+                                </option>
+
+                                <option value="MAINTENANCE">
+                                    Maintenance
+                                </option>
+
+                                <option value="UNAVAILABLE">
+                                    Unavailable
+                                </option>
+
+                                <option value="RESERVED">
+                                    Reserved
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RESULT HEADER
+            ================================================== -->
+
+            <div class="results-header">
+
+
+                <div>
+
+                    <span class="results-label">
+                        VEHICLES
+                    </span>
+
+                    <h3>
+                        Available Fleet
+                    </h3>
+
+                </div>
+
+
+                <span
+                        class="result-count"
+                        id="resultCount">
+
+                    0 vehicles
+
+                </span>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 LOADING
+            ================================================== -->
+
+            <div
+                    id="vehicleLoading"
+                    class="loading-container">
+
+                <div
+                        class="spinner-border"
+                        role="status">
+
+                </div>
+
+                <p>
+                    Loading vehicles...
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 VEHICLE GRID
+            ================================================== -->
+
+            <div
+                    class="vehicle-grid"
+                    id="vehicleGrid">
+
+            </div>
+
+
+
+            <!-- =================================================
+                 EMPTY STATE
+            ================================================== -->
+
+            <div
+                    class="empty-state"
+                    id="emptyState"
+                    style="display: none;">
+
+                <div class="empty-icon">
+
+                    <i class="bi bi-car-front"></i>
+
+                </div>
+
+                <h3>
+                    No vehicles found
+                </h3>
+
+                <p>
+                    Try changing your search or filter options.
+                </p>
+
+                <button
+                        type="button"
+                        class="empty-reset-btn"
+                        id="emptyResetButton">
+
+                    Clear Filters
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     VEHICLE DETAILS MODAL
+========================================================= -->
+
+<div
+        class="modal fade"
+        id="vehicleDetailsModal"
+        tabindex="-1"
+        aria-hidden="true">
+
+
+    <div
+            class="modal-dialog modal-dialog-centered modal-lg">
+
+
+        <div class="modal-content vehicle-modal">
+
+
+            <!-- MODAL HEADER -->
+
+            <div class="modal-header">
+
+
+                <div>
+
+                    <span class="modal-kicker">
+                        VEHICLE DETAILS
+                    </span>
+
+                    <h5
+                            class="modal-title"
+                            id="modalVehicleTitle">
+
+                        Vehicle Details
+
+                    </h5>
+
+                </div>
+
+
+                <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close">
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- MODAL BODY -->
+
+            <div class="modal-body">
+
+
+                <div class="modal-vehicle-header">
+
+
+                    <div class="modal-car-icon">
+
+                        <i class="bi bi-car-front-fill"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span
+                                class="modal-brand"
+                                id="modalVehicleBrand">
+
+                            Brand
+
+                        </span>
+
+                        <h3
+                                id="modalVehicleName">
+
+                            Vehicle
+
+                        </h3>
+
+                        <span
+                                id="modalVehicleNumber"
+                                class="modal-number">
+
+                            Vehicle Number
+
+                        </span>
+
+                    </div>
+
+
+                    <span
+                            id="modalVehicleStatus"
+                            class="vehicle-status">
+
+                        Available
+
+                    </span>
+
+
+                </div>
+
+
+
+                <div class="modal-details-grid">
+
+
+                    <div class="modal-detail">
+
+                        <span>
+                            Category
+                        </span>
+
+                        <strong id="modalCategory">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="modal-detail">
+
+                        <span>
+                            Model
+                        </span>
+
+                        <strong id="modalModel">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="modal-detail">
+
+                        <span>
+                            Year
+                        </span>
+
+                        <strong id="modalYear">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="modal-detail">
+
+                        <span>
+                            Color
+                        </span>
+
+                        <strong id="modalColor">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="modal-info-box">
+
+
+                    <i class="bi bi-info-circle-fill"></i>
+
+
+                    <div>
+
+                        <strong>
+                            Rental Information
+                        </strong>
+
+                        <p>
+                            Vehicle rentals are arranged through
+                            the DriveGo fleet management team.
+                            Contact the company after selecting
+                            your preferred vehicle.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- MODAL FOOTER -->
+
+            <div class="modal-footer">
+
+
+                <button
+                        type="button"
+                        class="modal-close-btn"
+                        data-bs-dismiss="modal">
+
+                    Close
+
+                </button>
+
+
+                <a
+                        href="ai-chat.html"
+                        class="modal-ai-btn">
+
+                    <i class="bi bi-stars"></i>
+
+                    Ask AI Assistant
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/customer/customer-vehicles.js"></script>
+
+
+</body>
+
+</html>
