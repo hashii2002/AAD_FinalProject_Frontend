@@ -44,6 +44,8 @@ if (loginForm) {
 
         const password = passwordInput.value;
 
+        const rememberMe = document.getElementById("rememberMe");
+
         if (errorMessage) {
 
             errorMessage.classList.add("d-none");
@@ -55,6 +57,15 @@ if (loginForm) {
         if (!username || !password) {
 
             showError(  "Please enter your username and password." );
+
+            return;
+        }
+
+        if (!rememberMe || !rememberMe.checked) {
+
+            showError(
+                "Please select 'Remember me' to continue."
+            );
 
             return;
         }
