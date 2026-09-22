@@ -78,9 +78,14 @@
             <span>My Reviews</span>
         </a>
 
-        <a href="../ai-chat.html" class="sidebar-link">
+        <a href="ai-chat.html" class="sidebar-link">
             <i class="bi bi-stars"></i>
             <span>AI Assistant</span>
+        </a>
+
+        <a href="profile.html" class="sidebar-link">
+            <i class="bi bi-person-circle"></i>
+            <span>My Profile</span>
         </a>
 
     </nav>
@@ -198,27 +203,40 @@
 
     <section class="reviews-page-content">
 
-
         <!-- =================================================
-             INTRO
+            HERO SECTION
         ================================================== -->
 
-        <div class="page-intro">
+        <section class="page-hero">
 
-            <div>
+            <div class="hero-content">
 
-                <span class="section-eyebrow">
-                    <i class="bi bi-stars"></i>
-                    Customer Feedback
+                <span class="hero-label">
+                   Customer Feedback
                 </span>
 
-                <h2>Share Your Experience</h2>
+                <h2>
+                    Share Your Experience
+                </h2>
 
                 <p>
                     Review your completed rentals and manage your feedback.
                 </p>
 
             </div>
+
+            <div class="hero-icon">
+                <i class="bi bi-stars"></i>
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             INTRO
+        ================================================== -->
+
+        <div class="page-intro">
 
             <button
                 class="refresh-btn"
@@ -400,7 +418,7 @@
                     <input
                         type="text"
                         id="reviewSearch"
-                        placeholder="Search by review or rental ID...">
+                        placeholder="Search by rental ID...">
 
                 </div>
 

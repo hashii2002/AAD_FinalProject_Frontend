@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>DriveGo - AI Assistant</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet">
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <!-- AI Assistant CSS -->
+    <link rel="stylesheet" href="../../css/customer/ai-chat.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     CUSTOMER SIDEBAR
+========================================================= -->
+
+<aside
+        class="sidebar customer-sidebar"
+        id="customerSidebar">
+
+    <!-- Brand -->
+    <div class="sidebar-brand">
+
+        <div class="brand-icon">
+            <i class="bi bi-car-front-fill"></i>
+        </div>
+
+        <div class="brand-text">
+
+            <h5>
+                Drive<span>Go</span>
+            </h5>
+
+            <small>
+                Customer Portal
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+
+        <a
+                href="customer-dashboard.html"
+                class="sidebar-link">
+
+            <i class="bi bi-grid-1x2-fill"></i>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+        <a
+                href="browse-vehicles.html"
+                class="sidebar-link">
+
+            <i class="bi bi-car-front"></i>
+
+            <span>
+                Browse Vehicles
+            </span>
+
+        </a>
+
+
+        <a
+                href="my-rentals.html"
+                class="sidebar-link">
+
+            <i class="bi bi-calendar2-check"></i>
+
+            <span>
+                My Rentals
+            </span>
+
+        </a>
+
+
+        <a
+                href="payments.html"
+                class="sidebar-link">
+
+            <i class="bi bi-credit-card"></i>
+
+            <span>
+                Payments
+            </span>
+
+        </a>
+
+
+        <a
+                href="invoices.html"
+                class="sidebar-link">
+
+            <i class="bi bi-receipt"></i>
+
+            <span>
+                Invoices
+            </span>
+
+        </a>
+
+
+        <a
+                href="reviews.html"
+                class="sidebar-link">
+
+            <i class="bi bi-star"></i>
+
+            <span>
+                My Reviews
+            </span>
+
+        </a>
+
+
+        <!-- ACTIVE -->
+        <a
+                href="ai-chat.html"
+                class="sidebar-link active">
+
+            <i class="bi bi-stars"></i>
+
+            <span>
+                AI Assistant
+            </span>
+
+        </a>
+
+        <a href="profile.html"
+               class="sidebar-link">
+                <i class="bi bi-person-circle"></i>
+                <span>My Profile</span>
+            </a>
+
+    </nav>
+
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+
+        <div class="customer-sidebar-user">
+
+            <div class="customer-user-avatar">
+
+                <span id="sidebarAvatar">
+                    C
+                </span>
+
+            </div>
+
+
+            <div class="customer-user-info">
+
+                <strong id="sidebarUsername">
+                    Customer
+                </strong>
+
+                <small>
+                    Customer
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <button
+                type="button"
+                class="logout-btn"
+                onclick="logout()">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            <span>
+                Logout
+            </span>
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     MOBILE SIDEBAR OVERLAY
+========================================================= -->
+
+<div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+        onclick="closeSidebar()">
+</div>
+
+
+<!-- =========================================================
+     MOBILE MENU BUTTON
+========================================================= -->
+
+<button
+        type="button"
+        class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        onclick="toggleSidebar()">
+
+    <i class="bi bi-list"></i>
+
+</button>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main class="customer-main">
+
+
+    <!-- =====================================================
+         TOP HEADER
+    ====================================================== -->
+
+    <header class="customer-header">
+
+        <div class="header-title">
+
+            <span class="page-eyebrow">
+                CUSTOMER PORTAL
+            </span>
+
+            <h1>
+                AI Assistant
+            </h1>
+
+            <p>
+                Get instant help with vehicles, availability and rental information.
+            </p>
+
+        </div>
+
+
+        <div class="header-user">
+
+            <div class="header-avatar">
+
+                <span id="headerAvatar">
+                    C
+                </span>
+
+            </div>
+
+
+            <div class="header-user-info">
+
+                <strong id="headerUsername">
+                    Customer
+                </strong>
+
+                <small>
+                    Customer
+                </small>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         AI HERO
+    ====================================================== -->
+
+    <section class="ai-hero">
+
+        <div class="ai-hero-content">
+
+            <div class="ai-icon-large">
+
+                <i class="bi bi-stars"></i>
+
+            </div>
+
+
+            <div>
+
+                <span class="ai-label">
+                    DRIVEGO INTELLIGENT ASSISTANT
+                </span>
+
+                <h2>
+                    How can I help you today?
+                </h2>
+
+                <p>
+                    Ask me about our vehicles, availability, specifications,
+                    categories or rental rates.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="ai-status">
+
+            <span class="status-dot"></span>
+
+            <span>
+                AI Online
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAIN AI AREA
+    ====================================================== -->
+
+    <section class="ai-workspace">
+
+
+        <!-- =================================================
+             CHAT CARD
+        ================================================== -->
+
+        <div class="chat-card">
+
+
+            <!-- Chat Header -->
+
+            <div class="chat-header">
+
+                <div class="chat-agent">
+
+                    <div class="agent-avatar">
+
+                        <i class="bi bi-stars"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            DriveGo Assistant
+                        </strong>
+
+                        <span>
+                            Vehicle Rental Support
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                        type="button"
+                        class="clear-chat-btn"
+                        id="clearChatBtn">
+
+                    <i class="bi bi-trash3"></i>
+
+                    <span>
+                        Clear
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- Chat Messages -->
+
+            <div
+                    class="chat-messages"
+                    id="chatMessages">
+
+
+                <!-- Initial AI Message -->
+
+                <div class="message-row assistant-row">
+
+                    <div class="message-avatar assistant-avatar">
+
+                        <i class="bi bi-stars"></i>
+
+                    </div>
+
+
+                    <div class="message-content">
+
+                        <div class="message-name">
+                            DriveGo Assistant
+                        </div>
+
+                        <div class="message-bubble assistant-bubble">
+
+                            <p>
+                                Hello! 👋 I'm your DriveGo AI Assistant.
+                            </p>
+
+                            <p>
+                                I can help you with:
+                            </p>
+
+                            <ul>
+
+                                <li>
+                                    Vehicle availability
+                                </li>
+
+                                <li>
+                                    Brands and models
+                                </li>
+
+                                <li>
+                                    Vehicle specifications
+                                </li>
+
+                                <li>
+                                    Rental categories
+                                </li>
+
+                                <li>
+                                    Daily and monthly rental rates
+                                </li>
+
+                            </ul>
+
+                            <p class="mb-0">
+                                What would you like to know?
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Typing Indicator -->
+
+            <div
+                    class="typing-wrapper d-none"
+                    id="typingIndicator">
+
+                <div class="message-avatar assistant-avatar">
+
+                    <i class="bi bi-stars"></i>
+
+                </div>
+
+                <div class="typing-bubble">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Chat Input -->
+
+            <div class="chat-input-area">
+
+                <form id="chatForm">
+
+
+                    <div class="input-wrapper">
+
+                        <textarea
+                                id="messageInput"
+                                rows="1"
+                                maxlength="1000"
+                                placeholder="Ask about vehicles, availability, rental rates..."
+                                autocomplete="off"></textarea>
+
+
+                        <button
+                                type="submit"
+                                class="send-btn"
+                                id="sendBtn"
+                                title="Send message">
+
+                            <i class="bi bi-send-fill"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="input-footer">
+
+                        <span>
+
+                            <i class="bi bi-shield-check"></i>
+
+                            DriveGo AI uses current vehicle information
+
+                        </span>
+
+
+                        <span id="characterCount">
+                            0 / 1000
+                        </span>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             QUICK QUESTIONS
+        ================================================== -->
+
+        <aside class="quick-help-card">
+
+
+            <div class="quick-help-header">
+
+                <div class="quick-icon">
+
+                    <i class="bi bi-lightning-charge-fill"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Quick Questions
+                    </h3>
+
+                    <p>
+                        Try one of these
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-question-list">
+
+
+                <button
+                        type="button"
+                        class="quick-question"
+                        data-question="What vehicles are currently available?">
+
+                    <span class="quick-question-icon">
+                        <i class="bi bi-car-front"></i>
+                    </span>
+
+                    <span>
+                        What vehicles are available?
+                    </span>
+
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </button>
+
+
+                <button
+                        type="button"
+                        class="quick-question"
+                        data-question="What vehicle brands are available?">
+
+                    <span class="quick-question-icon">
+                        <i class="bi bi-award"></i>
+                    </span>
+
+                    <span>
+                        What brands are available?
+                    </span>
+
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </button>
+
+
+                <button
+                        type="button"
+                        class="quick-question"
+                        data-question="What vehicles have automatic transmission?">
+
+                    <span class="quick-question-icon">
+                        <i class="bi bi-gear"></i>
+                    </span>
+
+                    <span>
+                        Which vehicles are automatic?
+                    </span>
+
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </button>
+
+
+                <button
+                        type="button"
+                        class="quick-question"
+                        data-question="What are the daily rental rates?">
+
+                    <span class="quick-question-icon">
+                        <i class="bi bi-cash-stack"></i>
+                    </span>
+
+                    <span>
+                        What are the daily rates?
+                    </span>
+
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </button>
+
+
+                <button
+                        type="button"
+                        class="quick-question"
+                        data-question="Which vehicles have the highest seating capacity?">
+
+                    <span class="quick-question-icon">
+                        <i class="bi bi-people"></i>
+                    </span>
+
+                    <span>
+                        Which vehicles have more seats?
+                    </span>
+
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </button>
+
+
+                <button
+                        type="button"
+                        class="quick-question"
+                        data-question="What vehicle categories are available?">
+
+                    <span class="quick-question-icon">
+                        <i class="bi bi-grid"></i>
+                    </span>
+
+                    <span>
+                        What categories are available?
+                    </span>
+
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- AI Information -->
+
+            <div class="ai-info-box">
+
+                <div class="ai-info-icon">
+
+                    <i class="bi bi-info-circle"></i>
+
+                </div>
+
+                <div>
+
+                    <strong>
+                        About DriveGo AI
+                    </strong>
+
+                    <p>
+                        The assistant uses current vehicle and rental
+                        rate information from DriveGo to provide answers.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Portal Links -->
+
+            <div class="portal-help">
+
+                <span>
+                    Need personal information?
+                </span>
+
+                <a href="customer/my-rentals.html">
+                    View My Rentals
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </aside>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER NOTE
+    ====================================================== -->
+
+    <div class="ai-footer-note">
+
+        <i class="bi bi-lock-fill"></i>
+
+        <span>
+            Your private customer information is not shared with the AI Assistant.
+        </span>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     GLOBAL CONFIG
+========================================================= -->
+
+<script src="../../js/config.js"></script>
+
+<!-- Existing Authentication JS -->
+<script src="../../js/auth.js"></script>
+
+<!-- AI Assistant JS -->
+<script src="../../js/customer/ai-chat.js"></script>
+
+</body>
+
+</html>
