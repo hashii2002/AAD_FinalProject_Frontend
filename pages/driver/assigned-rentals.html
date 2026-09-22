@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assigned Rentals | DriveGo</title>
+
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Driver Assigned Rentals CSS -->
+    <link rel="stylesheet" href="../../css/driver/assigned-rentals.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     MOBILE OVERLAY
+========================================================= -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+<aside class="driver-sidebar" id="driverSidebar">
+
+    <!-- Brand -->
+    <div class="sidebar-brand">
+
+        <div class="brand-icon">
+            <i class="bi bi-car-front-fill"></i>
+        </div>
+
+        <div class="brand-content">
+            <h2>DriveGo</h2>
+            <span>Driver Portal</span>
+        </div>
+
+    </div>
+
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+
+        <div class="nav-section-title">
+            MAIN MENU
+        </div>
+
+        <a href="driver-dashboard.html" class="nav-item">
+            <span class="nav-icon">
+                <i class="bi bi-grid-1x2-fill"></i>
+            </span>
+            <span class="nav-text">Dashboard</span>
+        </a>
+
+
+        <a href="assigned-rentals.html"
+           class="nav-item active">
+
+            <span class="nav-icon">
+                <i class="bi bi-calendar2-check"></i>
+            </span>
+
+            <span class="nav-text">Assigned Rentals</span>
+
+        </a>
+
+
+        <a href="driver-profile.html" class="nav-item">
+
+            <span class="nav-icon">
+                <i class="bi bi-person-circle"></i>
+            </span>
+
+            <span class="nav-text">My Profile</span>
+
+        </a>
+
+    </nav>
+
+
+    <!-- Sidebar Bottom -->
+    <div class="sidebar-bottom">
+
+        <div class="driver-user">
+
+            <div class="driver-avatar">
+                <i class="bi bi-person-fill"></i>
+            </div>
+
+            <div class="driver-user-info">
+                <strong id="sidebarUsername">Driver</strong>
+                <span>Driver</span>
+            </div>
+
+        </div>
+
+
+        <button
+                type="button"
+                class="logout-btn"
+                id="logoutBtn">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            <span>Logout</span>
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+<main class="driver-main">
+
+
+    <!-- =====================================================
+         TOP HEADER
+    ====================================================== -->
+    <header class="top-header">
+
+        <div class="header-left">
+
+            <button
+                    type="button"
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn">
+
+                <i class="bi bi-list"></i>
+
+            </button>
+
+
+            <div class="breadcrumb-area">
+
+                <div class="breadcrumb-text">
+                    Driver Portal
+                    <span>/</span>
+                    Assigned Rentals
+                </div>
+
+                <h1>Assigned Rentals</h1>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-profile">
+
+            <div class="header-avatar">
+                <i class="bi bi-person-fill"></i>
+            </div>
+
+            <div class="header-profile-info">
+
+                <strong id="headerUsername">Driver</strong>
+
+                <span>Driver</span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         PAGE CONTENT
+    ====================================================== -->
+    <section class="page-content">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+        <section class="page-hero">
+
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    <i class="bi bi-calendar2-check"></i>
+                    RENTAL MANAGEMENT
+                </span>
+
+                <h2>Your Assigned Rentals</h2>
+
+                <p>
+                    View your assigned vehicle rentals, customer information,
+                    rental schedules and trip details.
+                </p>
+
+            </div>
+
+
+            <div class="hero-icon">
+
+                <i class="bi bi-car-front-fill"></i>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+        ================================================== -->
+        <section class="summary-grid">
+
+
+            <!-- Total -->
+            <div class="summary-card">
+
+                <div class="summary-icon purple">
+                    <i class="bi bi-calendar2-check"></i>
+                </div>
+
+                <div class="summary-info">
+
+                    <span>Total Assigned</span>
+
+                    <strong id="totalRentals">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Active -->
+            <div class="summary-card">
+
+                <div class="summary-icon green">
+                    <i class="bi bi-car-front-fill"></i>
+                </div>
+
+                <div class="summary-info">
+
+                    <span>Active Trips</span>
+
+                    <strong id="activeRentals">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Upcoming -->
+            <div class="summary-card">
+
+                <div class="summary-icon orange">
+                    <i class="bi bi-calendar-event"></i>
+                </div>
+
+                <div class="summary-info">
+
+                    <span>Upcoming</span>
+
+                    <strong id="upcomingRentals">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Completed -->
+            <div class="summary-card">
+
+                <div class="summary-icon blue">
+                    <i class="bi bi-check-circle"></i>
+                </div>
+
+                <div class="summary-info">
+
+                    <span>Completed</span>
+
+                    <strong id="completedRentals">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FILTER SECTION
+        ================================================== -->
+        <section class="filter-card">
+
+            <div class="filter-header">
+
+                <div class="filter-title">
+
+                    <i class="bi bi-funnel"></i>
+
+                    <strong>Filter Rentals</strong>
+
+                </div>
+
+                <span id="rentalCount">
+                    0 rentals
+                </span>
+
+            </div>
+
+
+            <div class="filter-row">
+
+                <!-- Search -->
+                <div class="search-wrapper">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search by vehicle No and Brand...">
+
+                </div>
+
+
+                <!-- Status -->
+                <div class="status-wrapper">
+
+                    <select id="statusFilter">
+
+                        <option value="ALL">
+                            All Statuses
+                        </option>
+
+                        <option value="PENDING">
+                            Pending
+                        </option>
+
+                        <option value="CONFIRMED">
+                            Confirmed
+                        </option>
+
+                        <option value="ONGOING">
+                            Ongoing
+                        </option>
+
+                        <option value="COMPLETED">
+                            Completed
+                        </option>
+
+                        <option value="CANCELLED">
+                            Cancelled
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Clear -->
+                <button
+                        type="button"
+                        class="clear-btn"
+                        id="clearFilters">
+
+                    <i class="bi bi-x-circle"></i>
+
+                    Clear
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             LOADING
+        ================================================== -->
+        <div
+                class="loading-state"
+                id="loadingState">
+
+            <div class="spinner-border"></div>
+
+            <p>
+                Loading assigned rentals...
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             ERROR
+        ================================================== -->
+        <div
+                class="error-state"
+                id="errorState"
+                style="display: none;">
+
+            <div class="error-icon">
+                <i class="bi bi-exclamation-triangle"></i>
+            </div>
+
+            <h3>Unable to Load Rentals</h3>
+
+            <p id="errorMessage">
+                Something went wrong while loading your rentals.
+            </p>
+
+            <button
+                    type="button"
+                    class="retry-btn"
+                    id="retryBtn">
+
+                <i class="bi bi-arrow-clockwise"></i>
+                Try Again
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             EMPTY
+        ================================================== -->
+        <div
+                class="empty-state"
+                id="emptyState"
+                style="display: none;">
+
+            <div class="empty-icon">
+                <i class="bi bi-calendar2-x"></i>
+            </div>
+
+            <h3>No Assigned Rentals</h3>
+
+            <p>
+                You currently don't have any rentals assigned to you.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             RENTALS CONTAINER
+        ================================================== -->
+        <section
+                class="rentals-container"
+                id="rentalsContainer">
+
+            <!-- Cards generated by JavaScript -->
+
+        </section>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     RENTAL DETAILS MODAL
+========================================================= -->
+<div
+        class="modal fade"
+        id="rentalDetailsModal"
+        tabindex="-1"
+        aria-hidden="true">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content rental-modal">
+
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-label">
+                        RENTAL DETAILS
+                    </span>
+
+                    <h5 class="modal-title">
+                        Rental #<span id="modalRentalId">-</span>
+                    </h5>
+
+                </div>
+
+                <button
+                        type="button"
+                        class="modal-close"
+                        data-bs-dismiss="modal">
+
+                    <i class="bi bi-x"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+
+
+                <!-- Status -->
+                <div class="modal-status-row">
+
+                    <span>Status</span>
+
+                    <span id="modalStatus">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- Vehicle -->
+                <div class="details-section">
+
+                    <div class="details-section-title">
+
+                        <i class="bi bi-car-front-fill"></i>
+
+                        <span>Vehicle Information</span>
+
+                    </div>
+
+
+                    <div class="details-grid">
+
+                        <div class="detail-item">
+                            <span>Vehicle ID</span>
+                            <strong id="modalVehicleId">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Vehicle Number</span>
+                            <strong id="modalVehicleNo">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Brand</span>
+                            <strong id="modalBrand">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Model</span>
+                            <strong id="modalModel">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Category</span>
+                            <strong id="modalCategory">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Year</span>
+                            <strong id="modalYear">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Color</span>
+                            <strong id="modalColor">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Fuel Type</span>
+                            <strong id="modalFuel">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Transmission</span>
+                            <strong id="modalTransmission">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Seats</span>
+                            <strong id="modalSeats">-</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Rental -->
+                <div class="details-section">
+
+                    <div class="details-section-title">
+
+                        <i class="bi bi-calendar2-event"></i>
+
+                        <span>Rental Information</span>
+
+                    </div>
+
+
+                    <div class="details-grid">
+
+                        <div class="detail-item">
+                            <span>Customer ID</span>
+                            <strong id="modalCustomerId">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Rental Days</span>
+                            <strong id="modalRentalDays">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Pickup Date</span>
+                            <strong id="modalStartDate">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Return Date</span>
+                            <strong id="modalEndDate">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Pickup Mileage</span>
+                            <strong id="modalPickupMileage">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Return Mileage</span>
+                            <strong id="modalReturnMileage">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Driver Option</span>
+                            <strong id="modalDriverOption">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Assigned Driver ID</span>
+                            <strong id="modalDriverId">-</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <span>Rental Rate ID</span>
+                            <strong id="modalRateId">-</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Footer -->
+            <div class="modal-footer">
+
+                <button
+                        type="button"
+                        class="modal-done-btn"
+                        data-bs-dismiss="modal">
+
+                    <i class="bi bi-check2"></i>
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Bootstrap JS -->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- Project Config -->
+<script src="../../js/config.js"></script>
+
+<!-- Auth -->
+<script src="../../js/auth.js"></script>
+
+<!-- Assigned Rentals -->
+<script src="../../js/driver/assigned-rentals.js"></script>
+
+</body>
+</html>
