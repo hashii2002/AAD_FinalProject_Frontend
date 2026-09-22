@@ -182,7 +182,7 @@ if (loginForm) {
 
 
                 case "DRIVER":
-                    window.location.href ="pages/driver-dashboard.html";
+                    window.location.href ="pages/driver/driver-dashboard.html";
                     break;
 
                 default:
@@ -533,7 +533,7 @@ function redirectByRole(role) {
             break;
 
         case "DRIVER":
-            window.location.href = "driver-dashboard.html";
+            window.location.href = "driver/driver-dashboard.html";
             break;
 
         default:
