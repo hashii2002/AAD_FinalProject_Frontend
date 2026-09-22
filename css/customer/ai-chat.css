@@ -20,7 +20,7 @@ body {
 ========================================================= */
 
 .customer-sidebar {
-    position: fixed;
+   position: fixed;
 
     top: 0;
     left: 0;
@@ -35,10 +35,12 @@ body {
 
     z-index: 1050;
 
-    overflow-y: auto;
-    overflow-x: hidden;
+    transition:
+            transform 0.3s ease;
 
-    transition: transform 0.25s ease;
+    box-shadow:
+            8px 0 30px
+            rgba(15, 23, 42, 0.08);
 }
 
 
@@ -47,40 +49,44 @@ body {
 ========================================================= */
 
 .customer-sidebar .sidebar-brand {
-    min-height: 78px;
+    min-height: 82px;
+
+    padding:
+            20px 22px;
 
     display: flex;
+
     align-items: center;
 
-    padding: 18px 20px;
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-    flex-shrink: 0;
+    gap: 12px;
 }
 
 
 .customer-sidebar .brand-icon {
-    width: 40px;
-    height: 40px;
+   width: 42px;
+    height: 42px;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    background: linear-gradient(
-            135deg,
-            #4f46e5,
-            #6366f1
-    );
+    background:
+            linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #4f46e5
+            );
 
     color: #ffffff;
 
-    font-size: 20px;
+    font-size: 21px;
 
-    flex-shrink: 0;
+    box-shadow:
+            0 8px 20px
+            rgba(99, 102, 241, 0.3);
 }
 
 
@@ -114,9 +120,19 @@ body {
 
     margin-top: 2px;
 
-    color: #94a3b8;
+    color: #9ca3af;
 
-    font-size: 10px;
+    font-size: 11px;
+}
+
+.sidebar-divider {
+    height: 1px;
+
+    margin:
+            0 18px;
+
+    background:
+            rgba(255, 255, 255, 0.08);
 }
 
 
@@ -127,36 +143,41 @@ body {
 .customer-sidebar .sidebar-nav {
     flex: 1;
 
-    padding: 18px 0;
+    padding:
+            22px 14px;
 
     overflow-y: auto;
 }
 
 
 .customer-sidebar .sidebar-link {
+    position: relative;
+
     display: flex;
+
     align-items: center;
 
-    min-height: 44px;
+    gap: 13px;
 
-    margin: 4px 12px;
+    width: 100%;
 
-    padding: 0 13px;
+    padding:
+            12px 14px;
 
-    border-radius: 10px;
+    margin-bottom: 5px;
 
-    color: #cbd5e1;
+    color: #9ca3af;
 
     text-decoration: none;
 
-    font-size: 13px;
+    border-radius: 10px;
+
+    font-size: 14px;
 
     font-weight: 500;
 
     transition:
-            background 0.2s ease,
-            color 0.2s ease,
-            transform 0.2s ease;
+            all 0.2s ease;
 }
 
 
@@ -190,16 +211,18 @@ body {
 
 
 .customer-sidebar .sidebar-link.active {
-    background: linear-gradient(
-            135deg,
-            rgba(79, 70, 229, 0.95),
-            rgba(99, 102, 241, 0.95)
-    );
-
     color: #ffffff;
 
+    background:
+            linear-gradient(
+                    90deg,
+                    rgba(124, 58, 237, 0.95),
+                    rgba(79, 70, 229, 0.9)
+            );
+
     box-shadow:
-            0 5px 15px rgba(79, 70, 229, 0.22);
+            0 8px 20px
+            rgba(79, 70, 229, 0.18);
 }
 
 

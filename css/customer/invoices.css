@@ -133,31 +133,33 @@
 
 
 .customer-sidebar .sidebar-link {
+position: relative;
 
     display: flex;
 
     align-items: center;
 
-    min-height: 44px;
+    gap: 13px;
 
-    margin: 4px 12px;
+    width: 100%;
 
-    padding: 0 13px;
+    padding:
+            12px 14px;
 
-    border-radius: 10px;
+    margin-bottom: 5px;
 
-    color: #cbd5e1;
+    color: #9ca3af;
 
     text-decoration: none;
 
-    font-size: 13px;
+    border-radius: 10px;
+
+    font-size: 14px;
 
     font-weight: 500;
 
     transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
+            all 0.2s ease;
 }
 
 
@@ -195,16 +197,18 @@
 
 .customer-sidebar .sidebar-link.active {
 
-    background: linear-gradient(
-        135deg,
-        rgba(79, 70, 229, 0.95),
-        rgba(99, 102, 241, 0.95)
-    );
-
     color: #ffffff;
 
+    background:
+            linear-gradient(
+                    90deg,
+                    rgba(124, 58, 237, 0.95),
+                    rgba(79, 70, 229, 0.9)
+            );
+
     box-shadow:
-        0 5px 15px rgba(79, 70, 229, 0.22);
+            0 8px 20px
+            rgba(79, 70, 229, 0.18);
 }
 
 
