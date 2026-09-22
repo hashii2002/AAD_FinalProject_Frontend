@@ -186,12 +186,6 @@ function loadInspectionUser() {
 
     }
 
-
-    /*
-       Automatically assign logged-in
-       Fleet Manager as inspector.
-    */
-
     const inspectorIdInput =
         document.getElementById(
             "inspectedById"

@@ -249,7 +249,11 @@ function logout() {
 
     const currentPath = window.location.pathname;
 
-    if (currentPath.includes("/manager/")) {
+    if (currentPath.includes("/customer/")) {
+
+        window.location.href = "../../index.html";
+
+    } else if (currentPath.includes("/manager/")) {
 
         window.location.href = "../../index.html";
 
